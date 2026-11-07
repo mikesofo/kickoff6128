@@ -49,10 +49,12 @@ On phones and tablets the game has a floating joystick, swipe to shoot and on-sc
 
 ## Run it locally
 
-Open `index.html` in any modern browser. That is all.
+Open `index.html` in any modern browser. That is all. It works offline too.
 
 ## Credits
 
 Created by M. Sofopoulos (msofopoulos@gmail.com), built with Claude.
+
+The embedded fonts are [Silkscreen](https://fonts.google.com/specimen/Silkscreen) by Jason Kottke and [IBM Plex Mono](https://github.com/IBM/plex) by IBM, both under the [SIL Open Font License 1.1](https://openfontlicense.org).
 
 Match Day II is a trademark of its owners. This project is a fan tribute made for fun.
