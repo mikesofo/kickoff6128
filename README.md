@@ -10,6 +10,7 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 **Modes**
 - 1 player, 2 players, and twin (two humans against the CPU)
+- Watch match: two CPU teams, with a speed control
 - Super League season: eight clubs, home and away, saved table, champions trophy
 - Matchday Cup: two-leg ties, extra time and penalty shootouts
 - Penalty shootout, 2-player shootout and a penalty cup with a nerves meter
@@ -26,11 +27,13 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 - Referee personalities, weather events, floodlight failure, fog and storms
 - Commentary ticker, crowd chants, attendance, replays from three cameras
 - Match stats, man of the match, achievements and unlockable balls and kits
+- Optional team walk-out before kick-off, trophy ceremonies for cup and league winners, and a demo match when the main menu is left idle
 
 **Clubs and players**
 - Panathinaikos, Olympiakos, AEK, Panionios, Aris, PAOK, OFI and Panachaiki
 - Named 1980s stars with pace, shooting, tackling and goalkeeping ratings
 - Line-ups with shirt numbers, a top scorers table and rivalry history
+- Player editor (names, shirt numbers and ratings) and kit editor, both saved in the browser
 
 ## Controls
 
