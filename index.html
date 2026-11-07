@@ -177,12 +177,12 @@ const KITS=[
   {n:'MIDNIGHT',c:['#14143a','#0a0a24','#ffd84a','#14143a','#14143a'],st:'#ffd84a'}];
 /* 1980s squads: [GK,[name,gk]] then four outfield [name,pac,sht,tkl]; null name = unnamed */
 const ROSTER=[
- /*PAO*/[['SARGANIS',5,1],['ZAJEC',3,3,5,6],['ANTONIOU',3,3,4,8],['ROCHA',4,4,3,10],['SARAVAKOS',5,5,2,9]],
- /*OLY*/[['TALIKRIADIS',4,1],['MITROPOULOS',4,3,5,5],['LEMONIS',3,3,4,4],['MICHOS',3,4,3,8],['ANASTOPOULOS',5,5,2,9]],
- /*AEK*/[['IKONOMOPOULOS',4,1],['MANOLAS',3,2,5,5],['SAVVIDIS',4,4,3,7],['OKONSKI',4,5,2,10],['MAVROS',4,5,2,9]],
+ /*PAO*/[['SARGANIS',5,1],['ZAJEC',3,3,5,5],['ANTONIOU',3,3,4,8],['ROCHA',4,4,3,10],['SARAVAKOS',5,5,2,7]],
+ /*OLY*/[['TALIKRIADIS',4,1],['MITROPOULOS',4,3,5,10],['LEMONIS',3,3,4,7],['MICHOS',3,4,3,5],['ANASTOPOULOS',5,5,2,9]],
+ /*AEK*/[['IKONOMOPOULOS',4,1],['MANOLAS',3,2,5,4],['SAVVIDIS',4,4,3,9],['OKONSKI',4,5,2,10],['MAVROS',4,5,2,11]],
  /*PANIONIOS*/[['MANIKAS',4],['CHALKIDIS',3,2,4],['GRAVANIS',3,2,4],['KANARAS',3,3,3],['TSIANTAKIS',4,4,2]],
- /*ARIS*/[['KARKAMANIS',3,1],['MYSTAKIDIS',3,2,4,5],['LIMNIATIS',3,2,4,4],['DIMITRIADIS',4,5,2,9],['KOUIS',4,4,3,10]],
- /*PAOK*/[['PANTELIS',3,1],['JURISIC',3,2,5,5],['ALAVANTAS',3,2,5,4],['SKARTADOS',4,4,3,8],['ORFANOS',4,5,2,9]],
+ /*ARIS*/[['KARKAMANIS',3,1],['MYSTAKIDIS',3,2,4,2],['LIMNIATIS',3,2,4,8],['DIMITRIADIS',4,5,2,9],['KOUIS',4,4,3,5]],
+ /*PAOK*/[['PANTELIS',3,1],['JURISIC',3,2,5,4],['ALAVANTAS',3,2,5,3],['SKARTADOS',4,4,3,6],['ORFANOS',4,5,2,9]],
  /*OFI*/[['SIFAKIS',4],['HISIS',3,2,4],['NIOPLIAS',3,4,3],['SAMARAS',4,4,2],['CHARALAMBIDIS',4,4,2]],
  /*PANACHAIKI*/[['DESYLLAS',3],['KYZAS',3,2,4],['KOURBANAS',3,2,4],['VAITSIS',4,5,2],['CHARDALIAS',4,4,2]]];
 const BENCH={0:['MAVRIDIS','KAROULIAS','VLACHOS','KALANTZIS','DIMOPOULOS'],1:['KRITIKOPOULOS','ARDIZOGLOU'],2:['KLOPAS','PAPAIOANNOU','KARAGIOZOPOULOS','PATIKAS','PITTAS'],3:['BERIOS','MARANGOS','ZAKKAS','KOUTROPOULOS','CHATZIMOUSIADIS'],4:['OIKONOMIDIS','GIOUKOUDIS','BAHTIC','MOLLER','BALLIS'],5:['VASILAKOS','SINGAS','ROUSSOMANIS','IORDANIDIS','BORBOKIS'],6:['PAPAVASILEIOU','VERA','PERSIAS','VASILIOU','BATSINILAS'],7:['DRAKOPOULOS','ZIKOS','VOSDOU','ZERDEVAS','PANAGIOTIDIS']};
@@ -3087,7 +3087,6 @@ function buildMenu(m){
     I.push({k:'act',label:'LINE-UPS',fn:()=>goMenu('lineup')});
     I.push({k:'act',label:'TOP SCORERS',fn:()=>goMenu('scorers')});
     I.push({k:'act',label:'INSTRUCTIONS',fn:()=>goMenu('instructions')});
-    I.push({k:'act',label:'ABOUT',fn:()=>goMenu('about')});
     I.push({k:'act',label:'RIVALRY HISTORY',fn:()=>goMenu('rivals')});
     I.push({k:'act',label:'ONLINE MATCH',fn:()=>goMenu('online')});
     I.push({k:'act',label:'TRAINING',fn:()=>goMenu('train')});
@@ -3095,6 +3094,7 @@ function buildMenu(m){
     I.push({k:'act',label:'PENALTY CUP',fn:()=>{if(!PC)pcNew();goMenu('pcup')}});
     I.push({k:'act',label:'2 PLAYER SHOOTOUT',fn:()=>beginShootout(true)});
     I.push({k:'act',label:'KEYS AND OPTIONS',fn:()=>goMenu('keysopt')});
+    I.push({k:'act',label:'ABOUT',fn:()=>goMenu('about')});
     break;
   case'info':
     sp.title=m.title||'';sp.lines=m.lines||[];
@@ -3247,7 +3247,7 @@ function buildMenu(m){
   case'about':
     sp.title='ABOUT KICKOFF 6128';sp.w=330;
     sp.lines=['AN ORIGINAL FIVE-A-SIDE FOOTBALL GAME','A TRIBUTE TO MATCH DAY II','AND THE 8-BIT CLASSICS OF THE AMSTRAD CPC','',
-      'VERSION 51','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
+      'VERSION 53','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
       'CLUB NAMES ARE USED FOR FUN ONLY','AND ARE NOT AFFILIATED OR OFFICIAL'];
     I.push({k:'act',label:'BACK',fn:back});
     break;
