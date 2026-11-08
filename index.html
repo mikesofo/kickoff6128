@@ -2825,6 +2825,34 @@ function boothSay(t){
   if(O.comm===2)speak(t,0);
   if(Math.random()<.65){const k=cmKind(t);S.cmq={t:'MAKIS: '+pick(COLP[k]),d:170}}
 }
+/* national anthems (short synth phrases, played from memory) */
+const ANTH=[
+ [520,'D4:1 G4:1 G4:1 G4:1 A4:1 Bb4:2 Bb4:1 A4:1 G4:1 A4:1 Bb4:1 C5:2 D5:1 C5:1 Bb4:1 A4:1 G4:3'],
+ [560,'C4:1 F4:2 F4:1 G4:1 A4:2 A4:1 G4:1 F4:1 G4:2 C4:1 C4:2 D4:2 D4:1 E4:1 F4:2 F4:1 G4:1 A4:1 Bb4:3'],
+ [480,'G4:1 G4:1 A4:1 F#4:1.5 G4:.5 A4:1 B4:1 B4:1 C5:1 B4:1.5 A4:.5 G4:1 A4:1 G4:1 F#4:1 G4:3'],
+ [330,'D4:.7 D4:.3 D4:1 G4:1.5 G4:.5 A4:1.5 A4:.5 D5:2 B4:1.5 G4:.5 G4:1 B4:1.5 G4:.5 A4:2 D4:1 D4:1 G4:3'],
+ [500,'C5:1.5 E5:.5 C5:1 G4:1 E4:1 G4:2 C5:1.5 D5:.5 E5:1 D5:1 C5:2 G4:1.5 A4:.5 B4:1 C5:3'],
+ [620,'D4:1 G4:1.5 F#4:.5 A4:1 G4:1 B4:1.5 A4:.5 B4:1 C5:1 D5:2 B4:1 G4:1 A4:1 B4:1 C5:2 B4:1 A4:3'],
+ [330,'C4:.5 G4:1 G4:.5 A4:.5 G4:.5 E4:1 C5:1 C5:.5 D5:.5 C5:.5 G4:1 G4:.5 A4:.5 B4:.5 C5:1 C5:.5 B4:.5 A4:.5 G4:3'],
+ [420,'E4:1 A4:1.5 A4:.5 A4:1 A4:1 C5:1.5 B4:.5 A4:1 G#4:1 A4:3 E4:1 A4:1.5 A4:.5 B4:1 C5:1 D5:1.5 C5:.5 B4:1 A4:3']
+];
+let ANT=[];
+const anNotes=i=>{const a=ANTH[i%8],T=a[0],o=[];let t=0;const M0={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
+  for(const w of a[1].split(' ')){const m=/^([A-G])(#|b)?(\d):([\d.]+)$/.exec(w);if(!m)continue;
+    const n=M0[m[1]]+(m[2]==='#'?1:m[2]==='b'?-1:0)+12*(+m[3]+1)-69,d=+m[4]*T;
+    o.push([t,440*Math.pow(2,n/12),d]);t+=d}
+  return{o,t}};
+const anDur=i=>Math.min(9000,anNotes(i).t);
+function anStop(){for(const x of ANT)clearTimeout(x);ANT=[]}
+function anPlay(a,b){
+  anStop();
+  let off=0;
+  for(const c of [a,b]){
+    const r=anNotes(c);
+    for(const [t,f,d] of r.o){if(t>9000)break;ANT.push(setTimeout(()=>beep(f,d/1000*.95,'square',.03),off+t))}
+    off+=Math.min(9000,r.t)+300;
+  }
+}
 let idleT=0;
 function shotSave(){
   txt('KICKOFF 6128',W-4,H-9,'#ffd400',5,'right');
@@ -2843,13 +2871,16 @@ function extraTick(){
   if(S.ttx)return;
   if(S.pyro)pyroTick();
   if(S.cere){S.cere.t++;cereTick();return}
-  if(S.wo){if(++S.wo.t>=S.wo.len)S.wo=null;return}
+  if(!S.wo&&ANT.length)anStop();
+  if(S.wo){if(S.wo.H&&S.wo.t===150)anPlay(M.teams[0],M.teams[1]);if(++S.wo.t>=S.wo.len)S.wo=null;return}
   if(S.demo){if(S.menu.length||S.mode==='end')endDemo();return}
   if(S.mode==='menu'&&S.menu.length===1&&S.menu[0].id==='main'&&!S.edit&&!NET.role){if(++idleT>2400)startDemo()}else idleT=0;
 }
 /* walk-out */
 function woStart(){
-  S.wo={t:0,len:330};
+  let H=0;
+  if(SET===1&&O.sound&&!S.demo&&M.teams&&M.kind!=='NET'){const a=anDur(M.teams[0]),b=anDur(M.teams[1]);H=Math.round((a+b)*.06)+50}
+  S.wo={t:0,len:330+H,H};
   for(const p of players){p.kx=p.x;p.ky=p.y}
   cheer();
 }
@@ -2874,7 +2905,8 @@ function woPos(p,t){
 function woApply(){
   const st=players.map(p=>({p,x:p.x,y:p.y,vx:p.vx,vy:p.vy,fx:p.fx,fy:p.fy,an:p.an}));
   for(const p of players){
-    const a=woPos(p,S.wo.t),b=woPos(p,S.wo.t+1);
+    const H=S.wo.H||0,m=t=>t<230?t:t<230+H?230:t-H;
+    const a=woPos(p,m(S.wo.t)),b=woPos(p,m(S.wo.t+1));
     p.x=a[0];p.y=a[1];p.vx=(b[0]-a[0]);p.vy=(b[1]-a[1]);
     if(a[2]){p.an=(S.wo.t*.35)%6.28;if(Math.abs(p.vx)+Math.abs(p.vy)>.01){const l=Math.hypot(p.vx,p.vy);p.fx=p.vx/l;p.fy=p.vy/l}}
     else{p.vx=p.vy=0;p.fx=p.tm?-1:1;p.fy=0;p.an=0}
@@ -2899,15 +2931,15 @@ function drawExtras(){
   if(S.shotT>0){S.shotT--;txt('SCREENSHOT SAVED',W/2,H-30,'#fff',7)}
   if(S.pyro)drawPyro();
   if(S.wo&&!S.menu.length){
-    const w=S.wo,a=w.t<30?w.t/30:w.t>290?(330-w.t)/40:1;
+    const w=S.wo,a=w.t<30?w.t/30:w.t>w.len-40?(w.len-w.t)/40:1;
     g.fillStyle='rgba(0,0,0,'+(.55*a)+')';g.fillRect(0,H-34,W,22);
     if(M.teams)txt(O.names[M.teams[0]]+'  V  '+O.names[M.teams[1]],W/2,H-31,'#ffd400',8);
     if(S.hm>=0&&STADN[S.hm])txt(STADN[S.hm],W/2,H-22,'#fff',6);
     txt('PRESS ANY KEY TO SKIP',W/2,24,C.dim,6);
   }
   if(M.kind==='AI'&&S.mode==='play'&&!S.menu.length&&!S.wo){
-    if(S.demo){if((S.t>>5)&1)txt('DEMO - PRESS ANY KEY',W/2,H-17,'#ffd400',8)}
-    else txt('SPEED X'+(S.spd||1)+'  (F)',W-4,H-17,C.dim,6,'right');
+    if(S.demo){g.fillStyle='rgba(0,0,0,.6)';g.fillRect(0,54,W,13);if((S.t>>5)&1)txt('DEMO - PRESS ANY KEY',W/2,57,'#ffd400',8)}
+    else txt('SPEED X'+(S.spd||1)+'  (F)',W-4,57,C.dim,6,'right');
   }
   const c=S.cere;
   if(S.ttx)drawTtx();
@@ -3774,7 +3806,7 @@ function buildMenu(m){
   case'about':
     sp.title='ABOUT KICKOFF 6128';sp.w=330;
     sp.lines=['AN ORIGINAL FIVE-A-SIDE FOOTBALL GAME','A TRIBUTE TO MATCH DAY II','AND THE 8-BIT CLASSICS OF THE AMSTRAD CPC','',
-      'VERSION 1.3','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
+      'VERSION 1.4','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
       'CLUB NAMES ARE USED FOR FUN ONLY','AND ARE NOT AFFILIATED OR OFFICIAL'];
     I.push({k:'act',label:'BACK',fn:back});
     break;
