@@ -34,9 +34,41 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 1.7
+- Bigger pitch: the camera is now about 1.5 times closer, like the original. A new Camera option (Wide, Medium, Close) lets you change it.
+- Stoppage time: each half runs over by a few minutes, based on the time lost to goals, cards, injuries and VAR checks. The fourth official's board shows the minutes and the clock reads 45+1. Weak referees can play more or less than the board says.
+- Match controversies: a log of missed offsides, phantom fouls, harsh cards, VAR corrections and board errors, with a referee rating out of 10. Open it from Match Stats.
+- Greek commentary: TAKIS and MAKIS can speak Greek (Commentary Language option). The ticker is written in Latin letters and the voice uses your browser's Greek voice if it has one.
+- Pitch wear: the penalty areas and busy zones get cut up as the match goes on, which slows the players and the ball, and more so in rain. Can be switched off.
+- Goal clips: the goal replay is recorded and can be saved as a video with F10 (or from the pause menu). Needs a recent desktop browser.
+- The VAR panel is now small and sits in the top-right corner so it no longer covers the action.
+- Flare smoke now takes the colour of the team that scored.
+- Menus are more compact: smaller text and panels.
+
+### 1.6
+- VAR now also reviews penalties and red cards. It can overturn a wrong penalty (no foul, free kick) or downgrade a wrong red card.
+- Referees make mistakes both ways: weak referees can award fouls and offsides that were not there and book too harshly, as well as miss real ones. How often depends on Referee Quality.
+- Referee Favours: a seven-step slider (in Options and in the pause menu, during the match) that tilts the referee towards one team. It is set to Fair in the middle by default. A favoured team gets more missed fouls and offsides and fewer cards, while the other side gets more phantom fouls and harsh cards.
+- Weather Changes now works with any weather setting, not only Random: a dry match can turn to rain or a storm part-way through.
+
+### 1.5
+- Referee quality (Perfect, Good, Average, Poor or Random, in Options): weaker referees miss offsides and fouls, so play simply carries on.
+- VAR: some goals are reviewed with a replay. When the referee missed an offside or a foul in the build-up, VAR often (not always) corrects it and the goal is ruled out. Can be switched off.
+- Fan banners unfurl in the stands at derby kickoffs, together with the flares (option renamed Flares and Banners).
+- A Mexican wave starts now and then when the match is dull or the home side is well ahead.
+- Menu music: "When the Saints Go Marching In" as a chiptune on the menus, with an on/off option.
+- Match programme at kickoff with line-ups, bench, stadium, attendance, referee, rivalry and head-to-head record (any key skips it; can be switched off).
+
 ### 1.4
-- National anthems: in the nations set, each team's anthem plays at the walk-out (home, then away). Press any key to skip. The tunes are short synthesised phrases written from memory, so treat them as approximations.
+- National anthems: in the nations set, each team's anthem plays at the walk-out (home, then away). Press any key to skip. The tunes are short synthesised phrases (about 10 to 13 seconds each) taken from MIDI files for Holland, CCCP, France, Spain, Germany, Italy and Yugoslavia. England's tune is written from memory.
 - The "DEMO - PRESS ANY KEY" banner moved off the score row, and the spectate speed label moved with it.
+- Stamina percentage now sits beside its bar, and the player name moved up beside the warp label.
+- Louder crowd: stronger cheers and boos, plus a continuous crowd murmur that swells with the home crowd's mood.
+- The boot screen now types `run "kickoff6128.bin"` and loads KICKOFF6128.BIN.
+- Computer-controlled players make fewer and shorter slide tackles.
+- Flares and smoke now use the home team's colour, and the smoke is much heavier.
+- Derbies: flares at kickoff and on goals, a louder crowd, and a new BOOING option (OFF, DERBIES or ALWAYS) so the home crowd boos the visitors when they attack.
+- The loading screen border no longer flashes colours.
 
 ### 1.3
 - Nations set: Holland, CCCP, England, France, Spain, Germany, Italy and Yugoslavia with 1980s stars, shirt numbers, kits, stadiums and chants. Switch sets in Teams options; World Cup and Nations League replace the cup and league.
@@ -66,6 +98,7 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 | P or H | Pause menu |
 | F | Spectate speed (watch mode) |
 | F9 | Save a screenshot |
+| F10 | Save the last goal clip |
 | M | Sound |
 
 On phones and tablets the game has a floating joystick, swipe to shoot and on-screen buttons. Full instructions are in the **Instructions** menu in the game.
