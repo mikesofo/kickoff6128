@@ -34,8 +34,26 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 1.9
+- Penalty run-up styles: press V on a penalty to choose Normal, Power, Stutter or Panenka. Keepers can read power shots, bite on a stutter, or stay put and catch a panenka.
+- Free-kick wall: defenders line up a wall near the goal, may jump, and block low shots. The computer sometimes curls or lofts the ball over it, and a decoy runner sometimes runs over the ball.
+- Season stories: a new teletext page, 108, with live storylines such as the title race, unbeaten runs, relegation battle, best attack and defence, and the top scorer.
+- Screen filter option: Off, CRT scanlines, Green Screen (Amstrad monitor) or Glow.
+- Highlights reel: after full time, play back every goal and the best saves from the match. Press Enter for the next clip or Esc to stop, and F10 saves the reel as a video where the browser supports it.
+
+### 1.8
+- Player Size option: Small, Normal (the new default), Large (the old size) and Extra Large.
+- Floodlights: night matches show floodlight towers, and now and then the lights fail and play is suspended until they come back (Floodlight Failures option).
+- Ball boys: a ball boy runs in with the ball for throw-ins and corners (Ball Boys option).
+- Time wasting: a team protecting a late lead takes its time over set pieces, the ball boy slows down, the clock runs into stoppage time and the referee can book repeat offenders (Time Wasting option).
+- Half-time team talk: pick Calm, Fire Up or Shout for your team on the half-time screen. Each changes stamina, pace and discipline in the second half. The computer picks one for its own team.
+- Flare smoke is thinner and clears much faster in rain, wind and storms, and wind blows it sideways.
+- Press conference: after a match you played, open the Press Conference screen for a headline and quotes that depend on the score, the cards and the referee rating.
+
 ### 1.7
-- Bigger pitch: the camera is now about 1.5 times closer, like the original. A new Camera option (Wide, Medium, Close) lets you change it.
+- Camera option (Wide, Medium, Close). Wide is the default; Close is about 1.5 times closer.
+- Players are drawn 30% smaller, to sit better against the pitch and goals.
+- The loading screen now has a grey background so the 3-inch disc is easy to see.
 - Stoppage time: each half runs over by a few minutes, based on the time lost to goals, cards, injuries and VAR checks. The fourth official's board shows the minutes and the clock reads 45+1. Weak referees can play more or less than the board says.
 - Match controversies: a log of missed offsides, phantom fouls, harsh cards, VAR corrections and board errors, with a referee rating out of 10. Open it from Match Stats.
 - Greek commentary: TAKIS and MAKIS can speak Greek (Commentary Language option). The ticker is written in Latin letters and the voice uses your browser's Greek voice if it has one.
