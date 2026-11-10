@@ -34,6 +34,40 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 3.0
+- New MASTER computer skill level (above HIGH): faster and sharper opponents and better goalkeepers. On MASTER the shooting assist is switched off and cannot be turned on.
+
+### 2.9
+- SHOOTING ASSIST is now adjustable: off, standard (as before), strong, very strong and lock-on. Stronger levels work from further out, with lower shot power and with wider aim, and pull the shot closer to the goal mouth while avoiding the keeper.
+
+### 2.8
+- STAMINA DRAIN option (low, normal, high). Match length is counted in game time, so the gameplay speed setting does not change stamina balance.
+- Skill moves now wrong-foot nearby defenders: after a step-over or knock-on they are left slowed for about a second.
+- Goalkeepers sweep: a computer keeper rushes out of the box to a loose ball he can reach before the attackers.
+- Three new training drills in QUICK CHALLENGES with medals: Finishing Practice, Crossing Drill and Possession Rondo.
+- Stewards: when a dog, fan or other animal runs on, two stewards in hi-vis jackets come on, play is paused and they catch or escort it off.
+- Half-time screen (option HALF-TIME SCREEN): first-half goals and saves are replayed on a stadium screen at the break, and can be replayed from the half-time menu.
+- Controls: keyboard presets (arrows, WASD, IJKL) in the player key menus, and a TOUCH LAYOUT option with right-hand, left-hand, D-pad and big-button layouts.
+
+### 2.7
+- Normal gameplay speed (0%) is now 20% slower than before (64% of the original game speed); -50% and +50% scale from there.
+
+### 2.6
+- GAMEPLAY SPEED is now relative: 0% is the normal speed (the old -20%), -50% is the slow Match Day II pace and +50% is faster. Saved speed settings reset to 0%.
+
+### 2.5
+- GAMEPLAY SPEED: -20% is now labelled NORMAL speed (the default); -50% is labelled MATCH DAY II.
+
+### 2.4
+- New GAMEPLAY SPEED option (-50% to +50%, in Options and Keys and Options). The default is -20% (20% slower than before); the CLASSIC MATCH DAY II rules preset sets -50%.
+- New 2.5 minute halves, now the default match length (existing saved settings are reset once to the new defaults).
+- Handshake scene: the teams now step in together and shake hands at the same time.
+- Fix: saved MY DESIGN corner and free-kick choices are no longer reset when the game reloads.
+
+### 2.3
+- Handshakes: each pair now steps together, stops and shakes hands with arms joined, instead of marching on the spot.
+- Set Piece Designer: MY DESIGN is now a choice in KEYS AND OPTIONS for corners and free kicks (and is selected automatically when you save a design), so your routine is actually used in matches.
+
 ### 2.2
 - The tunnel, handshake and coin toss scenes now use the same player and referee sprites as the pitch, in the real kits.
 
