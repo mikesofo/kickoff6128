@@ -34,6 +34,15 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 2.0
+- Away end: visiting fans fill about a third of the home crowd's space at the left or right end of the stand, behind a fence, in the away kit colours, with their own banner and flares (smoke in the away colours) at derbies and when the away team scores.
+- Quick Challenges: five scenarios (Three Men Standing, Corner Specialist, Goal Rush, Clean Sheet, Comeback Kid) with bronze, silver and gold medals.
+- Set Piece Designer (option SET PIECE DESIGNER): draw runner positions and the target for your corners and free kicks; your computer-controlled players use them.
+- Rain delays (option RAIN DELAYS): in storms the referee may stop play for a pitch inspection; groundstaff repair the worn pitch and the lost time is added on.
+- Broadcast mode (option BROADCAST MODE): TV graphics bar with possession and shots, player lower thirds, and a tighter ball-following camera.
+- Pre-match tunnel (option PRE-MATCH TUNNEL): mascots, handshakes and a coin toss that decides kick-off and ends.
+- Fix: players sent off now appear correctly in replays and highlights.
+
 ### 1.9
 - Penalty run-up styles: press V on a penalty to choose Normal, Power, Stutter or Panenka. Keepers can read power shots, bite on a stutter, or stay put and catch a panenka.
 - Free-kick wall: defenders line up a wall near the goal, may jump, and block low shots. The computer sometimes curls or lofts the ball over it, and a decoy runner sometimes runs over the ball.
