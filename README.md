@@ -34,6 +34,14 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 2.2
+- The tunnel, handshake and coin toss scenes now use the same player and referee sprites as the pitch, in the real kits.
+
+### 2.1
+- Save and load: three save slots for matches in progress (pause menu: SAVE GAME / LOAD GAME; main menu: LOAD GAME). Saves keep the score, clock, line-ups, cards, sent-off players, stats, subs and weather.
+- Goal flares now come only from the scoring team's fans (home fans or the away end), not both.
+- The ball is 25% smaller and scales with the PLAYER SIZE option.
+
 ### 2.0
 - Away end: visiting fans fill about a third of the home crowd's space at the left or right end of the stand, behind a fence, in the away kit colours, with their own banner and flares (smoke in the away colours) at derbies and when the away team scores.
 - Quick Challenges: five scenarios (Three Men Standing, Corner Specialist, Goal Rush, Clean Sheet, Comeback Kid) with bronze, silver and gold medals.
