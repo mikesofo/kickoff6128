@@ -34,6 +34,79 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 4.0 - Boss key, smarter CPU, campaign, installable app
+
+- **Boss key**: press ` (backquote) or F8 to hide the game behind a plain work screen. The match pauses, sound and commentary stop and the tab title changes. Press the same key to return (Esc, double-click or double-tap also work). Touch: tap the top-left corner three times. In KEYS AND OPTIONS > BOSS KEY SETUP you can capture your own desktop (browser screen-share picker) or load any image as the boss screen; otherwise a neutral blank spreadsheet is shown.
+- **Match engine 2.0**:
+  - CLUB PERSONALITIES (option, on by default): each CPU club has a style (press, counter, park the bus) unless you set one by hand, and the CPU adapts when two goals up or down.
+  - OFFSIDE TRAP: press G (player 2: Y) to push your defence up as a line; the CPU press-high clubs use it too.
+  - WALL CONTROL: when defending a free kick press G to change the wall size.
+  - QUICK FREE KICK: take it within about a second and the defence is caught out; counter-attacking CPU sides do it too.
+- **Campaign**: ten chapters from the main menu, each a scripted match with story, objective and 1-3 stars. Winning a chapter unlocks the next. Progress is saved.
+- **Install as an app**: manifest, service worker and icons added (manifest.webmanifest, sw.js, icon-192.png, icon-512.png). Host all five files together; then INSTALL AS AN APP in KEYS AND OPTIONS (or the browser's install icon) installs it and it works offline.
+- **Panathinaikos banners**: home (and away) end banners now read "ΕΙΜΑΣΤΕ ΑΠΟ ΤΟ ΜΕΛΛΟΝ. ΠΟΥΛΑ ΚΑΙ ΦΥΓΕ".
+
+### 3.9.1
+- Tutorial fix: jockey (X) and press (N) now work in the defending lessons, and the tutorial attacker dribbles slowly towards your goal instead of shooting straight away.
+
+### 3.9
+- **Header duels**: when two players jump for the same ball, the better-timed jump wins. A JUMP cue appears over your player when a high ball is close (green = right moment).
+- **Puddles** appear on the pitch in rain and storms. They slow the ball and players, with ripples as the ball runs through (option PUDDLES IN THE RAIN).
+- **Match summary** screen (result screen, or SUMMARY + HEAT MAP in match stats): stat bars, possession heat maps for both teams and a key-moments timeline (goals, cards, penalties, half time).
+- **Stick options**: TOUCH STICK DEAD ZONE, TOUCH DIAGONALS and PAD STICK DEAD ZONE.
+
+### 3.8
+- **Touch**: THRU (through ball) and PRESS buttons (option EXTRA TOUCH BUTTONS); the tutorial now covers them on touch too.
+- **One-button mode**: tap KICK to pass, hold to shoot; KICK also switches player or tackles when defending. Touch shows only the stick and KICK.
+- **Controls help** in the pause menu lists your current keys.
+- **Stamina and card strip** under the score (stamina bars, yellow cards, red-card markers) and **control hints** at the start of a match (OFF / FADE OUT / ALWAYS).
+- **Subtitle size and time** options for the commentary text.
+- **Match intro**: FULL / SHORT (no tunnel, short walk-out) / SKIP.
+- **Options**: SEARCH OPTIONS, PIN FAVOURITE OPTIONS (pinned options move to the top) and EXPORT / IMPORT SETTINGS codes to move your setup between devices.
+
+### 3.7
+- **Tutorial match**: 17 guided lessons with on-screen checklists (moving, dribbling, shooting, curl, chip and finesse, passing, through balls, one-two, lobs, skills, switching, jockey, tackling, pressing, pause menu, rules). ENTER or a tap on the instructions skips a lesson. Reach it from the main menu or the training menu.
+- **Quick rematch**: REMATCH after a friendly, and PLAY AGAIN at the top of the main menu (remembered between sessions).
+- **Sound mixer**: separate music, crowd, effects and commentary-voice levels.
+- **Pause when switched away**: the match pauses when the tab loses focus or the phone locks (option PAUSE WHEN SWITCHED AWAY).
+
+### 3.6
+- **Through ball** (B, pad button 4): a pass into the space ahead of a runner, who sprints onto it.
+- **One-two**: tap PASS twice quickly; the receiver returns it first time while you keep control and run into space.
+- **Press** (N, pad right trigger): hold while the opponent has the ball to send your two nearest team-mates to close him down. Costs stamina. Player 2 uses U (through) and O (press); keys can be remapped.
+- **Chip and finesse**: while charging a shot, press SKILL to cycle normal / CHIP / FINESSE (extra curl).
+- **Parries and rebounds**: keepers now parry harder shots, sometimes straight back into the danger zone, instead of always catching or pushing wide.
+- **Game plan** in the pause menu: AUTO / WASTE TIME / ALL OUT for each human team. The computer plays out late leads and goes all out when behind.
+
+### 3.5
+- **Greek commentary subtitles** now show in Greek letters (accents dropped, capitals) instead of Greeklish. New option GREEK TEXT (GREEKLISH / GREEK LETTERS, default Greek letters) next to COMMENTARY LANGUAGE. Long lines shrink to fit the screen.
+
+### 3.4
+- **Advantage**: the referee raises both arms while advantage runs; fouls inside the box can also be played on when the attacker keeps the ball with a shot on, and the penalty is given if the chance is lost.
+- **Dusk sky**: on the Village Green stadium the sky fades from blue to orange sunset to night during a dusk match.
+- **Bench reactions**: subs freeze after a goal conceded, stand still when a teammate is booked or sent off, and take short warm-up sprints along the touchline.
+
+### 3.3
+- **Player switching** option: nearest to ball, ball direction (anticipates where the ball is heading) or manual. Press PASS while defending to switch by hand in any mode.
+- **Switch speed**: slow, normal or fast.
+- **Input buffer** (off / short / long): a kick, pass or lob pressed just before the ball arrives still fires on first touch.
+- **Gamepad buttons** remapping screen (kick, lob/jockey, pass/switch, skill, time warp) with two presets; time warp now works from the pad.
+
+### 3.2
+- **Audio**: booing is now a low, drawn-out falling "boooo" with a few stand whistles, clearly different from the brighter cheer.
+- **Claps**: scattered applause after goals, at half time and at full time, and rhythmic clapping with the crowd chants.
+
+### 3.1
+- **Aim guide** for keyboard shooting (OFF / SHORT / LONG); automatically off on MASTER.
+- **Curl power** option and a visible **curl trail** behind the ball.
+- **Jockey / marking**: hold X while the opponent has the ball to shadow him towards your goal.
+- **Fog** (hard to see the ball) and **moths** around the floodlights at night.
+- **Offside**: linesman raises the flag and the offside line is shown while play is frozen.
+- **Commentary memory**: second/third goals, repeat fouler, already-booked players.
+- **Shot map** in practice mode (pause menu): goals, saves and misses plotted on the pitch.
+- **Tactics board**: draw a custom formation for each team by dragging players (CUSTOM (BOARD) formation, saved).
+- **League form**: last-five-results form shown in fixture preview and slightly affecting team strength.
+
 ### 3.0
 - New MASTER computer skill level (above HIGH): faster and sharper opponents and better goalkeepers. On MASTER the shooting assist is switched off and cannot be turned on.
 
