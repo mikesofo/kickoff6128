@@ -34,6 +34,43 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 4.4.1
+- West Germany replaces Germany in the nations set (saved games are migrated).
+- Substitutes can be renamed for every club and nation: in EDIT PLAYERS, scroll the PLAYER row past the five starters to SUB 1 to SUB 5 and use NAME.
+- Commentary moves to the very bottom of the screen. The pause menu has COMMENTARY (off, text, text and voice) and COMMENTARY POSITION (bottom or above the hints), also under KEYS AND OPTIONS; F2 toggles commentary during play.
+
+### 4.4
+- Free play (Training): one player on an empty pitch with a keeper at each end. R (or the pause menu) puts a new ball on the centre spot; the pause menu adds or removes opponents and teammates. Goals and own goals are counted.
+- Street football (main menu): 3-a-side on the park, walls all round (the ball bounces off them), no offside, fouls, VAR or injuries, and the first to 3, 5, 7 or 10 wins. One player, co-op against the CPU, or two players head to head.
+- Tournament builder (main menu): 4 or 8 teams, straight knockout or groups then knockout, and extra time plus penalties or straight to penalties when level. You play your own matches (one player or co-op) and the computer simulates the rest, or it plays your matches too. The tournament is kept for the session only.
+- Co-op in Campaign and Quick Challenges: the CO-OP PLAYER 2 option on each challenge screen puts a second human on your side. (TWIN PLAYER MATCHDAY already did this for friendlies.)
+- Photo mode (pause menu): pan, zoom and save a screenshot with no HUD. Arrows or drag to pan, +/- or pinch or wheel to zoom, C to centre, Space or the KICK button to save, Esc or MENU to leave.
+- Named referees: every match has a fictional referee with a personality (BY THE BOOK, THE SHERIFF, LET IT FLOW, HOMETOWN) shown in the programme, the commentary and the press conference.
+- Touch and gamepad: a TRAP button on the touch pad (offside trap, or wall size at a free kick) and an OFFSIDE TRAP entry in the gamepad remap list (default LT / button 7).
+
+### 4.3
+- Captain: after conceding (when not leading) and in the half-time talk (when behind) the captain rallies the team: a little stamina and momentum for everyone, with commentary. If the captain is sent off the armband passes to a teammate.
+- Touchline managers: a manager for each side paces the technical area, shouts instructions that match the team's style or game plan (PRESS HIGH!, COUNTER!, HOLD THE LINE!, SEE IT OUT!, ALL OUT!), celebrates goals and shouts HEADS UP! after a goal against. CPU managers' HEADS UP! briefly switches that team to pressing. Option TOUCHLINE MANAGERS.
+- Season reel (main menu): your last 8 goals are saved automatically (option SAVE GOALS TO SEASON REEL) and can be replayed one by one or as a whole reel, with Enter/Space to skip and Esc to stop.
+- Colour vision option: CLEAR KITS (blue and amber) or HIGH CONTRAST (white and yellow) recolours both teams, and adds a ring under team 1 players and a square under team 2 players so the sides can be told apart without colour.
+
+### 4.2
+- Skills: DRAG BACK (steer straight backwards while pressing SKILL with the ball) and ROULETTE (steer diagonally backwards) join the step-over, knock-on and volley.
+- Club chants now show their words on screen (club name, "OLE OLE OLE OLE"), vary in pitch, and return after home goals and when the crowd is at full volume.
+- Commentary memory: remembers wasted shots ("four shots and no goal", "at last!") and keeper form ("three saves already", "had made 4 saves before that one").
+- Replays: new SCORER CAM angle after the close-up (option SCORER CAM IN REPLAYS).
+- Club badges: import any image for each club in the KIT EDITOR; it is shrunk to a 24x24 pixel badge and shown beside the team names at the bottom of the screen.
+- Stadium editor (KEYS AND OPTIONS): custom stand colours, advertising board colours and texts, pitch pattern (stripes, wide, checkerboard, plain) and stadium name.
+- Player stats (main menu): matches, goals, assists, shots, ball wins and distance per player, saved between sessions.
+- Online: the host can ADD A SPECTATOR from the pause menu; a friend chooses ONLINE MATCH, WATCH A MATCH and follows live, with no controls.
+
+### 4.1
+- Physics: air drag now grows a little with ball speed; rolling balls lose a fixed amount of speed so they settle sooner instead of creeping; bounces are livelier (less so on wet grass), kill some of the ball's curl, and the aim guide and offside predictor use the same numbers.
+- Pre-match tunnel: the two mascot children are gone. The tunnel walk-out comes first, then the handshakes, then the coin toss.
+
+### 4.0.1
+- INSTALL AS AN APP now gives browser-specific help (desktop Firefox cannot install web apps; Chrome, Edge, Android and iOS can).
+
 ### 4.0 - Boss key, smarter CPU, campaign, installable app
 
 - **Boss key**: press ` (backquote) or F8 to hide the game behind a plain work screen. The match pauses, sound and commentary stop and the tab title changes. Press the same key to return (Esc, double-click or double-tap also work). Touch: tap the top-left corner three times. In KEYS AND OPTIONS > BOSS KEY SETUP you can capture your own desktop (browser screen-share picker) or load any image as the boss screen; otherwise a neutral blank spreadsheet is shown.
