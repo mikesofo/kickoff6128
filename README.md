@@ -34,6 +34,12 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 4.5
+- Controls screen: a teletext-style page (KEYS AND OPTIONS > CONTROLS SCREEN, also in the pause menu) with a drawn keyboard for each player and a PlayStation-style pad. Select any key or button and give it one job when your player has the ball (attack) and a different job when he does not (defence), for example PASS in attack and PRESS in defence. Jobs: shoot, lob, pass, skill, through ball, press, time warp, offside trap / wall, or none.
+- Keys: arrows or taps select (Enter then a key to pick one by pressing it), A and D change the attack and defence jobs (Shift goes back), C clears, R resets the page, Tab switches player 1 / player 2 / pad, Esc leaves. Unused keys can be given jobs too, and one job can sit on several keys.
+- The job is fixed when you press, so holding a button while the ball leaves your feet does not change it halfway through a shot. Movement keys stay in PLAYER KEYS. Touch buttons are not context-sensitive.
+- Plain key and pad settings from earlier versions keep working: the screen only adds exceptions on top of them.
+
 ### 4.4.1
 - West Germany replaces Germany in the nations set (saved games are migrated).
 - Substitutes can be renamed for every club and nation: in EDIT PLAYERS, scroll the PLAYER row past the five starters to SUB 1 to SUB 5 and use NAME.

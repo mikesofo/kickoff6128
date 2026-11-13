@@ -309,7 +309,7 @@ function derbyOf(x,y){return DERBIES.find(d=>(d.a===x&&d.b===y)||(d.a===y&&d.b==
 const DEFKEYS=[
   {left:'ArrowLeft',right:'ArrowRight',up:'ArrowUp',down:'ArrowDown',kick:'Space',lob:'KeyX',pass:'KeyC',warp:'KeyT',skill:'KeyV',through:'KeyB',press:'KeyN'},
   {left:'KeyJ',right:'KeyL',up:'KeyI',down:'KeyK',kick:'Enter',lob:'Period',pass:'Slash',warp:'Backslash',skill:'Comma',through:'KeyU',press:'KeyO'}];
-const O={cpos:1,kon:1,kof:0,kox:0,stt:1,stc:0,coq:0,mgr:1,reel:1,cvd:0,rsc:1,pers:1,cs:{on:0,st:0,bd:0,pt:0,nm:'',t:['','','']},jdz:1,jsn:1,pdz:2,pud:1,xb:1,obm:0,strip:1,cz:1,cdt:1,hint:1,intro:0,fav:[],vm:4,vc:4,vf:4,vs:4,afk:1,tut:0,last:null,grs:1,adv:1,mom:2,dtn:1,bnc:1,asw:0,aswS:1,ib:1,gp:{k:0,a:1,s:4,v:2,w:5,t:3,pr:7,tr:6},hv:2,gs:0,aimg:1,curl:0,ctr:1,fog:1,cf:[null,null],stm:1,hts:1,lefty:0,spd:1,rdl:1,bcm:0,tun:1,spdD:null,clip:1,gr:0,wear:1,zoom:0,flt:0,psz:1,bb:1,tw:1,flf:1,rb:3,wch:1,boo:1,vr:1,prog:1,music:1,rq:1,sound:0,half:0,km:0,cm:0,skill:1,keep:[0,0],tac:[0,0],kit:[-1,-1],club:[0,1],v:2,pitch:0,dev:0,seen:0,replay:1,weather:4,tod:3,offs:1,fouls:1,pens:1,assist:1,ball:0,swipe:(typeof matchMedia!=='undefined'&&matchMedia('(pointer:coarse)').matches)?1:0,vib:1,tpad:0,bsz:1,ref:4,evt:1,inj:1,walk:1,pyro:1,boot:1,comm:1,pk:[0,0],fkt:[0,0],cap:[0,0],form:[0,0],sty:[0,0],cor:[4,4],fk:[3,3],inv:5,iv:1,surf:0,stad:0,
+const O={cxk:{0:{},1:{}},cxp:{},cpos:1,kon:1,kof:0,kox:0,stt:1,stc:0,coq:0,mgr:1,reel:1,cvd:0,rsc:1,pers:1,cs:{on:0,st:0,bd:0,pt:0,nm:'',t:['','','']},jdz:1,jsn:1,pdz:2,pud:1,xb:1,obm:0,strip:1,cz:1,cdt:1,hint:1,intro:0,fav:[],vm:4,vc:4,vf:4,vs:4,afk:1,tut:0,last:null,grs:1,adv:1,mom:2,dtn:1,bnc:1,asw:0,aswS:1,ib:1,gp:{k:0,a:1,s:4,v:2,w:5,t:3,pr:7,tr:6},hv:2,gs:0,aimg:1,curl:0,ctr:1,fog:1,cf:[null,null],stm:1,hts:1,lefty:0,spd:1,rdl:1,bcm:0,tun:1,spdD:null,clip:1,gr:0,wear:1,zoom:0,flt:0,psz:1,bb:1,tw:1,flf:1,rb:3,wch:1,boo:1,vr:1,prog:1,music:1,rq:1,sound:0,half:0,km:0,cm:0,skill:1,keep:[0,0],tac:[0,0],kit:[-1,-1],club:[0,1],v:2,pitch:0,dev:0,seen:0,replay:1,weather:4,tod:3,offs:1,fouls:1,pens:1,assist:1,ball:0,swipe:(typeof matchMedia!=='undefined'&&matchMedia('(pointer:coarse)').matches)?1:0,vib:1,tpad:0,bsz:1,ref:4,evt:1,inj:1,walk:1,pyro:1,boot:1,comm:1,pk:[0,0],fkt:[0,0],cap:[0,0],form:[0,0],sty:[0,0],cor:[4,4],fk:[3,3],inv:5,iv:1,surf:0,stad:0,
   names:DEFNAMES.slice(),nn:['HOLLAND','CCCP','ENGLAND','FRANCE','SPAIN','WEST GERMANY','ITALY','YUGOSLAVIA'],set:0,booth:1,keys:JSON.parse(JSON.stringify(DEFKEYS)),hcap:[0,0]};
 function saveOpt(){try{localStorage.setItem('kickoff6128',JSON.stringify(Object.assign({},O,{names:SET?NAMESETS[0]:O.names,nn:SET?O.names:O.nn,set:SET})))}catch(e){}}
 /* ---------- achievements ---------- */
@@ -382,7 +382,7 @@ function loadOpt(){
     if(!Array.isArray(O.club)||O.club.length!==2||O.club[0]===O.club[1]||O.club.some(v=>!(v>=0&&v<8)))O.club=[0,1];
     if(!Array.isArray(O.kit)||O.kit.length!==2||O.kit.some(v=>!(v>=-1&&v<8)))O.kit=[-1,-1];
     O.hcap=[0,0];
-    for(let i=0;i<2;i++){if(!O.keys[i]||typeof O.keys[i]!=='object')O.keys[i]=Object.assign({},DEFKEYS[i]);if(!O.keys[i].pass||O.keys[i].pass==='ShiftLeft')O.keys[i].pass=DEFKEYS[i].pass;if(!O.keys[i].lob||O.keys[i].lob==='AltLeft'||O.keys[i].lob==='ShiftRight')O.keys[i].lob=DEFKEYS[i].lob;if(!O.keys[i].warp)O.keys[i].warp=DEFKEYS[i].warp;if(!O.keys[i].skill)O.keys[i].skill=DEFKEYS[i].skill}
+    cxClean();for(let i=0;i<2;i++){if(!O.keys[i]||typeof O.keys[i]!=='object')O.keys[i]=Object.assign({},DEFKEYS[i]);if(!O.keys[i].pass||O.keys[i].pass==='ShiftLeft')O.keys[i].pass=DEFKEYS[i].pass;if(!O.keys[i].lob||O.keys[i].lob==='AltLeft'||O.keys[i].lob==='ShiftRight')O.keys[i].lob=DEFKEYS[i].lob;if(!O.keys[i].warp)O.keys[i].warp=DEFKEYS[i].warp;if(!O.keys[i].skill)O.keys[i].skill=DEFKEYS[i].skill}
   }catch(e){}
 }
 loadOpt();
@@ -1159,18 +1159,67 @@ function lobFire(h,p,n){
 function padOf(slot){
   try{if(O.dev!==1)return null;const ps=navigator.getGamepads?navigator.getGamepads():[];return ps[slot]||null}catch(e){return null}
 }
+const CXA=['none','kick','lob','pass','skill','through','press','warp','trap'],CXL={kick:'k',lob:'a',pass:'s',skill:'v',through:'t',press:'pr'};
+const CXN={none:'NONE',kick:'SHOOT',lob:'LOB',pass:'PASS',skill:'SKILL',through:'THROUGH BALL',press:'PRESS',warp:'TIME WARP',trap:'OFFSIDE TRAP / WALL'};
+const CXB={none:'--',kick:'SH',lob:'LB',pass:'PS',skill:'SK',through:'TH',press:'PR',warp:'WP',trap:'TR'};
+const CXC={none:'#404060',kick:'#ff4040',lob:'#ffa000',pass:'#00e000',skill:'#ff40ff',through:'#00e0e0',press:'#4080ff',warp:'#ffff00',trap:'#c0c0c0'};
+function cxClean(){
+  const ok=o=>o&&typeof o==='object'&&CXA.includes(o.a)&&CXA.includes(o.d);
+  if(!O.cxk||typeof O.cxk!=='object')O.cxk={};
+  for(const i of[0,1]){if(!O.cxk[i]||typeof O.cxk[i]!=='object')O.cxk[i]={};for(const c in O.cxk[i])if(!ok(O.cxk[i][c]))delete O.cxk[i][c]}
+  if(!O.cxp||typeof O.cxp!=='object')O.cxp={};
+  for(const c in O.cxp)if(!ok(O.cxp[c]))delete O.cxp[c];
+}
+function baseKeyAct(slot,code){
+  const b=O.keys[slot]||{},D=DEFKEYS[slot];
+  for(const a of['kick','lob','pass','skill','through','press','warp'])if((b[a]||D[a])===code)return a;
+  return(b.trap||(slot?'KeyY':'KeyG'))===code?'trap':null;
+}
+function effKey(slot,code,ball){
+  const o=O.cxk[slot]&&O.cxk[slot][code];
+  if(o){const v=ball?o.a:o.d;return v==='none'?null:v}
+  return baseKeyAct(slot,code);
+}
+function basePadAct(btn){
+  const m={k:'kick',a:'lob',s:'pass',v:'skill',w:'warp',t:'through',pr:'press',tr:'trap'};
+  for(const q in m)if(O.gp[q]===btn)return m[q];
+  return null;
+}
+function effPad(btn,ball){
+  const o=O.cxp[btn];
+  if(o){const v=ball?o.a:o.d;return v==='none'?null:v}
+  return basePadAct(btn);
+}
+const hasBall=h=>!!(S.owner&&S.owner===h.ctrl);
+function ctxFlags(h,V){
+  const f={k:false,a:false,s:false,v:false,t:false,pr:false},cx=h.cxd||(h.cxd={}),have=hasBall(h);
+  for(const c in keys){
+    if(keys[c]){if(cx[c]===undefined)cx[c]=effKey(h.slot,c,have)||0;const L=CXL[cx[c]];if(L)f[L]=true}
+    else if(cx[c]!==undefined)delete cx[c];
+  }
+  if(V){f.k=f.k||!!V.k;f.a=f.a||!!V.a;f.s=f.s||!!V.s;f.v=f.v||!!V.v;f.t=f.t||!!V.t;f.pr=f.pr||!!V.n}
+  return f;
+}
+function ctxPad(h,gp){
+  const f={k:false,a:false,s:false,v:false,t:false,pr:false},cx=h.cxp||(h.cxp={}),have=hasBall(h);
+  for(let i=0;i<gp.buttons.length;i++){
+    if(i>=12&&i<=15||i===9)continue;
+    if(gp.buttons[i]&&gp.buttons[i].pressed){if(cx[i]===undefined)cx[i]=effPad(i,have)||0;const L=CXL[cx[i]];if(L)f[L]=true}
+    else if(cx[i]!==undefined)delete cx[i];
+  }
+  return f;
+}
 function readInput(h){
   if(h.net)return Object.assign({l:0,r:0,u:0,d:0,k:0,a:0,s:0,v:0,t:0,pr:0},h.ni);
-  const b=h.keys,V=h.slot===0?VIRT:{},kk=c=>!!keys[c];
-  let l=kk(b.left)||!!V.l,r=kk(b.right)||!!V.r,u=kk(b.up)||!!V.u,d=kk(b.down)||!!V.d,k=kk(b.kick)||!!V.k,a=kk(b.lob)||!!V.a,ps=kk(b.pass||DEFKEYS[h.slot].pass)||!!V.s,sk=kk(b.skill||DEFKEYS[h.slot].skill)||!!V.v,tb=kk(b.through||DEFKEYS[h.slot].through)||!!V.t,pz=kk(b.press||DEFKEYS[h.slot].press)||!!V.n;
-  const pc=ps;
+  const b=h.keys,V=h.slot===0?VIRT:{},kk=c=>!!keys[c],fl=ctxFlags(h,h.slot===0?V:null);
+  let l=kk(b.left)||!!V.l,r=kk(b.right)||!!V.r,u=kk(b.up)||!!V.u,d=kk(b.down)||!!V.d,k=fl.k,a=fl.a,ps=fl.s,sk=fl.v,tb=fl.t,pz=fl.pr;
   if(h.slot===0){l=l||kk('KeyA');r=r||kk('KeyD');u=u||kk('KeyW');d=d||kk('KeyS');}
   const gp=padOf(h.slot);
   if(gp){
-    const bt=i=>!!(gp.buttons[i]&&gp.buttons[i].pressed),ax=padAxes(gp);
+    const bt=i=>!!(gp.buttons[i]&&gp.buttons[i].pressed),ax=padAxes(gp),pf=ctxPad(h,gp);
     const th=[.2,.3,.4,.55,.7][O.pdz|0];
     l=l||ax[0]<-th||bt(14);r=r||ax[0]>th||bt(15);u=u||ax[1]<-th||bt(12);d=d||ax[1]>th||bt(13);
-    k=k||bt(O.gp.k);a=a||bt(O.gp.a);ps=ps||bt(O.gp.s);sk=sk||bt(O.gp.v);tb=tb||bt(O.gp.t);pz=pz||bt(O.gp.pr);
+    k=k||pf.k;a=a||pf.a;ps=ps||pf.s;sk=sk||pf.v;tb=tb||pf.t;pz=pz||pf.pr;
   }
   return{l,r,u,d,k,a,s:ps,v:sk,t:tb,pr:pz};
 }
@@ -3347,6 +3396,7 @@ const INSTR=[
  ['PENALTY SHOOTOUT AND CUP','Penalty shootout (main menu): steer up and down to aim, hold Space to charge, release to shoot. Defending, steer a direction and press Space to dive. The Penalty Cup is a knockout of eight clubs decided on penalties; watch the NERVES bar, high nerves make your aim wobble.'],
  ['TRAINING AND CHALLENGES','Training (main menu): finishing with corner targets, free kicks over a wall, and a skills arena against three defenders. Daily challenge: a fresh scenario each day, with share codes for friends and a custom challenge builder.'],
  ['NEW IN 3.4','ADVANTAGE RULE: after a foul the referee may play on while the fouled team keeps the ball; if they lose it, play comes back for the free kick. MOMENTUM METER: a bar by the score shows who is on top, and with BAR + EFFECTS the dominant side is a little quicker and the crowd gets louder. SUNSET MATCHES: dusk games fade to night and the floodlights come on. On a SNOW pitch it snows and the lines slowly disappear until half time. SUBSTITUTES WARM UP on the touchline and celebrate your goals.'],
+ ['NEW IN 4.5','CONTROLS SCREEN: a teletext-style page (KEYS AND OPTIONS, or the pause menu) showing a keyboard for each player or a PlayStation-style pad. Pick any key or button and give it one job when you have the ball (ATTACK) and another when you do not (DEFENCE), for example PASS in attack and PRESS in defence. Arrows or taps select, A and D change the attack and defence jobs, C clears, R resets, Tab switches player 1, player 2 and pad. Movement keys stay in PLAYER KEYS. The job is fixed at the moment you press, so a held button does not change halfway through a shot.'],
  ['NEW IN 4.4.1','WEST GERMANY replaces Germany in the nations set. SUBSTITUTES can now be renamed in EDIT PLAYERS (scroll the PLAYER row past the five starters) for every club and nation. COMMENTARY now sits at the very bottom of the screen; the pause menu has COMMENTARY (OFF, TEXT, TEXT + VOICE) and COMMENTARY POSITION (BOTTOM or ABOVE HINTS), and F2 toggles commentary on and off during play.'],
  ['NEW IN 4.4','FREE PLAY in Training: one player on an empty pitch with a ball you can reset (R), plus add or remove opponents and teammates from the pause menu. STREET FOOTBALL (main menu): 3-a-side on the park with walls all round, no offside or fouls, first to 3, 5, 7 or 10; one player, co-op or two players. TOURNAMENT BUILDER: 4 or 8 teams, straight knockout or groups then knockout, extra time or straight to penalties; play your own matches (one player or co-op) while the computer plays the rest. CO-OP PLAYER 2 now works in Campaign and Quick Challenges. PHOTO MODE (pause menu): pan, zoom and save a screenshot with no HUD. NAMED REFEREES with personalities appear in the programme, commentary and press conference. TOUCH: new TRAP button for the offside trap and free-kick wall size; GAMEPAD: new OFFSIDE TRAP button in the remap list.'],
  ['NEW IN 4.3','CAPTAIN: after conceding (and at half-time when behind) the captain rallies the team with extra stamina and momentum, and the armband passes to a teammate if he is sent off. TOUCHLINE MANAGERS shout instructions that match the team style, and CPU managers can react after a goal against. SEASON REEL in the main menu keeps your last 8 goals and replays them. COLOUR VISION option: CLEAR KITS or HIGH CONTRAST recolours both teams and adds a circle or square under each player.'],
@@ -3993,6 +4043,178 @@ function drawTtx(){
   bar.forEach((b,i)=>{g.fillStyle=b[0];g.fillRect(4+i*bw+1,H-12,bw-2,9);g.textAlign='center';g.textBaseline='top';g.font='700 6px Silkscreen,monospace';g.fillStyle='#000';g.fillText(b[1],4+i*bw+bw/2,H-11)});
   txt('X',W-8,16,'#fff',6,'right');
 }
+/*CCSTART*/
+/* ---------- controls screen (teletext style) ---------- */
+let CCL=null;
+function ccLayout(){
+  if(CCL)return CCL;
+  const u=22,h=14,x0=8,y0=48,P=15,L=[];
+  const row=(off,y,list)=>{let x=x0+off*u;for(const e of list){const w=e[2]||1;L.push({c:e[0],l:e[1],x:x,y:y0+y*P,w:w*u-1,h:h});x+=w*u}};
+  const ks=(pre,str)=>str.split('').map(ch=>[pre+ch,ch]);
+  row(0,0,'1234567890'.split('').map(ch=>['Digit'+ch,ch]));
+  row(.5,1,ks('Key','QWERTYUIOP'));
+  row(.75,2,ks('Key','ASDFGHJKL').concat([['Semicolon',';'],['Enter','ENT',1.75]]));
+  row(0,3,[['ShiftLeft','SHF',1.5]].concat(ks('Key','ZXCVBNM'),[['Comma',','],['Period','.'],['Slash','/'],['ShiftRight','SHF',1.5]]));
+  row(0,4,[['ControlLeft','CTL',1.25],['AltLeft','ALT',1.25],['Space','SPACE',5.5],['AltRight','ALT',1.25],['ControlRight','CTL',1.25]]);
+  L.push({c:'ArrowUp',l:'UP',x:322,y:y0+3*P,w:21,h:h},{c:'ArrowLeft',l:'LT',x:300,y:y0+4*P,w:21,h:h},{c:'ArrowDown',l:'DN',x:322,y:y0+4*P,w:21,h:h},{c:'ArrowRight',l:'RT',x:344,y:y0+4*P,w:21,h:h});
+  L.forEach(e=>{e.cx=e.x+e.w/2;e.cy=e.y+e.h/2});
+  return CCL=L;
+}
+const CCP=[
+  {i:0,cx:240,cy:101,r:7,sh:'x',col:'#6aa0ff',tx:240,ty:110,al:'center',nm:'X (CROSS)'},
+  {i:1,cx:254,cy:88,r:7,sh:'o',col:'#ff5050',tx:264,ty:85,al:'left',nm:'O (CIRCLE)'},
+  {i:2,cx:226,cy:88,r:7,sh:'s',col:'#ff80ff',tx:216,ty:85,al:'right',nm:'SQUARE'},
+  {i:3,cx:240,cy:75,r:7,sh:'t',col:'#40e040',tx:240,ty:62,al:'center',nm:'TRIANGLE'},
+  {i:4,x:112,y:48,w:30,h:8,nm:'L1'},{i:5,x:242,y:48,w:30,h:8,nm:'R1'},
+  {i:6,x:112,y:37,w:30,h:9,nm:'L2'},{i:7,x:242,y:37,w:30,h:9,nm:'R2'},
+  {i:8,x:166,y:78,w:20,h:8,nm:'SELECT'},
+  {i:10,cx:168,cy:106,r:8,nm:'L3 (STICK)',stick:1},{i:11,cx:216,cy:106,r:8,nm:'R3 (STICK)',stick:1}
+];
+CCP.forEach(e=>{if(e.x!==undefined){e.cx=e.x+e.w/2;e.cy=e.y+e.h/2}});
+function ccNew(){return{pg:0,sel:'KeyC',pad:0,listen:false,t:0,confirm:0,pp:[],msg:''}}
+const ccDev=X=>X.pg===2?1:0,ccSlot=X=>X.pg===1?1:0;
+function ccMoveKey(slot,code){
+  const b=O.keys[slot]||{};
+  return[b.left,b.right,b.up,b.down].includes(code)||(slot===0&&['KeyA','KeyD','KeyW','KeyS'].includes(code));
+}
+function ccEff(side){
+  const X=S.cc,ball=side==='a';
+  return ccDev(X)?effPad(X.pad,ball):effKey(ccSlot(X),X.sel,ball);
+}
+function ccSet(side,v){
+  const X=S.cc,dev=ccDev(X);
+  if(!dev&&ccMoveKey(ccSlot(X),X.sel)){X.msg='MOVEMENT KEY - SET IN PLAYER '+(ccSlot(X)+1)+' KEYS';X.mt=90;return}
+  const cur=side==='a'?{a:ccEff('a')||'none',d:ccEff('d')||'none'}:{a:ccEff('a')||'none',d:ccEff('d')||'none'};
+  cur[side]=v;
+  const id=dev?X.pad:X.sel,tab=dev?O.cxp:O.cxk[ccSlot(X)];
+  const base=(dev?basePadAct(id):baseKeyAct(ccSlot(X),id))||'none';
+  if(cur.a===base&&cur.d===base)delete tab[id];else tab[id]={a:cur.a,d:cur.d};
+  saveOpt();beep(520,.03,'square',.03);
+}
+function ccCycle(side,dir){
+  const cur=ccEff(side)||'none',i=CXA.indexOf(cur);
+  ccSet(side,CXA[(i+dir+CXA.length)%CXA.length]);
+}
+function ccClear(){ccSet('a','none');ccSet('d','none')}
+function ccReset(){
+  const X=S.cc;
+  if(X.confirm>0){if(ccDev(X))O.cxp={};else O.cxk[ccSlot(X)]={};X.confirm=0;X.msg='CONTEXT KEYS RESET';X.mt=90;saveOpt();return}
+  X.confirm=150;
+}
+function ccMove(dx,dy){
+  const X=S.cc,dev=ccDev(X),L=dev?CCP:ccLayout();
+  const cur=dev?CCP.find(e=>e.i===X.pad):L.find(e=>e.c===X.sel);
+  if(!cur){if(dev)X.pad=0;else X.sel='KeyC';return}
+  let best=null,bs=1e9;
+  for(const e of L){
+    if(e===cur)continue;
+    const vx=e.cx-cur.cx,vy=e.cy-cur.cy,dot=vx*dx+vy*dy;
+    if(dot<=0)continue;
+    const sc=dot+2.5*(Math.abs(vx*dy)+Math.abs(vy*dx));
+    if(sc<bs){bs=sc;best=e}
+  }
+  if(best){if(dev)X.pad=best.i;else X.sel=best.c}
+}
+function ccPage(d){const X=S.cc;X.pg=(X.pg+d+3)%3;X.listen=false;X.confirm=0}
+function ccKey(e){
+  const c=e.code,X=S.cc;e.preventDefault();
+  if(X.listen){if(c!=='Escape'&&!ccDev(X))X.sel=c;X.listen=false;return}
+  if(c==='Escape'||c==='Backspace'||c==='KeyQ'){S.cc=null;saveOpt();return}
+  if(c==='Tab'||c==='KeyT'||c==='F4'){ccPage(e.shiftKey?-1:1);return}
+  if(c==='KeyA'||c==='F1'){ccCycle('a',e.shiftKey?-1:1);return}
+  if(c==='KeyD'||c==='F2'){ccCycle('d',e.shiftKey?-1:1);return}
+  if(c==='KeyC'||c==='F3'||c==='Delete'){ccClear();return}
+  if(c==='KeyR'){ccReset();return}
+  if(c==='Enter'||c==='Space'){if(!ccDev(X))X.listen=true;return}
+  if(c==='ArrowLeft')ccMove(-1,0);else if(c==='ArrowRight')ccMove(1,0);else if(c==='ArrowUp')ccMove(0,-1);else if(c==='ArrowDown')ccMove(0,1);
+}
+function ccPointer(e){
+  const X=S.cc,r=cv.getBoundingClientRect(),lx=(e.clientX-r.left)/r.width*W,ly=(e.clientY-r.top)/r.height*H;
+  if(ly>H-13){const q=Math.max(0,Math.min(4,((lx-4)/((W-8)/5))|0));[()=>ccCycle('a',1),()=>ccCycle('d',1),ccClear,()=>ccPage(1),ccReset][q]();return}
+  if(ly<16&&lx>W-40){S.cc=null;saveOpt();return}
+  if(ly>=136&&ly<147&&ly>=120){ccCycle('a',1);return}
+  if(ly>=147&&ly<158){ccCycle('d',1);return}
+  if(ccDev(X)){
+    for(const p of CCP){if(p.r?Math.hypot(lx-p.cx,ly-p.cy)<=p.r+2:(lx>=p.x-1&&lx<=p.x+p.w+1&&ly>=p.y-1&&ly<=p.y+p.h+1)){X.pad=p.i;return}}
+  }else for(const k of ccLayout())if(lx>=k.x&&lx<=k.x+k.w&&ly>=k.y&&ly<=k.y+k.h){X.sel=k.c;return}
+}
+function ccAbbr(a,d){return a===d?CXB[a||'none']:CXB[a||'none']+'/'+CXB[d||'none']}
+function drawCC(){
+  const X=S.cc;X.t++;if(X.confirm>0)X.confirm--;if(X.mt>0)X.mt--;
+  g.setTransform(K,0,0,K,0,0);
+  const dev=ccDev(X),slot=ccSlot(X);
+  const T=(s,x,y,col,sz,al)=>{g.font='700 '+(sz||8)+'px "IBM Plex Mono","Courier New",monospace';g.textAlign=al||'left';g.textBaseline='top';g.fillStyle='#000';g.fillText(s,x+1,y+1);g.fillStyle=col;g.fillText(s,x,y)};
+  g.fillStyle='#000';g.fillRect(0,0,W,H);
+  txt('P150',6,3,'#fff',7,'left');txt('KICKOFF TEXT 150',W/2,3,'#ff0',7);txt('X',W-8,3,'#fff',7,'right');
+  g.fillStyle='#0000ff';g.fillRect(4,14,W-8,18);
+  g.save();g.scale(1,2);txt('CONTROLS',10,7.5,'#fff',9,'left');g.restore();g.setTransform(K,0,0,K,0,0);
+  T(dev?'PLAYSTATION PAD':'KEYBOARD  PLAYER '+(slot+1),8,35,'#0ff',7);
+  T('P'+(X.pg+1)+'/3',W-8,35,'#0f0',7,'right');
+  // live pad
+  let live=null;
+  try{const gq=padOf0();if(gq){live=[];for(let i=0;i<gq.buttons.length;i++)live[i]=!!(gq.buttons[i]&&gq.buttons[i].pressed);
+    if(dev){const nb=live.findIndex((v,i)=>v&&!X.pp[i]&&CCP.some(p=>p.i===i));if(nb>=0)X.pad=nb}
+    X.pp=live.slice()}}catch(e){}
+  const eff=(code,ball)=>dev?effPad(code,ball):effKey(slot,code,ball);
+  if(!dev){
+    for(const k of ccLayout()){
+      const mv=ccMoveKey(slot,k.c),a=mv?null:eff(k.c,true),d=mv?null:eff(k.c,false),sel=k.c===X.sel;
+      g.fillStyle=mv?'#003a14':'#0c0c30';g.fillRect(k.x,k.y,k.w,k.h);
+      if(!mv){g.fillStyle=CXC[a||'none'];g.fillRect(k.x,k.y,k.w,2.5);g.fillStyle=CXC[d||'none'];g.fillRect(k.x,k.y+k.h-2.5,k.w,2.5)}
+      T(k.l,k.x+k.w/2,k.y+2.5,mv?'#7f7':'#fff',4.5,'center');
+      T(mv?'MOVE':ccAbbr(a,d),k.x+k.w/2,k.y+7.5,mv?'#4a4':'#ff0',4.5,'center');
+      if(sel){g.strokeStyle=(X.t>>3)&1?'#ffff00':'#ffffff';g.lineWidth=1.2;g.strokeRect(k.x-.5,k.y-.5,k.w+1,k.h+1)}
+    }
+  }else{
+    g.fillStyle='#26263e';g.fillRect(96,58,192,64);g.beginPath();g.arc(108,112,16,0,7);g.arc(276,112,16,0,7);g.fill();
+    // dpad (fixed)
+    g.fillStyle='#14142a';g.fillRect(136,80,16,5);g.fillRect(142,74,5,18);g.fillStyle='#555';T('MOVE',144,95,'#666',4.5,'center');
+    for(const p of CCP){
+      const a=effPad(p.i,true),d=effPad(p.i,false),sel=p.i===X.pad,on=live&&live[p.i];
+      g.fillStyle=on?'#ffffff':'#0c0c30';
+      if(p.r){
+        g.beginPath();g.arc(p.cx,p.cy,p.r,0,7);g.fill();
+        g.strokeStyle=p.col||'#808090';g.lineWidth=1.2;g.stroke();
+        if(p.sh){
+          g.strokeStyle=p.col;g.lineWidth=1.2;const q=3.2;g.beginPath();
+          if(p.sh==='x'){g.moveTo(p.cx-q,p.cy-q);g.lineTo(p.cx+q,p.cy+q);g.moveTo(p.cx+q,p.cy-q);g.lineTo(p.cx-q,p.cy+q)}
+          else if(p.sh==='o')g.arc(p.cx,p.cy,q,0,7);
+          else if(p.sh==='s')g.rect(p.cx-q,p.cy-q,2*q,2*q);
+          else{g.moveTo(p.cx,p.cy-q);g.lineTo(p.cx+q,p.cy+q*.8);g.lineTo(p.cx-q,p.cy+q*.8);g.closePath()}
+          g.stroke();
+          T(ccAbbr(a,d),p.tx,p.ty,'#ff0',5,p.al);
+        }else T(ccAbbr(a,d),p.cx,p.cy-2.5,'#ff0',4.5,'center');
+        if(p.stick)T(p.nm.slice(0,2),p.cx,p.cy-9,'#aaa',4,'center');
+      }else{
+        g.fillRect(p.x,p.y,p.w,p.h);g.strokeStyle='#808090';g.lineWidth=.8;g.strokeRect(p.x,p.y,p.w,p.h);
+        g.fillStyle=CXC[a||'none'];g.fillRect(p.x,p.y,p.w,1.6);g.fillStyle=CXC[d||'none'];g.fillRect(p.x,p.y+p.h-1.6,p.w,1.6);
+        T(p.nm.slice(0,3)+' '+ccAbbr(a,d),p.cx,p.cy-2.5,on?'#000':'#fff',4.5,'center');
+      }
+      if(sel){g.strokeStyle=(X.t>>3)&1?'#ffff00':'#ffffff';g.lineWidth=1.2;g.beginPath();if(p.r)g.arc(p.cx,p.cy,p.r+2,0,7);else g.rect(p.x-1.5,p.y-1.5,p.w+3,p.h+3);g.stroke()}
+    }
+    T('START = PAUSE',192,89,'#555',4.5,'center');
+  }
+  // details
+  const kn=dev?(CCP.find(p=>p.i===X.pad)||{nm:'?'}).nm:keyName(X.sel);
+  const mvk=!dev&&ccMoveKey(slot,X.sel);
+  T((dev?'BUTTON ':'KEY ')+kn+(X.listen?'   PRESS A KEY...':''),8,128,'#ff0',8);
+  if(mvk)T('MOVEMENT - SET IN PLAYER '+(slot+1)+' KEYS',8,139,'#7f7',8);
+  else{
+    const a=eff(dev?X.pad:X.sel,true),d=eff(dev?X.pad:X.sel,false);
+    T('ATTACK  (BALL)   '+CXN[a||'none'],8,138,CXC[a||'none']==='#404060'?'#999':CXC[a||'none'],8);
+    T('DEFENCE (NO BALL)'+' '+CXN[d||'none'],8,148,CXC[d||'none']==='#404060'?'#999':CXC[d||'none'],8);
+  }
+  T(dev?'PRESS A PAD BUTTON OR USE ARROWS':'ARROWS OR TAP A KEY.  ENTER THEN PRESS A KEY',8,160,'#0f0',7);
+  T('A / D  CHANGE ATTACK / DEFENCE  (SHIFT = BACK)',8,170,'#0f0',7);
+  T('ATTACK = YOUR PLAYER HAS THE BALL',8,180,'#0ff',7);
+  T('DEFENCE = HE DOES NOT. BARS: TOP=ATTACK BOTTOM=DEFENCE',8,190,'#0ff',7);
+  const ks=['kick','lob','pass','skill','through','press','warp','trap'];
+  ks.forEach((a,i)=>{const x=8+(i%4)*92,y=203+((i/4)|0)*9;g.fillStyle=CXC[a];g.fillRect(x,y+1,7,6);T(CXN[a].slice(0,12),x+10,y,'#fff',6)});
+  if(X.confirm>0)T('PRESS R AGAIN TO RESET THIS PAGE',W/2,H-24,'#f44',7,'center');
+  else if(X.mt>0)T(X.msg,W/2,H-24,'#f44',7,'center');
+  const bar=[['#ff2020','ATTACK'],['#00ff00','DEFENCE'],['#ffff00','CLEAR'],['#00ffff','DEVICE'],['#ff40ff','RESET']],bw=(W-8)/5;
+  bar.forEach((b,i)=>{g.fillStyle=b[0];g.fillRect(4+i*bw+1,H-12,bw-2,9);g.textAlign='center';g.textBaseline='top';g.font='700 6px Silkscreen,monospace';g.fillStyle='#000';g.fillText(b[1],4+i*bw+bw/2,H-11)});
+}
 /* boot screen */
 function bootStart(){S.boot={t:0}}
 function bootTick(){
@@ -4357,10 +4579,11 @@ function drawExtras(){
   }
   const c=S.cere;
   if(S.ttx)drawTtx();
-  if(S.tifo)drawTifo();
-  if(S.var)drawVar();
+  if(S.cc)drawCC();
+  if(S.tifo&&!S.cc&&!S.ttx)drawTifo();
+  if(S.var&&!S.cc)drawVar();
   if(S.pg)drawProg();
-  drawInsp();drawBcast();
+  if(!S.cc){drawInsp();drawBcast()}
   if(S.tn&&!S.pg&&!S.wo)drawTn();
   if(S.sd)sdDraw();
   if(S.sm&&S.menu.length){if(S.sm===2)msDraw();else smDraw()}
@@ -5825,6 +6048,7 @@ function buildMenu(m){
     I.push({k:'act',label:'STADIUM EDITOR',fn:()=>goMenu('stedit')});
     I.push({k:'act',label:'BOSS KEY SETUP',fn:()=>{S.note='';goMenu('boss')}});
     I.push({k:'act',label:isStandalone()?'APP INSTALLED':'INSTALL AS AN APP',fn:installApp});
+    I.push({k:'act',label:'CONTROLS SCREEN (KEYBOARD / PAD)',fn:()=>{S.cc=ccNew()}});
     I.push({k:'act',label:'PLAYER 1 KEYS',fn:()=>goMenu('keys',{slot:0})});
     I.push({k:'act',label:'PLAYER 2 KEYS',fn:()=>goMenu('keys',{slot:1})});
     I.push({k:'act',label:'TEAM NAMES',fn:()=>goMenu('names')});
@@ -5890,6 +6114,7 @@ function buildMenu(m){
     I.push({k:'act',label:'RETURN TO MATCH',fn:resume});
     if(NET.role==='host'&&NET.ready)I.push({k:'act',label:'ADD A SPECTATOR ('+((NET.sp||[]).length)+')',fn:specBox});
     I.push({k:'act',label:'CONTROLS HELP',fn:()=>S.menu.push({id:'info',sel:0,title:'CONTROLS',lines:ctrlLines()})});
+    I.push({k:'act',label:'CONTROLS SCREEN',fn:()=>{S.cc=ccNew()}});
     I.push({k:'opt',label:'COMMENTARY',val:()=>L_COMM[O.comm],step:d=>{O.comm=cyc(O.comm,d,3);if(!O.comm){S.cm=null;S.cmq=null}saveOpt()}});
     I.push({k:'opt',label:'COMMENTARY POSITION',val:()=>O.cpos?'BOTTOM':'ABOVE HINTS',step:()=>{O.cpos=O.cpos?0:1;saveOpt()}});
     if(S.tr&&S.tr.drill===3){I.push({k:'act',label:'NEW BALL (R)',fn:()=>{freeBall();resume()}});I.push({k:'act',label:'ADD OPPONENT',fn:()=>freeAdd(1)});I.push({k:'act',label:'REMOVE OPPONENT',fn:()=>freeRem(1)});I.push({k:'act',label:'ADD TEAMMATE',fn:()=>freeAdd(0)});I.push({k:'act',label:'REMOVE TEAMMATE',fn:()=>freeRem(0)})}
@@ -6063,7 +6288,7 @@ function buildMenu(m){
   case'about':
     sp.title='ABOUT KICKOFF 6128';sp.w=330;
     sp.lines=['AN ORIGINAL FIVE-A-SIDE FOOTBALL GAME','A TRIBUTE TO MATCH DAY II','AND THE 8-BIT CLASSICS OF THE AMSTRAD CPC','',
-      'VERSION 4.4.1','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
+      'VERSION 4.5','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
       'CLUB NAMES ARE USED FOR FUN ONLY','AND ARE NOT AFFILIATED OR OFFICIAL'];
     I.push({k:'act',label:'BACK',fn:back});
     break;
@@ -6383,8 +6608,16 @@ function pollPads(){
     }
     return;
   }
+  if(S.cc)return;
   if(O.dev!==1)return;
-  for(const hh of HU){const q=padOf(hh.slot);if(!q)continue;const wd=!!(q.buttons[O.gp.w]&&q.buttons[O.gp.w].pressed);if(wd&&!padPrev['w'+hh.slot]&&S.mode==='play'&&!S.menu.length)warp(hh);padPrev['w'+hh.slot]=wd;const td=!!(q.buttons[O.gp.tr]&&q.buttons[O.gp.tr].pressed);if(td&&!padPrev['t'+hh.slot]&&S.mode==='play'&&!S.menu.length&&!S.paused&&!S.tr&&!S.pso)trapToggle(hh);padPrev['t'+hh.slot]=td}
+  for(const hh of HU){
+    const q=padOf(hh.slot);if(!q)continue;const have=hasBall(hh);
+    for(const i of[0,1,2,3,4,5,6,7,8,10,11]){
+      const dn=!!(q.buttons[i]&&q.buttons[i].pressed),pk='b'+hh.slot+'_'+i;
+      if(dn&&!padPrev[pk]&&S.mode==='play'&&!S.menu.length){const ea=effPad(i,have);if(ea==='warp')warp(hh);else if(ea==='trap'&&!S.paused&&!S.tr&&!S.pso)trapToggle(hh)}
+      padPrev[pk]=dn;
+    }
+  }
   const gp=padOf(0)||padOf(1);
   if(!gp)return;
   const bt=i=>!!(gp.buttons[i]&&gp.buttons[i].pressed),ax=padAxes(gp);
@@ -6486,6 +6719,7 @@ addEventListener('keydown',e=>{
   if(c==='F10'){e.preventDefault();clipSave();return}
   if(c==='Enter'&&S.tr&&S.tr.tut&&!S.menu.length&&S.mode==='play'){e.preventDefault();tuNext();return}
   if(S.boot){e.preventDefault();if(S.boot.t>8)S.boot=null;return}
+  if(S.cc){ccKey(e);return}
   if(S.ttx){ttKey(e);return}
   if(S.cere){e.preventDefault();if(S.cere.t>40)S.cere=null;return}
   if(S.demo){e.preventDefault();endDemo();return}
@@ -6502,8 +6736,8 @@ addEventListener('keydown',e=>{
   if(S.replay&&!S.menu.length){if(S.replay.hl&&c==='Escape'){S.hlStop=1;S.replay.i=1e9;return}if(c==='Enter'||c==='Space')S.replay.i=1e9;if(c!=='KeyP'&&c!=='KeyH'&&c!=='Escape')return}
   if(S.menu.length){if(!e.repeat||/^Arrow/.test(c))menuKey(c);return}
   if(e.repeat)return;
-  for(const h of HU){if(h.keys.kick===c)h.latch=true;if((h.keys.pass||DEFKEYS[h.slot].pass)===c)h.psLatch=true;if((h.keys.lob||DEFKEYS[h.slot].lob)===c)h.lLatch=true;if((h.keys.warp||DEFKEYS[h.slot].warp)===c)warp(h);if((h.keys.skill||DEFKEYS[h.slot].skill)===c)h.skLatch=true}
-  if(S.mode==='play'&&!S.paused&&!S.tr&&!S.pso)for(const h of HU)if(c===(h.slot===0?'KeyG':'KeyY'))trapToggle(h);
+  for(const h of HU){const ea=effKey(h.slot,c,hasBall(h));if(ea==='kick')h.latch=true;else if(ea==='pass')h.psLatch=true;else if(ea==='lob')h.lLatch=true;else if(ea==='warp')warp(h);else if(ea==='skill')h.skLatch=true}
+  if(S.mode==='play'&&!S.paused&&!S.tr&&!S.pso)for(const h of HU)if(effKey(h.slot,c,hasBall(h))==='trap')trapToggle(h);
   if(c==='KeyR'&&S.tr&&S.tr.drill===3&&S.mode==='play'&&!S.paused)freeBall();
   if(c==='F2'){O.comm=O.comm?0:1;if(!O.comm){S.cm=null;S.cmq=null}S.msg='COMMENTARY '+(O.comm?'ON':'OFF');S.msgT=40;saveOpt()}
   if(c==='KeyM'){O.sound=cyc(O.sound,1,3);saveOpt()}
@@ -6527,6 +6761,7 @@ function playing(){return S.mode==='play'&&!S.menu.length&&!S.replay&&HU[0]&&!HU
 cv.addEventListener('pointerdown',e=>{
   idleT=0;
   if(S.boot){if(S.boot.t>8)S.boot=null;return}
+  if(S.cc){ccPointer(e);return}
   if(S.ttx){ttPointer(e);return}
   if(S.cere){if(S.cere.t>40)S.cere=null;return}
   if(S.demo){endDemo();return}
