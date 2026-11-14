@@ -34,6 +34,28 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 4.10
+- **Matchday extras:** photographers behind both goals (flashes on shots and goals), a TV cameraman tracking the ball along the touchline, sprinklers before each kick-off, low dazzling sun at dusk (one end washed out, keeper there slightly worse), flags and scarves waved after goals, silly fan banners.
+- **Boots:** yellow, orange, white or mostly black, random per player.
+- **Funny moments:** rare banana skin (likelier when wet), keeper fumbles and air-kicks, ball kicked out of the ground with a ball boy fetching a new one.
+- **Blooper reel:** half-time and full-time menus replay own goals, missed sitters, gaffes, slips and lost balls.
+- Options: MATCHDAY EXTRAS and FUNNY MOMENTS can be switched off.
+
+### 4.9
+Gameplay
+- New skill moves on SKILL: OVERHEAD KICK (high ball in front of goal), RABONA (with the ball near the touchline, facing goal: a cross) and NUTMEG (defender straight ahead; it can be blocked).
+- Shielding: hold PRESS while you have the ball. You move slower, and most tackles bounce off. The computer shields too when pressured.
+- Scrambles: after a parry or a rebound off the woodwork, players near the ball move faster for a moment.
+- Wall jump: when defending a free kick, SKILL jumps the wall. Time it against the run-up. The computer still jumps by itself when it defends.
+- Second wind for tired players, and substitutes arrive with fresher legs.
+Graphics
+- Kits get muddy through the match (slides, falls and wet pitches); tired players and snow or ice nights show breath puffs.
+- The back net ripples after a goal; scoreboard with score and clock, plus cycling ads (invented brands) on the boards (option STADIUM ADS AND CLOCK).
+- Streamers join the confetti on trophy wins; soft floodlight glow at night and a vignette during replays (option FLOODLIGHT GLOW AND VIGNETTE).
+- Full time: up to three pairs of players swap shirts and then the result screen appears; any key skips it. Refusals are random, much more common in derbies (option SHIRT SWAP AT FULL TIME).
+Already in the game, so not rebuilt: penalty when advantage fails inside the box, stamina drain, confetti.
+Not done: captain's role, mascot, birds.
+
 ### 4.8
 - Corners: when you take one, SKILL (V / touch SKILL) cycles FREE AIM, NEAR POST, FAR POST, EDGE OF BOX and SHORT. A ring shows the target, teammates run the matching routine, weak kicks scatter more. Computer corners now swing in (inswing and outswing), and a short corner is followed by a cross.
 - Computer offside trap: CPU back lines (PRESS HIGH teams, and sometimes balanced ones, more often on harder difficulties) step up together when an attacker is level with the line. A defender can be slow, and then the attacker is through. Commentary notes a trap that works or is beaten. Option CPU OFFSIDE TRAP.
