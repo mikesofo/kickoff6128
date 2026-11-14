@@ -34,6 +34,30 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 4.8
+- Corners: when you take one, SKILL (V / touch SKILL) cycles FREE AIM, NEAR POST, FAR POST, EDGE OF BOX and SHORT. A ring shows the target, teammates run the matching routine, weak kicks scatter more. Computer corners now swing in (inswing and outswing), and a short corner is followed by a cross.
+- Computer offside trap: CPU back lines (PRESS HIGH teams, and sometimes balanced ones, more often on harder difficulties) step up together when an attacker is level with the line. A defender can be slow, and then the attacker is through. Commentary notes a trap that works or is beaten. Option CPU OFFSIDE TRAP.
+- Goalkeeper communication: speech bubbles (MINE!, MARK UP!, STEP UP!, CLOSE HIM DOWN!), and defenders now mark attackers man-to-man at corners. Option KEEPER SHOUTS AND MARKING.
+- Touch controls: a fourth page on the controls screen lets each on-screen button have one job with the ball and another without it (player 1 touch only).
+- Pitch wear already existed (option PITCH WEAR), so nothing new there.
+- Advantage rule already existed, so nothing new there.
+
+### 4.7
+- Goalkeeper styles: STOPPER (best shot-stopper, stays near his line), SWEEPER (rushes out to clear through balls, plays short), SAFE HANDS (holds more shots, distributes long) and FLAMBOYANT (far off his line, parries more, sometimes caught out). The style is chosen from the keeper's name, or set by hand in EDIT PLAYERS > KEEPER STYLE. Option KEEPER STYLES turns the whole thing off.
+- Goal kicks are proper set pieces: the keeper takes his time, then rolls it short to a defender or hits it long depending on his style, the score of passing options and how many opponents are pressing. Commentary notices the choice.
+- A keeper outside his own box cannot use his hands: he clears or passes with his feet, and a team can be punished when he is caught far off his line.
+- Posts and crossbar: shots that hit the woodwork rebound into play with a clang, a message and commentary instead of passing through. New option POSTS AND CROSSBAR.
+- Not yet changed: general ball physics (waiting for a concrete case: dribbling, crosses or bounces).
+
+### 4.6
+- Update check: an installed app (and any visit through the KEYS AND OPTIONS > CHECK FOR UPDATE item) fetches the server's sw.js, compares its version label with the running version and offers UPDATE (RELOAD) at the top of the main menu. This needs `APPV` in index.html and `CACHE` in sw.js to be bumped together on every release.
+- Substitutes warming up on the touchline wear full long-sleeve, long-leg tracksuits in the club colours.
+- Derbies: the computer tackles less and fouls less, and the referee hesitates over cards (a red may become a yellow, a yellow a stern word).
+- Injuries are scarcer (roughly 60% fewer) and bring the medical staff onto the pitch; the injured player lies on the ground while they treat him.
+- Time wasting starts at 65 minutes (60 in derbies) for computer teams that lead. New option FAKE CRAMPS (on by default): a leading computer team may have a player go down with cramp; sometimes the referee stops play for first aid (restart: free kick to the other side), sometimes the clock just runs, and now and then the player is booked.
+- Cards are drawn beside the offender with his shirt number rather than over whoever is next to him, and a sent-off player walks off the pitch.
+- Physics: bounces lose more speed and height, spin dies quickly on the ground, slow balls stop more naturally, air drag is a little stronger at speed. On a wet pitch tackles and slides last and travel further.
+
 ### 4.5
 - Controls screen: a teletext-style page (KEYS AND OPTIONS > CONTROLS SCREEN, also in the pause menu) with a drawn keyboard for each player and a PlayStation-style pad. Select any key or button and give it one job when your player has the ball (attack) and a different job when he does not (defence), for example PASS in attack and PRESS in defence. Jobs: shoot, lob, pass, skill, through ball, press, time warp, offside trap / wall, or none.
 - Keys: arrows or taps select (Enter then a key to pick one by pressing it), A and D change the attack and defence jobs (Shift goes back), C clears, R resets the page, Tab switches player 1 / player 2 / pad, Esc leaves. Unused keys can be given jobs too, and one job can sit on several keys.
