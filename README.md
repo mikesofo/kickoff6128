@@ -34,6 +34,17 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 5.9
+- Replays and highlights can use any view (isometric, sideways, vertical) or cycle through all angles; new REPLAY VIEW and REPLAY ZOOM options
+- During a replay, V changes the view and Z changes the zoom
+
+### 5.8
+- Fixed rebounds and keeper clearances bouncing into the team's own goal; own goals are only credited when the scorer's own side touched the ball last
+- Keepers avoid passing to a closely marked defender
+- VAR review replays the incident from isometric, sideways and vertical views in turn
+- Top-down views: new CLOSE zoom and CAMERA FOCUS option (ball / ball and your player / your player)
+- Tunnel, walk-out and programme always use the isometric view
+
 ### 5.7
 - **Top-down fix:** stand tifo banners, flares and smoke no longer appear over the pitch in the top-down views (they are isometric-only).
 

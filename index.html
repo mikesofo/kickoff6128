@@ -1129,7 +1129,7 @@ function gkDistribute(hk,ax,ay,mode){
       const ox=o.x-hk.x,oy=o.y-hk.y,t=(ox*dx+oy*dy)/(d*d);
       if(t>0&&t<1&&Math.hypot(ox-t*dx,oy-t*dy)<10)sc-=30;
     }
-    sc+=Math.min(md,45)*.9;
+    sc+=Math.min(md,45)*.9;if(md<14)sc-=45;
     if(sc>bs){bs=sc;best=q}
   }
   if(!best){kickBall(hk,dr,aimed?ay/(Math.abs(ax)||1):rnd(-.5,.5),.8,0,true);return null}
@@ -2249,7 +2249,8 @@ function ballStep(){
         if(S.gkk===p.tm){S.gkk=null;S.gkF=1;p.hold=12+(Math.random()*8|0)}else p.hold=18+(Math.random()*14|0);ball.vx=0;ball.vy=0;ball.sp=0;ball.z=0;ball.vz=0;lastTouch=p.tm;
       }
     }else if(spd>3.5&&Math.random()<.35){
-      ball.vx=-ball.vx*.5+rnd(-.8,.8);ball.vy=ball.vy*.7+rnd(-1.2,1.2);
+      const dq=p.tm?-1:1;/* clear/block always sends it away from own goal */
+      ball.vx=dq*Math.abs(ball.vx)*.5+rnd(-.3,.8)*dq;ball.vy=ball.vy*.7+rnd(-1.2,1.2);
       ball.sp=0;p.cd=12;lastTouch=p.tm;
     }else{
       const tx=p.x+p.fx*5,ty=p.y+p.fy*5;
@@ -2368,6 +2369,7 @@ function drawVar(){
   g.fillStyle='#fff';g.fillRect(bx+3,by+3,21,11);
   g.font='700 7px Silkscreen,"Courier New",monospace';g.textAlign='center';g.textBaseline='top';g.fillStyle='#0a1a8a';g.fillText('VAR',bx+13.5,by+5);
   const dots='...'.slice(0,((v.t>>4)%4)),cx=bx+27+(bw-30)/2;
+  if(v.res===0&&S.replay&&S.replay.vov!=null)txt('ANGLE: '+['ISOMETRIC','SIDE-ON TOP-DOWN','VERTICAL TOP-DOWN'][VW()===2?2:VW()===1?1:0],bx+bw/2,by+bh+3,'#8f8fc4',5);
   if(v.res===0)txt(S.replay?'REVIEWING'+dots:(v.rs||'CHECKING')+dots,cx,by+5,'#ffd400',5);
   else if(v.res===1)txt(v.k==='PEN'?'PENALTY STANDS':v.k==='RED'?'RED CARD STANDS':'GOAL STANDS',cx,by+5,'#3be06a',6);
   else txt(v.k==='OFFSIDE'?'OFFSIDE - NO GOAL':v.k==='FOUL'?'FOUL - NO GOAL':v.k==='PEN'?'NO PENALTY':v.k==='RED'?'RED CARD OFF':'NO GOAL',cx,by+5,'#ff4a3d',6);
@@ -2566,7 +2568,7 @@ function startHL(src){
 }
 function startReplay(done,rec){
   if(rec)clipStart();
-  S.replay={buf:S.rbuf.slice(),i:0,done,pass:0,gx:ball.x<CX?X0:X1};
+  S.replay={buf:S.rbuf.slice(),i:0,done,pass:0,gx:ball.x<CX?X0:X1,vv:!!S.var};
   S.msg='';S.msgT=0;S.conf=[];
 }
 function warp(h){
@@ -2598,6 +2600,9 @@ function stepReplay(){
     if((r.pass===1||r.pass===3)&&r.i<1e8&&r.buf.length>60&&!r.hl){r.pass=2;r.i=Math.max(0,r.buf.length-70);return}
     const k=r.done;S.replay=null;if(!r.hl)clipStop();k();return;
   }
+  if(r.vv){r.vov=((O.view|0)+({0:0,1:1,3:2,2:0}[r.pass]||0))%3}
+  else{const m=O.rpv|0;if(m>=1&&m<=3)r.vov=m-1;else if(m===4)r.vov=((O.view|0)+({0:0,1:1,3:2,2:0}[r.pass]||0))%3}
+  if(r.zm==null&&O.rpz)r.zm=O.rpz-1;
   applySnap(f);
 }
 
@@ -2922,10 +2927,15 @@ function step(){
 /* Pseudo-isometric camera: world x runs along the pitch, world y runs toward the viewer and shears left. */
 const SCX=W/2,KX=2.2,KY=.8,SHR=.7,PY=88;
 let cam=CX,camY=CY;const TK=1.8,TYC=142;
-const L_VIEW=['ISOMETRIC','TOP-DOWN SIDEWAYS','TOP-DOWN VERTICAL'],L_MAP=['OFF','TOP-DOWN VIEWS','ALL VIEWS'],L_TDZ=['FAR','NORMAL','NEAR'],L_TDL=['SHORT','NORMAL','LONG'],L_MPS=['SMALL','NORMAL','LARGE'],L_MPC=['BOTTOM RIGHT','BOTTOM LEFT','MIDDLE RIGHT'],L_MPA=['LIGHT','NORMAL','SOLID'],L_ZOOM=['WIDE','MEDIUM','CLOSE'],ZZ=[1,1.25,1.5],zoomNow=()=>Math.max(ZZ[O.zoom==null?0:O.zoom]||1,O.bcm?1.25:1);const L_PSZ=['SMALL','NORMAL','LARGE','EXTRA LARGE'],PSZV=[.55,.7,1,1.25],PSC=()=>PSZV[O.psz==null?1:O.psz]||.7;const L_PEN=['NORMAL','POWER','STUTTER','PANENKA'],L_FLT=['OFF','CRT','GREEN SCREEN','GLOW'];const L_TALK=['NONE','CALM','FIRE UP','SHOUT'];
+const L_VIEW=['ISOMETRIC','TOP-DOWN SIDEWAYS','TOP-DOWN VERTICAL'],L_MAP=['OFF','TOP-DOWN VIEWS','ALL VIEWS'],L_TDZ=['FAR','NORMAL','NEAR','CLOSE'],L_TDF=['BALL','BALL AND MY PLAYER','MY PLAYER'],L_TDL=['SHORT','NORMAL','LONG'],L_MPS=['SMALL','NORMAL','LARGE'],L_MPC=['BOTTOM RIGHT','BOTTOM LEFT','MIDDLE RIGHT'],L_MPA=['LIGHT','NORMAL','SOLID'],L_ZOOM=['WIDE','MEDIUM','CLOSE'],ZZ=[1,1.25,1.5],zoomNow=()=>(S&&S.replay&&S.replay.zm!=null)?ZZ[Math.min(2,S.replay.zm)]:Math.max(ZZ[O.zoom==null?0:O.zoom]||1,O.bcm?1.25:1);const L_PSZ=['SMALL','NORMAL','LARGE','EXTRA LARGE'],PSZV=[.55,.7,1,1.25],PSC=()=>PSZV[O.psz==null?1:O.psz]||.7;const L_PEN=['NORMAL','POWER','STUTTER','PANENKA'],L_FLT=['OFF','CRT','GREEN SCREEN','GLOW'];const L_TALK=['NONE','CALM','FIRE UP','SHOUT'];
 const rk=v=>Math.round(v*K)/K;
-function VW(){return(typeof NET!=='undefined'&&NET&&NET.role&&O.view===2)?1:(O.view|0)}
-const TDV=()=>VW()>=1,tkH=()=>1.8*[.85,1,1.2][O.tdz==null?1:O.tdz],tkV=()=>1.7*[.85,1,1.2][O.tdz==null?1:O.tdz],lkA=()=>[.5,1,1.6][O.tdl==null?1:O.tdl];
+function VW(){
+  if(typeof S!=='undefined'&&S&&(S.tn||S.wo||S.pg))return 0;/* tunnel, walk-out, programme: always isometric */
+  let v=O.view|0;
+  if(typeof S!=='undefined'&&S&&S.replay){if(S.replay.mv!=null)v=S.replay.mv;else if(S.replay.vov!=null)v=S.replay.vov}
+  return(typeof NET!=='undefined'&&NET&&NET.role&&v===2)?1:v;
+}
+const TDV=()=>VW()>=1,tdzN=()=>(S&&S.replay&&S.replay.zm!=null)?S.replay.zm:(O.tdz==null?1:O.tdz),tkH=()=>1.8*[.85,1,1.2,1.45][tdzN()],tkV=()=>1.7*[.85,1,1.2,1.45][tdzN()],lkA=()=>[.5,1,1.6][O.tdl==null?1:O.tdl];
 function vsg(){return(S.hum&&S.hum[1]&&!S.hum[0])?-1:1}
 const P=(x,y,z)=>{const v=VW();if(v===1){const k=tkH();return[rk(SCX+(x-cam)*k),rk(TYC+(y-camY)*k-(z||0)*.6)]}if(v===2){const k=tkV(),vs=vsg();return[rk(SCX+vs*(y-camY)*k),rk(TYC-vs*(x-cam)*k-(z||0)*.6)]}return [rk(SCX+(x-cam)*KX-(y-CY)*SHR),rk(PY+(y-Y0)*KY-(z||0))]};
 const SKIN=['#f1b88a','#e0a070','#8d5a3a'],HAIR=['#2a1a10','#6b3a1a','#d9b24a','#111'],OUT='#0b0b22';
@@ -3807,6 +3817,8 @@ const INSTR=[
  ['PENALTY SHOOTOUT AND CUP','Penalty shootout (main menu): steer up and down to aim, hold Space to charge, release to shoot. Defending, steer a direction and press Space to dive. The Penalty Cup is a knockout of eight clubs decided on penalties; watch the NERVES bar, high nerves make your aim wobble.'],
  ['TRAINING AND CHALLENGES','Training (main menu): finishing with corner targets, free kicks over a wall, and a skills arena against three defenders. Daily challenge: a fresh scenario each day, with share codes for friends and a custom challenge builder.'],
  ['NEW IN 3.4','ADVANTAGE RULE: after a foul the referee may play on while the fouled team keeps the ball; if they lose it, play comes back for the free kick. MOMENTUM METER: a bar by the score shows who is on top, and with BAR + EFFECTS the dominant side is a little quicker and the crowd gets louder. SUNSET MATCHES: dusk games fade to night and the floodlights come on. On a SNOW pitch it snows and the lines slowly disappear until half time. SUBSTITUTES WARM UP on the touchline and celebrate your goals.'],
+ ['NEW IN 5.9','REPLAYS IN EVERY VIEW: goal replays and highlights can be shown in the isometric, sideways or vertical view, or cycle through all angles (REPLAY VIEW option). REPLAY ZOOM sets the zoom. While a replay plays, press V to change the view and Z to change the zoom.'],
+ ['NEW IN 5.8','FIXES AND CAMERAS: rebounds and keeper clearances no longer bounce back into the team\'s own net, and own goals are only credited when the scorer\'s own side touched it last. Keepers avoid passing to a defender with an opponent on top of him. During a VAR review the replay now shows the incident from all three views in turn. The top-down views have a CLOSE zoom and a CAMERA FOCUS option (ball, ball and your player, or your player). The tunnel, walk-out and programme always use the isometric view.'],
  ['NEW IN 5.7','TOP-DOWN FIX: the stand banners (such as the Greek tifo messages), the away-end banner, flares and smoke are only drawn in the isometric view. In the top-down views the stands are around the pitch, so these used to appear on top of the field; they are now hidden there.'],
  ['NEW IN 5.6','UPDATE FIX: UPDATE TO Vx (RELOAD) now refreshes the browser cache, clears the old copy and reloads the page from a fresh address, so the new version really loads (GitHub Pages used to hand back the old page for up to 10 minutes). The game now also checks for updates a few seconds after opening, in a browser tab as well as the installed app, and when the new version arrives in the background. If an old version still shows the old behaviour, use CHECK FOR UPDATE once, or reload the page twice, or clear the site data in the browser.'],
  ['NEW IN 5.5','TIDIER MENUS: the main menu is now short - play modes at the top, then COMPETITIONS, CHALLENGES AND TRAINING, TEAM AND PLAYERS, RECORDS AND EXTRAS, KEYS AND OPTIONS, INSTRUCTIONS and ABOUT. MATCHDAY OPTIONS is split into eight groups (gameplay and rules, controls and assists, view and camera, weather and stadium, atmosphere and extras, sound and commentary, replays and records, system and other); search and pinned favourites still work across all of them. KEYS AND OPTIONS has four sections, and the pause menu keeps substitutions, plan and tactics up front with the rest under MATCH INFO and TOOLS AND COMMENTARY. QUIT MENU is now < BACK. Where older notes say KEYS AND OPTIONS > VIEW, look under MATCHDAY OPTIONS > VIEW AND CAMERA.'],
@@ -3910,7 +3922,7 @@ function overlays(){
     }
     if(S.replay.hl){const c=S.replay.hl;txt((S.replay.hl.k==='BL'?'BLOOPER REEL ':'HIGHLIGHTS ')+S.replay.hn+'/'+S.replay.hT+(S.replay.pass?'  SLOW MOTION':''),SCX,38,'#fff',9);txt((c.lb?c.lb+'  ':c.k==='GOAL'?'GOAL  ':'GREAT SAVE  ')+c.m+(c.t?'  '+c.t:'')+(c.k==='GOAL'?'   '+c.sc[0]+'-'+c.sc[1]:''),SCX,50,'#ffd400',7)}
     else if((S.t>>4)&1)txt(S.replay.pass===2?'GOAL-LINE CAM':S.replay.pass===3?'SCORER CAM':S.replay.pass?'SLOW MOTION - CLOSE UP':'ACTION REPLAY',SCX,38,'#fff',9);
-    txt(S.replay.hl?'ENTER OR TAP: NEXT CLIP   ESC: STOP':'ENTER OR TAP TO SKIP',SCX,H-42,C.dim,7);
+    txt(S.replay.hl?'ENTER OR TAP: NEXT CLIP   ESC: STOP':'ENTER OR TAP TO SKIP',SCX,H-42,C.dim,7);txt('V: CHANGE VIEW   Z: ZOOM',SCX,H-34,C.dim,6);
   }
   if(S.menu.length){drawMenu();return}
   if(S.toast&&!S.menu.length){
@@ -3933,8 +3945,12 @@ function overlays(){
 function draw(){
   g.setTransform(K,0,0,K,0,0);
   const tx=clamp(ball.x+ball.vx*(O.bcm?24:14),X0+(O.bcm?40:52),X1-(O.bcm?40:52));
-  if(VW()===1){const mx=Math.min(150,192/tkH()-8),my=Math.min(80,114/tkH()-8),txd=clamp(ball.x+ball.vx*16*lkA(),X0+mx,X1-mx),tyd=clamp(ball.y+ball.vy*12*lkA(),Y0+my,Y1-my);cam+=(txd-cam)*.1;camY+=(tyd-camY)*.1}
-  else if(VW()===2){const mx=Math.min(150,114/tkV()-8),txd=clamp(ball.x+ball.vx*18*lkA(),X0+mx,X1-mx);cam+=(txd-cam)*.1;camY+=(CY-camY)*.2}
+  const vw0=VW();
+  if(vw0!==S.lvw){S.lvw=vw0;if(vw0>=1){cam=ball.x;camY=vw0===2?CY:ball.y}}
+  let fx=ball.x,fy=ball.y;
+  if(O.tdf&&!S.replay){const hp=HU[0]&&HU[0].ctrl;if(hp){if(O.tdf===2){fx=hp.x;fy=hp.y}else{fx=(ball.x+hp.x)/2;fy=(ball.y+hp.y)/2}}}
+  if(vw0===1){const mx=Math.min(150,192/tkH()-8),my=Math.min(80,114/tkH()-8),txd=clamp(fx+ball.vx*16*lkA(),X0+mx,X1-mx),tyd=clamp(fy+ball.vy*12*lkA(),Y0+my,Y1-my);cam+=(txd-cam)*.1;camY+=(tyd-camY)*.1}
+  else if(vw0===2){const mx=Math.min(150,114/tkV()-8),txd=clamp(fx+ball.vx*18*lkA(),X0+mx,X1-mx);cam+=(txd-cam)*.1;camY+=(CY-camY)*.2}
   else if(S.ph)cam=S.ph.x;else cam+=(tx-cam)*(O.bcm?.06:.09);
   g.fillStyle='#000';g.fillRect(0,0,W,H);
   g.save();if(S.shake)g.translate((Math.random()-.5)*S.shake*2,(Math.random()-.5)*S.shake*2);
@@ -5082,7 +5098,7 @@ function gafKick(hk,mode){
 /* own goals and sitters */
 function ogCheck(tm){
   if(S.tr||S.pso||S.demo||!M||!M.teams)return;
-  if(S.lastK&&S.lastK.tm!==tm){
+  if(S.lastK&&S.lastK.tm!==tm&&lastTouch===S.lastK.tm){
     const sp=players.find(q=>q.tm===S.lastK.tm&&q.i===S.lastK.i);
     S.gsc=(sp?pname(sp):'')+' (OG)';
     say(pick(['OWN GOAL! HE HAS PUT IT IN HIS OWN NET','OH NO, AN OWN GOAL!']));
@@ -6703,6 +6719,9 @@ function optionItems(){
     oi('MAP OPACITY','mpa',L_MPA),
     oi('TOP-DOWN ZOOM','tdz',L_TDZ),
     oi('TOP-DOWN LOOK-AHEAD','tdl',L_TDL),
+    oi('TOP-DOWN CAMERA FOCUS','tdf',L_TDF),
+    oi('REPLAY VIEW','rpv',['SAME AS GAME','ISOMETRIC','TOP-DOWN SIDEWAYS','TOP-DOWN VERTICAL','ALL ANGLES']),
+    oi('REPLAY ZOOM','rpz',['AUTO','FAR','NORMAL','NEAR','CLOSE']),
     oi('AFTERTOUCH (STEER AFTER A KICK)','at',L_ONOFF),
     oi('CAMERA','zoom',L_ZOOM),
     oi('PLAYER SIZE','psz',L_PSZ),
@@ -6799,7 +6818,7 @@ const OPTGR=['GAMEPLAY AND RULES','CONTROLS AND ASSISTS','VIEW AND CAMERA','WEAT
 const OPTMAP={};
 [[0,'RULES|TIME EACH HALF|OFFSIDES|FOULS|PENALTIES|ADVANTAGE RULE|REFEREE|REFEREE QUALITY|VAR|INJURIES|FAKE CRAMPS (TIME WASTING)|TIME WASTING|STAMINA DRAIN|RAIN DELAYS|KEEPER STYLES|POSTS AND CROSSBAR|KEEPER SHOUTS AND MARKING|CPU OFFSIDE TRAP|SUBSTITUTES WARM UP|SET PIECE DESIGNER|COMPUTER MATCHES|COMPUTER SKILL|FUNNY MOMENTS (BANANA, GAFFES)|MOMENTUM METER'],
  [1,'PLAYER SWITCHING|SWITCH SPEED|SHOOTING ASSIST|AIM GUIDE|CURL POWER|CURL TRAIL|KICKOMETER|AFTERTOUCH (STEER AFTER A KICK)|INPUT BUFFER|ONE-BUTTON MODE|EXTRA TOUCH BUTTONS|TOUCH STICK DEAD ZONE|TOUCH DIAGONALS|PAD STICK DEAD ZONE|TOUCH STICK|BUTTON SIZE|SWIPE TO SHOOT|VIBRATION|CONTROL HINTS|KEEPER 1|KEEPER 2'],
- [2,'VIEW|PASSING MAP|MAP SIZE|MAP CORNER|MAP OPACITY|TOP-DOWN ZOOM|TOP-DOWN LOOK-AHEAD|CAMERA|PLAYER SIZE|SCREEN FILTER|BROADCAST MODE|COLOUR VISION|STAMINA AND CARD STRIP|FULLSCREEN|SUBTITLE SIZE|SUBTITLE TIME|GREEK TEXT'],
+ [2,'VIEW|PASSING MAP|MAP SIZE|MAP CORNER|MAP OPACITY|TOP-DOWN ZOOM|TOP-DOWN LOOK-AHEAD|TOP-DOWN CAMERA FOCUS|CAMERA|REPLAY VIEW|REPLAY ZOOM|PLAYER SIZE|SCREEN FILTER|BROADCAST MODE|COLOUR VISION|STAMINA AND CARD STRIP|FULLSCREEN|SUBTITLE SIZE|SUBTITLE TIME|GREEK TEXT'],
  [3,'WEATHER|WEATHER CHANGES|WEATHER EVENTS|TIME OF DAY|SUNSET MATCHES|PITCH SURFACE|PITCH WEAR|STADIUM|FOG|PUDDLES IN THE RAIN|FLOODLIGHT FAILURES|FLOODLIGHT GLOW AND VIGNETTE|STADIUM ADS AND CLOCK'],
  [4,'MATCHDAY EXTRAS (CAMERAS, BANNERS)|FLARES AND BANNERS|PITCH INVADER|BALL BOYS|TOUCHLINE MANAGERS|WALK-OUT|PRE-MATCH TUNNEL|MATCH INTRO|HALF-TIME SCREEN|SHIRT SWAP AT FULL TIME|CLUB PERSONALITIES|BOOING|MATCH PROGRAMME'],
  [5,'MENU MUSIC|COMMENTATOR BOOTH|COMMENTARY|COMMENTARY POSITION|COMMENTARY LANGUAGE'],
@@ -7228,7 +7247,7 @@ function buildMenu(m){
   case'about':
     sp.title='ABOUT KICKOFF 6128';sp.w=330;
     sp.lines=['AN ORIGINAL FIVE-A-SIDE FOOTBALL GAME','A TRIBUTE TO MATCH DAY II','AND THE 8-BIT CLASSICS OF THE AMSTRAD CPC','',
-      'VERSION 5.7','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
+      'VERSION 5.9','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
       'CLUB NAMES ARE USED FOR FUN ONLY','AND ARE NOT AFFILIATED OR OFFICIAL'];
     I.push({k:'act',label:'BACK',fn:back});
     break;
@@ -7635,7 +7654,7 @@ let instEv=null;
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();instEv=e});
 addEventListener('appinstalled',()=>{instEv=null});
 try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))addEventListener('load',()=>{navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).catch(()=>{})})}catch(e){}
-const APPV='5.7';
+const APPV='5.9';
 const UPD={nw:'',st:'',ck:0};
 function updNewer(a,b){const x=a.split('.').map(Number),y=b.split('.').map(Number);for(let i=0;i<4;i++){const p=x[i]||0,q=y[i]||0;if(p!==q)return p>q}return false}
 async function updCheck(manual){
@@ -7703,7 +7722,7 @@ addEventListener('keydown',e=>{
   if(S.edit){editKey(e);return}
   if(/^(Arrow|Space|Alt|Tab)/.test(c)||c==='Enter'||c==='Backspace')e.preventDefault();
   keys[c]=true;
-  if(S.replay&&!S.menu.length){if(S.replay.hl&&c==='Escape'){S.hlStop=1;S.replay.i=1e9;return}if(c==='Enter'||c==='Space')S.replay.i=1e9;if(c!=='KeyP'&&c!=='KeyH'&&c!=='Escape')return}
+  if(S.replay&&!S.menu.length){if(S.replay.hl&&c==='Escape'){S.hlStop=1;S.replay.i=1e9;return}if(c==='Enter'||c==='Space')S.replay.i=1e9;if(c==='KeyV'){const r=S.replay;r.mv=((r.mv!=null?r.mv:VW())+1)%3}if(c==='KeyZ'){const r=S.replay;r.zm=((r.zm!=null?r.zm:(VW()?(O.tdz==null?1:O.tdz):(O.zoom||0)))+1)%4}if(c!=='KeyP'&&c!=='KeyH'&&c!=='Escape')return}
   if(S.menu.length){if(!e.repeat||/^Arrow/.test(c))menuKey(c);return}
   if(e.repeat)return;
   for(const h of HU){const ea=effKey(h.slot,c,hasBall(h));if(ea==='kick')h.latch=true;else if(ea==='pass')h.psLatch=true;else if(ea==='lob')h.lLatch=true;else if(ea==='warp')warp(h);else if(ea==='skill')h.skLatch=true}
