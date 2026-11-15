@@ -951,7 +951,7 @@ function kickBall(p,dx,dy,power,spin,lob){
   }
   if(S.lastK&&S.lastK.tm===p.tm&&S.lastK.i!==p.i)S.pk={tm:p.tm,i:S.lastK.i,t:S.t};
   S.lastK={tm:p.tm,i:p.i};
-  {const hh=O.at&&!S.demo&&!S.pso&&!S.tr&&!NET.role&&power>=.38?HU.find(q=>q.ctrl===p&&!q.net):null;S.at=hh?{h:hh,p,t:0,k:S.lastK}:null}
+  {const hh=O.at&&!S.demo&&!S.pso&&!S.tr&&!NET.role&&power>=.38&&!(S.sp&&S.sp.kind==='THROW'&&S.sp.taker===p)?HU.find(q=>q.ctrl===p&&!q.net):null;S.at=hh?{h:hh,p,t:0,k:S.lastK}:null}
   const AS=S.diff===3?null:ASSL[O.assist|0];
   if(AS&&!lob&&!S.pf&&power>=AS.pw&&!p.gk&&!S.pso&&HU.some(h=>h.ctrl===p)){
     const gx=p.tm?X0:X1,gdx=gx-p.x;
@@ -2236,7 +2236,7 @@ function ballStep(){
         const edge=Math.abs(ball.y-CY)/GH;
         const near=clamp(1-Math.max(0,bd)/11,0,1),pS=clamp((.5+near*.3+(dv?.03:0)-Math.max(0,spd-3.2)*.06-edge*.07)*(.62+.38*sk)*st.sv*((S.pso||S.penT>0)?(dv?.8:.3):1)*(S.hum[p.tm]?1:S.hum[1-p.tm]?.82:1)*glareK(p),(S.pso||S.penT>0)?.05:.15,.95);
         if(gafSave(p,away,spd)){}
-        else if(Math.random()>pS){p.cd=dist(p,ball)>6?2:14}
+        else if(Math.random()>((S.pso||S.penT>0)?pS:spd<2.6?Math.max(pS,.93):spd<3.4?Math.max(pS,.78):pS)){p.cd=dist(p,ball)>6?2:spd<3.4?3:14}
         else if(Math.random()>clamp((spd-2.6)*.24+edge*.18-(sk-.9)*.4+st.hd,.06,.9)){
           p.hold=16+(Math.random()*10|0);ball.vx=0;ball.vy=0;ball.sp=0;ball.z=0;ball.vz=0;lastTouch=p.tm;
           S.msg='SAVE!';S.msgT=40;hlAdd('SAVE');if(Math.random()<.6)say(pick(['WHAT A SAVE!','THE KEEPER DENIES THEM!','SUPERB STOP!']));beep(140,.12,'triangle',.06);if(S.st)S.st.saves[teamOf(p.tm)]++;pt(p,1.5);p.sv=(p.sv||0)+1;if(!S.tr&&!S.pso&&(p.sv===3||p.sv===5))memSay('THE KEEPER HAS NOW MADE '+p.sv+' SAVES - HE IS IN FINE FORM','Ο ΤΕΡΜΑΤΟΦΥΛΑΚΑΣ ΕΧΕΙ ΗΔΗ '+p.sv+' ΑΠΟΚΡΟΥΣΕΙΣ - ΕΧΕΙ ΥΠΕΡΟΧΗ ΦΟΡΜΑ');
@@ -2936,6 +2936,7 @@ function VW(){
   return(typeof NET!=='undefined'&&NET&&NET.role&&v===2)?1:v;
 }
 const TDV=()=>VW()>=1,tdzN=()=>(S&&S.replay&&S.replay.zm!=null)?S.replay.zm:(O.tdz==null?1:O.tdz),tkH=()=>1.8*[.85,1,1.2,1.45][tdzN()],tkV=()=>1.7*[.85,1,1.2,1.45][tdzN()],lkA=()=>[.5,1,1.6][O.tdl==null?1:O.tdl];
+function tdRel(){return Math.pow(VW()===2?tkV()/1.7:tkH()/1.8,.85)}
 function vsg(){return(S.hum&&S.hum[1]&&!S.hum[0])?-1:1}
 const P=(x,y,z)=>{const v=VW();if(v===1){const k=tkH();return[rk(SCX+(x-cam)*k),rk(TYC+(y-camY)*k-(z||0)*.6)]}if(v===2){const k=tkV(),vs=vsg();return[rk(SCX+vs*(y-camY)*k),rk(TYC-vs*(x-cam)*k-(z||0)*.6)]}return [rk(SCX+(x-cam)*KX-(y-CY)*SHR),rk(PY+(y-Y0)*KY-(z||0))]};
 const SKIN=['#f1b88a','#e0a070','#8d5a3a'],HAIR=['#2a1a10','#6b3a1a','#d9b24a','#111'],OUT='#0b0b22';
@@ -3233,7 +3234,11 @@ function drawSnow(){
   }
 }
 
-const ADS=[['NOVA','#ff5a3c'],['PIXEL','#3cd0ff'],['TURBO','#ffd400'],['ORBIT','#8cff6a'],['HEXA','#ff6aff'],['LUNA','#ffffff'],['ZETA','#ffa23c'],['MOTO','#6a8cff']];
+const ADG=[['SOFTEX','#ff8fb8'],['OLYMPIC AIRWAYS','#ffffff'],['ΕΛΕΥΘΕΡΟΤΥΠΙΑ','#ffd400'],['ΕΘΝΟΣ','#ff5a4a'],['TASTY','#ff3b30'],['BMW','#6ab0ff'],['ΦΙΞ','#ffd400'],['ΕΒΓΑ','#7fe3ff'],['ΔΕΛΤΑ','#8cff6a']],ADP=['ΠΡΟΠΟ','#ffd400'];
+const ADS0=[['NOVA','#ff5a3c'],['PIXEL','#3cd0ff'],['TURBO','#ffd400'],['ORBIT','#8cff6a'],['HEXA','#ff6aff'],['LUNA','#ffffff'],['ZETA','#ffa23c'],['MOTO','#6a8cff']];
+const adRot=()=>(O.adset===1?ADS0:ADG);
+function adAt(i){if(O.adset!==1&&((i%6)+6)%6===3)return ADP;const L=adRot();return L[(Math.floor(i/3)+Math.floor(S.t/260)+80)%L.length]}
+function adTxt(ad,mx,my,bw){let sz=4.5;g.font='700 '+sz+'px Silkscreen,"Courier New",monospace';const w=g.measureText(ad[0]).width;if(w>bw-1)sz=Math.max(2.6,sz*(bw-1)/w);txt(ad[0],mx,my+(4.5-sz)/2,ad[1],sz)}
 function drawScoreboard(){
   if(!O.ads||S.tr||!S.score||TDV())return;
   const A=P(CX-30,Y0-9,18),B=P(CX+30,Y0-9,18),B1=P(CX+30,Y0-9,36),A1=P(CX-30,Y0-9,36);
@@ -3247,7 +3252,7 @@ function drawBoardsTD(){
   for(let i=s0;i<s0+9;i++){
     const x=i*30,c=cols[((i%4)+4)%4];
     for(const yy of[Y0-14,Y1+8]){poly([P(x,yy),P(x+30,yy),P(x+30,yy+6),P(x,yy+6)],c);
-      if(O.ads&&!cs.on&&!S.tr&&((i%3)+3)%3===0){const ad=ADS[(Math.floor(i/3)+Math.floor(S.t/260)+80)%ADS.length],m=P(x+15,yy+3);poly([P(x,yy),P(x+30,yy),P(x+30,yy+6),P(x,yy+6)],'#0a0a16');if(VW()!==2)txt(ad[0],m[0],m[1]-2.4,ad[1],4.5)}}
+      if(O.ads&&!cs.on&&!S.tr&&((i%3)+3)%3===0){const ad=adAt(i),m=P(x+15,yy+3);poly([P(x,yy),P(x+30,yy),P(x+30,yy+6),P(x,yy+6)],'#0a0a16');if(VW()!==2)adTxt(ad,m[0],m[1]-2.4,Math.abs(P(x+30,yy)[0]-P(x,yy)[0]))}}
   }
 }
 function drawBoards(){
@@ -3256,7 +3261,7 @@ function drawBoards(){
   for(let i=s0;i<s0+10;i++){
     const x=i*30,A=P(x,Y0-9,0),B=P(x+30,Y0-9,0),B1=P(x+30,Y0-9,10),A1=P(x,Y0-9,10);
     poly([A,B,B1,A1],cols[((i%4)+4)%4]);
-    if(O.ads&&!cs.on&&!S.tr&&((i%3)+3)%3===0){const ad=ADS[(Math.floor(i/3)+Math.floor(S.t/260)+80)%ADS.length];poly([A,B,B1,A1],'#0a0a16');const mm=lerp(A,B1,.5);txt(ad[0],mm[0],mm[1]-2.6,ad[1],4.5)}
+    if(O.ads&&!cs.on&&!S.tr&&((i%3)+3)%3===0){const ad=adAt(i);poly([A,B,B1,A1],'#0a0a16');const mm=lerp(A,B1,.5);adTxt(ad,mm[0],mm[1]-2.6,Math.abs(B[0]-A[0]))}
     if(cs.on){const tx0=cs.t[((i%3)+3)%3];if(tx0){const mm=lerp(A,B1,.5);txt(tx0.slice(0,6),mm[0],mm[1]-2.6,'#fff',4)}}
     path([lerp(A,A1,.5),lerp(B,B1,.5)],'rgba(0,0,0,.4)',2);
     path([A1,B1],'#000',1);
@@ -3397,7 +3402,7 @@ function drawPTop(p){
   const vv=VW()===2?vsg():0;if(vv){const t=fx;fx=vv*fy;fy=-vv*t}
   const spd=Math.hypot(p.vx,p.vy),A=spd>.22?Math.min(1,spd/.85):0,ph=p.an*.5,jz=(p.jz||0)*.6;
   const BT=(!p.gk&&!p.ref&&!p.stw&&!p.lin&&!p.med&&!p.mg&&p.tm<2)?bootCol(p):'#141414';
-  g.save();g.translate(q[0],q[1]);g.scale(1.55,1.55);
+  g.save();{const zs=1.55*(PSC()/.7)*tdRel();g.translate(q[0],q[1]);g.scale(zs,zs)}
   g.fillStyle='rgba(0,0,0,.3)';g.beginPath();g.ellipse(.6,1.2+jz*.3,5.2,3.6,0,0,6.2832);g.fill();
   g.translate(0,-jz);
   g.lineWidth=.7;g.strokeStyle=OUT;
@@ -3590,7 +3595,7 @@ function drawBall(){
   if(S.ballLost&&!S.replay)return;
   const q=P(ball.x,ball.y),x=q[0],y=q[1];
   const sp=Math.hypot(ball.vx,ball.vy),hop=ball.z<.5&&sp>.6?Math.abs(Math.sin(S.t*.35))*Math.min(sp,4)*1.2:0,z=ball.z+hop;
-  const hi=Math.min(ball.z,28)/28,bk=.75*PSC()/.7*(TDV()?1.2:1);
+  const hi=Math.min(ball.z,28)/28,bk=.75*PSC()/.7*(TDV()?1.2*tdRel():1);
   const fga=ballFogA();g.globalAlpha=fga;
   g.fillStyle='rgba(0,0,0,'+(.42-hi*.22)+')';g.beginPath();g.ellipse(x,y-.4,(3.4-hi*.8)*bk,1.2*bk,0,0,6.2832);g.fill();
   const cy=TDV()?y-z*.6:y-3.4*bk-z,a=(ball.x+ball.y)*.12;
@@ -3817,6 +3822,9 @@ const INSTR=[
  ['PENALTY SHOOTOUT AND CUP','Penalty shootout (main menu): steer up and down to aim, hold Space to charge, release to shoot. Defending, steer a direction and press Space to dive. The Penalty Cup is a knockout of eight clubs decided on penalties; watch the NERVES bar, high nerves make your aim wobble.'],
  ['TRAINING AND CHALLENGES','Training (main menu): finishing with corner targets, free kicks over a wall, and a skills arena against three defenders. Daily challenge: a fresh scenario each day, with share codes for friends and a custom challenge builder.'],
  ['NEW IN 3.4','ADVANTAGE RULE: after a foul the referee may play on while the fouled team keeps the ball; if they lose it, play comes back for the free kick. MOMENTUM METER: a bar by the score shows who is on top, and with BAR + EFFECTS the dominant side is a little quicker and the crowd gets louder. SUNSET MATCHES: dusk games fade to night and the floodlights come on. On a SNOW pitch it snows and the lines slowly disappear until half time. SUBSTITUTES WARM UP on the touchline and celebrate your goals.'],
+ ['NEW IN 5.12','KEEPER AND THROW-IN FIXES: keepers no longer let in slow, rolling shots (many of them long-range from near the halfway line) - they now reliably gather or block those. Throw-ins fly straight: aftertouch no longer bends them.'],
+ ['NEW IN 5.11','GREEK 1980s AD BOARDS: the pitch-side boards now carry Greek brands of the era - Softex, Olympic Airways, Eleftherotypia, Ethnos, Tasty, BMW, Fix, EBGA and Delta - and PROPO is always on the boards. Option AD BOARD BRANDS switches back to the old made-up brands.'],
+ ['NEW IN 5.10','PLAYER SIZE FOLLOWS ZOOM: in the top-down views the players and the ball now grow and shrink with the zoom level, and PLAYER SIZE works there too. Before, players stayed huge when zoomed out.'],
  ['NEW IN 5.9','REPLAYS IN EVERY VIEW: goal replays and highlights can be shown in the isometric, sideways or vertical view, or cycle through all angles (REPLAY VIEW option). REPLAY ZOOM sets the zoom. While a replay plays, press V to change the view and Z to change the zoom.'],
  ['NEW IN 5.8','FIXES AND CAMERAS: rebounds and keeper clearances no longer bounce back into the team\'s own net, and own goals are only credited when the scorer\'s own side touched it last. Keepers avoid passing to a defender with an opponent on top of him. During a VAR review the replay now shows the incident from all three views in turn. The top-down views have a CLOSE zoom and a CAMERA FOCUS option (ball, ball and your player, or your player). The tunnel, walk-out and programme always use the isometric view.'],
  ['NEW IN 5.7','TOP-DOWN FIX: the stand banners (such as the Greek tifo messages), the away-end banner, flares and smoke are only drawn in the isometric view. In the top-down views the stands are around the pitch, so these used to appear on top of the field; they are now hidden there.'],
@@ -6784,6 +6792,7 @@ function optionItems(){
     oi('CPU OFFSIDE TRAP','ctr',L_ONOFF),
     oi('SHIRT SWAP AT FULL TIME','swap',L_ONOFF),
     oi('STADIUM ADS AND CLOCK','ads',L_ONOFF),
+    oi('AD BOARD BRANDS','adset',['GREEK 1980s','GENERIC']),
     oi('FLOODLIGHT GLOW AND VIGNETTE','glow',L_ONOFF),
     oi('MATCHDAY EXTRAS (CAMERAS, BANNERS)','fx',L_ONOFF),
     oi('FUNNY MOMENTS (BANANA, GAFFES)','fun',L_ONOFF),
@@ -6819,7 +6828,7 @@ const OPTMAP={};
 [[0,'RULES|TIME EACH HALF|OFFSIDES|FOULS|PENALTIES|ADVANTAGE RULE|REFEREE|REFEREE QUALITY|VAR|INJURIES|FAKE CRAMPS (TIME WASTING)|TIME WASTING|STAMINA DRAIN|RAIN DELAYS|KEEPER STYLES|POSTS AND CROSSBAR|KEEPER SHOUTS AND MARKING|CPU OFFSIDE TRAP|SUBSTITUTES WARM UP|SET PIECE DESIGNER|COMPUTER MATCHES|COMPUTER SKILL|FUNNY MOMENTS (BANANA, GAFFES)|MOMENTUM METER'],
  [1,'PLAYER SWITCHING|SWITCH SPEED|SHOOTING ASSIST|AIM GUIDE|CURL POWER|CURL TRAIL|KICKOMETER|AFTERTOUCH (STEER AFTER A KICK)|INPUT BUFFER|ONE-BUTTON MODE|EXTRA TOUCH BUTTONS|TOUCH STICK DEAD ZONE|TOUCH DIAGONALS|PAD STICK DEAD ZONE|TOUCH STICK|BUTTON SIZE|SWIPE TO SHOOT|VIBRATION|CONTROL HINTS|KEEPER 1|KEEPER 2'],
  [2,'VIEW|PASSING MAP|MAP SIZE|MAP CORNER|MAP OPACITY|TOP-DOWN ZOOM|TOP-DOWN LOOK-AHEAD|TOP-DOWN CAMERA FOCUS|CAMERA|REPLAY VIEW|REPLAY ZOOM|PLAYER SIZE|SCREEN FILTER|BROADCAST MODE|COLOUR VISION|STAMINA AND CARD STRIP|FULLSCREEN|SUBTITLE SIZE|SUBTITLE TIME|GREEK TEXT'],
- [3,'WEATHER|WEATHER CHANGES|WEATHER EVENTS|TIME OF DAY|SUNSET MATCHES|PITCH SURFACE|PITCH WEAR|STADIUM|FOG|PUDDLES IN THE RAIN|FLOODLIGHT FAILURES|FLOODLIGHT GLOW AND VIGNETTE|STADIUM ADS AND CLOCK'],
+ [3,'WEATHER|WEATHER CHANGES|WEATHER EVENTS|TIME OF DAY|SUNSET MATCHES|PITCH SURFACE|PITCH WEAR|STADIUM|FOG|PUDDLES IN THE RAIN|FLOODLIGHT FAILURES|FLOODLIGHT GLOW AND VIGNETTE|STADIUM ADS AND CLOCK|AD BOARD BRANDS'],
  [4,'MATCHDAY EXTRAS (CAMERAS, BANNERS)|FLARES AND BANNERS|PITCH INVADER|BALL BOYS|TOUCHLINE MANAGERS|WALK-OUT|PRE-MATCH TUNNEL|MATCH INTRO|HALF-TIME SCREEN|SHIRT SWAP AT FULL TIME|CLUB PERSONALITIES|BOOING|MATCH PROGRAMME'],
  [5,'MENU MUSIC|COMMENTATOR BOOTH|COMMENTARY|COMMENTARY POSITION|COMMENTARY LANGUAGE'],
  [6,'GOAL REPLAYS|GOAL CLIPS|SCORER CAM IN REPLAYS|SAVE GOALS TO SEASON REEL'],
@@ -7247,7 +7256,7 @@ function buildMenu(m){
   case'about':
     sp.title='ABOUT KICKOFF 6128';sp.w=330;
     sp.lines=['AN ORIGINAL FIVE-A-SIDE FOOTBALL GAME','A TRIBUTE TO MATCH DAY II','AND THE 8-BIT CLASSICS OF THE AMSTRAD CPC','',
-      'VERSION 5.9','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
+      'VERSION 5.12','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
       'CLUB NAMES ARE USED FOR FUN ONLY','AND ARE NOT AFFILIATED OR OFFICIAL'];
     I.push({k:'act',label:'BACK',fn:back});
     break;
@@ -7654,7 +7663,7 @@ let instEv=null;
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();instEv=e});
 addEventListener('appinstalled',()=>{instEv=null});
 try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))addEventListener('load',()=>{navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).catch(()=>{})})}catch(e){}
-const APPV='5.9';
+const APPV='5.12';
 const UPD={nw:'',st:'',ck:0};
 function updNewer(a,b){const x=a.split('.').map(Number),y=b.split('.').map(Number);for(let i=0;i<4;i++){const p=x[i]||0,q=y[i]||0;if(p!==q)return p>q}return false}
 async function updCheck(manual){

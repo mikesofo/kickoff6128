@@ -34,6 +34,17 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 5.12
+- Keepers stop conceding slow long-range shots (they reliably gather or block slow balls)
+- Throw-ins are no longer affected by aftertouch
+
+### 5.11
+- Ad boards show Greek 1980s brands (Softex, Olympic Airways, Eleftherotypia, Ethnos, Tasty, BMW, Fix, EBGA, Delta); PROPO is always on the boards
+- AD BOARD BRANDS option to switch back to generic brands
+
+### 5.10
+- Top-down views: players and ball scale with the zoom level, and PLAYER SIZE now applies
+
 ### 5.9
 - Replays and highlights can use any view (isometric, sideways, vertical) or cycle through all angles; new REPLAY VIEW and REPLAY ZOOM options
 - During a replay, V changes the view and Z changes the zoom
