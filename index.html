@@ -3807,6 +3807,7 @@ const INSTR=[
  ['PENALTY SHOOTOUT AND CUP','Penalty shootout (main menu): steer up and down to aim, hold Space to charge, release to shoot. Defending, steer a direction and press Space to dive. The Penalty Cup is a knockout of eight clubs decided on penalties; watch the NERVES bar, high nerves make your aim wobble.'],
  ['TRAINING AND CHALLENGES','Training (main menu): finishing with corner targets, free kicks over a wall, and a skills arena against three defenders. Daily challenge: a fresh scenario each day, with share codes for friends and a custom challenge builder.'],
  ['NEW IN 3.4','ADVANTAGE RULE: after a foul the referee may play on while the fouled team keeps the ball; if they lose it, play comes back for the free kick. MOMENTUM METER: a bar by the score shows who is on top, and with BAR + EFFECTS the dominant side is a little quicker and the crowd gets louder. SUNSET MATCHES: dusk games fade to night and the floodlights come on. On a SNOW pitch it snows and the lines slowly disappear until half time. SUBSTITUTES WARM UP on the touchline and celebrate your goals.'],
+ ['NEW IN 5.7','TOP-DOWN FIX: the stand banners (such as the Greek tifo messages), the away-end banner, flares and smoke are only drawn in the isometric view. In the top-down views the stands are around the pitch, so these used to appear on top of the field; they are now hidden there.'],
  ['NEW IN 5.6','UPDATE FIX: UPDATE TO Vx (RELOAD) now refreshes the browser cache, clears the old copy and reloads the page from a fresh address, so the new version really loads (GitHub Pages used to hand back the old page for up to 10 minutes). The game now also checks for updates a few seconds after opening, in a browser tab as well as the installed app, and when the new version arrives in the background. If an old version still shows the old behaviour, use CHECK FOR UPDATE once, or reload the page twice, or clear the site data in the browser.'],
  ['NEW IN 5.5','TIDIER MENUS: the main menu is now short - play modes at the top, then COMPETITIONS, CHALLENGES AND TRAINING, TEAM AND PLAYERS, RECORDS AND EXTRAS, KEYS AND OPTIONS, INSTRUCTIONS and ABOUT. MATCHDAY OPTIONS is split into eight groups (gameplay and rules, controls and assists, view and camera, weather and stadium, atmosphere and extras, sound and commentary, replays and records, system and other); search and pinned favourites still work across all of them. KEYS AND OPTIONS has four sections, and the pause menu keeps substitutions, plan and tactics up front with the rest under MATCH INFO and TOOLS AND COMMENTARY. QUIT MENU is now < BACK. Where older notes say KEYS AND OPTIONS > VIEW, look under MATCHDAY OPTIONS > VIEW AND CAMERA.'],
  ['NEW IN 5.4','REALISTIC CHANTS: the stands now sing with a crowd of voices (many detuned voices through vowel formants, breath noise, stadium echo and reverb) instead of beeps. Three chants: OLE OLE OLE OLE, long NAME! NAME! shouts, and name-name-name. The clapping that follows is thicker with more hands and reverb. The words still show in the stands.'],
@@ -4332,7 +4333,7 @@ function pyroTick(){
   if(p.t>900&&!p.sm.length)S.pyro=null;
 }
 function drawPyro(){
-  const p=S.pyro;if(!p)return;
+  const p=S.pyro;if(!p||TDV())return;
   const sh=Math.round(cam*.6);
   if(p.t<620){
     for(const f of p.fl){
@@ -4365,6 +4366,7 @@ const TIFO=['OUR HOUSE - OUR RULES','FOR THE BADGE','ALL OR NOTHING','WIN IT FOR
 function drawTifo(){
   const f=S.tifo;if(!f)return;f.t++;
   if(f.t>1500){S.tifo=null;return}
+  if(TDV())return;
   const sh=Math.round(cam*.6),k=Math.min(1,f.t/80),fade=f.t>1380?(1500-f.t)/120:1;
   let x=f.x-sh;if(x>W*1.2)x-=W*1.4;if(x<-W*.2)x+=W*1.4;
   const bw=176,bh=22,y=64-bh*k+Math.sin(f.t*.05)*1;
@@ -7226,7 +7228,7 @@ function buildMenu(m){
   case'about':
     sp.title='ABOUT KICKOFF 6128';sp.w=330;
     sp.lines=['AN ORIGINAL FIVE-A-SIDE FOOTBALL GAME','A TRIBUTE TO MATCH DAY II','AND THE 8-BIT CLASSICS OF THE AMSTRAD CPC','',
-      'VERSION 5.6','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
+      'VERSION 5.7','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
       'CLUB NAMES ARE USED FOR FUN ONLY','AND ARE NOT AFFILIATED OR OFFICIAL'];
     I.push({k:'act',label:'BACK',fn:back});
     break;
@@ -7633,7 +7635,7 @@ let instEv=null;
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();instEv=e});
 addEventListener('appinstalled',()=>{instEv=null});
 try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))addEventListener('load',()=>{navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).catch(()=>{})})}catch(e){}
-const APPV='5.6';
+const APPV='5.7';
 const UPD={nw:'',st:'',ck:0};
 function updNewer(a,b){const x=a.split('.').map(Number),y=b.split('.').map(Number);for(let i=0;i<4;i++){const p=x[i]||0,q=y[i]||0;if(p!==q)return p>q}return false}
 async function updCheck(manual){

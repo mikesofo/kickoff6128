@@ -34,6 +34,9 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 5.7
+- **Top-down fix:** stand tifo banners, flares and smoke no longer appear over the pitch in the top-down views (they are isometric-only).
+
 ### 5.6
 - **Update fix:** UPDATE TO Vx (RELOAD) refreshes the HTTP cache, clears the old service worker and caches, and reloads from a fresh address so the new version loads (GitHub Pages caches files for 10 minutes). Update check now also runs in a normal browser tab, a few seconds after opening and when a new service worker takes over. The service worker fetches the page, sw.js and the page address with revalidation, and registers with updateViaCache none.
 
