@@ -34,6 +34,32 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 5.6
+- **Update fix:** UPDATE TO Vx (RELOAD) refreshes the HTTP cache, clears the old service worker and caches, and reloads from a fresh address so the new version loads (GitHub Pages caches files for 10 minutes). Update check now also runs in a normal browser tab, a few seconds after opening and when a new service worker takes over. The service worker fetches the page, sw.js and the page address with revalidation, and registers with updateViaCache none.
+
+### 5.5
+- **Tidier menus:** short main menu with COMPETITIONS, CHALLENGES AND TRAINING, TEAM AND PLAYERS and RECORDS AND EXTRAS pages; MATCHDAY OPTIONS split into eight groups (search and pinned favourites still work across all); KEYS AND OPTIONS in four sections; pause menu keeps subs, plan and tactics up front with MATCH INFO and TOOLS AND COMMENTARY pages; QUIT MENU is now < BACK.
+
+### 5.4
+- **Realistic chants:** the stands sing with a crowd of detuned voices through vowel formants, breath noise, echo and stadium reverb instead of beeps. Three chants (OLE OLE, long NAME! shouts, name-name-name) followed by thicker, reverbed clapping.
+
+### 5.3
+- Fan signs stay in the stands: banners/flags are clipped to the stands, the fan chant text moved from the pitch into the stands (hidden in top-down views), none shown in the goal-replay camera.
+
+### 5.2
+- **Aftertouch:** after a pass, shot, lob, corner or free kick, hold a direction while the ball is in flight: sideways bends it, back dips it, forward floats it. Option AFTERTOUCH.
+- **Top-down surroundings:** crowd, floodlight corners, and ball boys, photographers, cameraman, dog and invader redrawn from above.
+- **View settings:** TOP-DOWN ZOOM, TOP-DOWN LOOK-AHEAD, MAP SIZE, MAP CORNER, MAP OPACITY.
+- The banana skin is now drawn on the pitch (it was missing in 4.10).
+- Tactics board and Set Piece Designer already existed (TACTICS > DRAW FORMATION, main menu SET PIECE DESIGNER).
+
+### 5.1
+- **Two top-down views:** VIEW now offers ISOMETRIC, TOP-DOWN SIDEWAYS (as 5.0) and TOP-DOWN VERTICAL (Sensible Soccer style, goals top and bottom; your team always attacks up and the controls are rotated to match; online games fall back to sideways).
+- **Passing map:** a transparent radar in the corner with all players, the ball, the camera window, the offside line and a dashed lane along your facing direction, to help long and through passes. PASSING MAP: OFF, TOP-DOWN VIEWS (default) or ALL VIEWS.
+
+### 5.0
+- **Top-down view:** KEYS AND OPTIONS > VIEW > TOP-DOWN gives an overhead Sensible Soccer style camera that scrolls in both directions, overhead player sprites (kit, boots, head, swinging arms and legs, keeper dives), boards along both touchlines and a larger ball. ISOMETRIC keeps the classic view. Controls and rules are identical.
+
 ### 4.10
 - **Matchday extras:** photographers behind both goals (flashes on shots and goals), a TV cameraman tracking the ball along the touchline, sprinklers before each kick-off, low dazzling sun at dusk (one end washed out, keeper there slightly worse), flags and scarves waved after goals, silly fan banners.
 - **Boots:** yellow, orange, white or mostly black, random per player.
