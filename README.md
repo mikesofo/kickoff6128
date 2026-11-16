@@ -34,6 +34,45 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 5.21
+- Panathinaikos: Zajec blond, everyone else black hair (also Zajec for Yugoslavia).
+
+### 5.20
+- Individual skin tone and hair colour for every club and national player and their benches.
+
+### 5.19
+- Corner kicks training drill with coach grading, more fan chants, match cards are an option (off by default).
+
+### 5.18
+- Colour-blind mode (team rings), menu text size, match autosave with CONTINUE MATCH, best-of series, rivalry tags, pre-match tactical cards.
+
+### 5.17
+- Fan mood system with effects on atmosphere and a small home boost (option FAN MOOD EFFECTS)
+- Storm or fog can abandon a match; postponed matches resume from the main menu (option ABANDONED MATCHES)
+- Coach feedback after every shot in training
+- Fan variety and richer ad boards (patterns, taglines, LED sweep)
+
+### 5.16
+- Player hair styles (short, afro, bald, long, headband, beard) in all views
+- PLAYER NUMBERS option: shirt / off / above players / both
+- GAMEPAD LAYOUT: PES STYLE context-sensitive button layout
+
+### 5.15
+- Visible shirt numbers (back, chest, side, top-down) with contrast colours; more player and ad-board detail
+- Ball physics: pitch-dependent bounce, spin swerve on landing
+- Captain argues with the referee and can be booked for dissent
+- SUBSTITUTIONS option: rolling, unlimited, on the fly (G key; CPU rotates tired players)
+- Match report page: shot map with xG, player ratings, save as picture
+
+### 5.14
+- Ad boards: two in three carry ads, in brand-style colours, with many more 1980s Greek brands; PROPO always present
+- Removed the stadium scoreboard from behind the pitch
+
+### 5.13
+- Chants rebuilt as shouted crowd voices with a bass drum on the beat
+- Offside: never in own half, never from throw-ins or other restarts
+- Greek spoken voice disabled (text commentary stays)
+
 ### 5.12
 - Keepers stop conceding slow long-range shots (they reliably gather or block slow balls)
 - Throw-ins are no longer affected by aftertouch
