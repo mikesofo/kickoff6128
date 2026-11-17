@@ -321,7 +321,7 @@ function derbyOf(x,y){return DERBIES.find(d=>(d.a===x&&d.b===y)||(d.a===y&&d.b==
 const DEFKEYS=[
   {left:'ArrowLeft',right:'ArrowRight',up:'ArrowUp',down:'ArrowDown',kick:'Space',lob:'KeyX',pass:'KeyC',warp:'KeyT',skill:'KeyV',through:'KeyB',press:'KeyN'},
   {left:'KeyJ',right:'KeyL',up:'KeyI',down:'KeyK',kick:'Enter',lob:'Period',pass:'Slash',warp:'Backslash',skill:'Comma',through:'KeyU',press:'KeyO'}];
-const O={gks:1,wood:1,cramp:1,cxk:{0:{},1:{}},cxp:{},cxt:{},gkc:1,ctr:1,view:0,map:1,at:1,atp:1,ban2:1,duel:1,bbc:1,mud:1,rtv:0,stb:1,glt:1,sgh:1,fth:0,psm:1,chs:0,adset:0,fkv:1,tdz:1,tdl:1,mps:1,mpc:0,mpa:1,fx:1,fun:1,swap:1,ads:1,glow:1,cpos:1,kon:1,kof:0,kox:0,stt:1,stc:0,coq:0,mgr:1,reel:1,cvd:0,rsc:1,pers:1,cs:{on:0,st:0,bd:0,pt:0,nm:'',t:['','','']},jdz:1,jsn:1,pdz:2,pud:1,xb:1,obm:0,strip:1,cz:1,cdt:1,hint:1,intro:0,fav:[],vm:4,vc:4,vf:4,vs:4,afk:1,tut:0,last:null,grs:1,adv:1,mom:2,dtn:1,bnc:1,asw:0,aswS:1,ib:1,gp:{k:0,a:1,s:4,v:2,w:5,t:3,pr:7,tr:6},hv:2,gs:0,aimg:1,curl:0,ctr:1,fog:1,cf:[null,null],stm:1,hts:1,lefty:0,spd:1,rdl:1,bcm:0,tun:1,spdD:null,clip:1,gr:0,wear:1,zoom:0,flt:0,psz:1,bb:1,tw:1,flf:1,rb:3,wch:1,boo:1,vr:1,prog:1,music:1,rq:1,sound:0,half:0,km:0,cm:0,skill:1,keep:[0,0],tac:[0,0],kit:[-1,-1],club:[0,1],v:2,pitch:0,dev:0,seen:0,replay:1,weather:4,tod:3,offs:1,fouls:1,pens:1,assist:1,ball:0,swipe:(typeof matchMedia!=='undefined'&&matchMedia('(pointer:coarse)').matches)?1:0,vib:1,tpad:0,bsz:1,ref:4,evt:1,inj:1,walk:1,pyro:1,boot:1,comm:1,pk:[0,0],fkt:[0,0],cap:[0,0],form:[0,0],sty:[0,0],mc:[0,0],sn:0,cb:0,tsz:0,mce:0,cor:[4,4],fk:[3,3],inv:5,iv:1,surf:0,stad:0,
+const O={gks:1,wood:1,cramp:1,cxk:{0:{},1:{}},cxp:{},cxt:{},gkc:1,ctr:1,view:0,map:1,at:1,atp:1,padp:1,ban2:1,duel:1,bbc:1,mud:1,rtv:0,stb:1,glt:1,sgh:1,fth:0,psm:1,chs:0,adset:0,fkv:1,tdz:1,tdl:1,mps:1,mpc:0,mpa:1,fx:1,fun:1,swap:1,ads:1,glow:1,cpos:1,kon:1,kof:0,kox:0,stt:1,stc:0,coq:0,mgr:1,reel:1,cvd:0,rsc:1,pers:1,cs:{on:0,st:0,bd:0,pt:0,nm:'',t:['','','']},jdz:1,jsn:1,pdz:2,pud:1,xb:1,obm:0,strip:1,cz:1,cdt:1,hint:1,intro:0,fav:[],vm:4,vc:4,vf:4,vs:4,afk:1,tut:0,last:null,grs:1,adv:1,mom:2,dtn:1,bnc:1,asw:0,aswS:1,ib:1,gp:{k:0,a:1,s:4,v:2,w:5,t:3,pr:7,tr:6},hv:2,gs:0,aimg:1,curl:0,ctr:1,fog:1,cf:[null,null],stm:1,hts:1,lefty:0,spd:1,rdl:1,bcm:0,tun:1,spdD:null,clip:1,gr:0,wear:1,zoom:0,flt:0,psz:1,bb:1,tw:1,flf:1,rb:3,wch:1,boo:1,vr:1,prog:1,music:1,rq:1,sound:0,half:0,km:0,cm:0,skill:1,keep:[0,0],tac:[0,0],kit:[-1,-1],club:[0,1],v:2,pitch:0,dev:0,seen:0,replay:1,weather:4,tod:3,offs:1,fouls:1,pens:1,assist:1,ball:0,swipe:(typeof matchMedia!=='undefined'&&matchMedia('(pointer:coarse)').matches)?1:0,vib:1,tpad:0,bsz:1,ref:4,evt:1,inj:1,walk:1,pyro:1,boot:1,comm:1,pk:[0,0],fkt:[0,0],cap:[0,0],form:[0,0],sty:[0,0],mc:[0,0],sn:0,cb:0,tsz:0,mce:0,cor:[4,4],fk:[3,3],inv:5,iv:1,surf:0,stad:0,
   names:DEFNAMES.slice(),nn:['HOLLAND','CCCP','ENGLAND','FRANCE','SPAIN','WEST GERMANY','ITALY','YUGOSLAVIA'],ne:['LIVERPOOL','REAL MADRID','AC MILAN','JUVENTUS','BAYERN','PORTO','BARCELONA','DYNAMO KIEV'],set:0,booth:1,keys:JSON.parse(JSON.stringify(DEFKEYS)),hcap:[0,0]};
 function saveOpt(){try{const N=NAMESETS.slice();N[SET]=O.names;localStorage.setItem('kickoff6128',JSON.stringify(Object.assign({},O,{names:N[0],nn:N[1],ne:N[2],set:SET})))}catch(e){}}
 /* ---------- achievements ---------- */
@@ -1276,8 +1276,8 @@ function basePadAct(btn){
   return null;
 }
 const PESPAD=[
-  {0:'pass',1:'lob',2:'kick',3:'through',5:'warp',6:'trap',7:'skill'},
-  {0:'lob',1:'kick',2:'press',4:'pass',5:'warp',6:'trap',7:'skill'}
+  {0:'pass',1:'lob',2:'kick',3:'through',6:'trap',7:'skill',11:'warp'},
+  {0:'lob',1:'kick',2:'press',4:'pass',5:'press',6:'trap',7:'skill',11:'warp'}
 ];
 function effPad(btn,ball){
   const o0=O.cxp[btn];
@@ -4044,6 +4044,7 @@ const INSTR=[
  ['PENALTY SHOOTOUT AND CUP','Penalty shootout (main menu): steer up and down to aim, hold Space to charge, release to shoot. Defending, steer a direction and press Space to dive. The Penalty Cup is a knockout of eight clubs decided on penalties; watch the NERVES bar, high nerves make your aim wobble.'],
  ['TRAINING AND CHALLENGES','Training (main menu): finishing with corner targets, free kicks over a wall, and a skills arena against three defenders. Daily challenge: a fresh scenario each day, with share codes for friends and a custom challenge builder.'],
  ['NEW IN 3.4','ADVANTAGE RULE: after a foul the referee may play on while the fouled team keeps the ball; if they lose it, play comes back for the free kick. MOMENTUM METER: a bar by the score shows who is on top, and with BAR + EFFECTS the dominant side is a little quicker and the crowd gets louder. SUNSET MATCHES: dusk games fade to night and the floodlights come on. On a SNOW pitch it snows and the lines slowly disappear until half time. SUBSTITUTES WARM UP on the touchline and celebrate your goals.'],
+ ['NEW IN 6.5','GAMEPAD NOW USES THE PES LAYOUT BY DEFAULT: X LOW PASS, CIRCLE LOB / CROSS, SQUARE SHOOT, TRIANGLE THROUGH BALL, R2 SKILL (FINESSE), L2 TRAP / WALL, L1 SWITCH PLAYER (CURSOR CHANGE), R1 PRESS. TIME WARP MOVED TO R3 (RIGHT STICK CLICK). THE GAME HAS NO SEPARATE DASH BUTTON: PLAYERS SPRINT BY THEMSELVES. THE CLASSIC LAYOUT IS STILL IN KEYS AND OPTIONS, GAMEPAD BUTTONS. FULL-TIME SAFETY NET: IF THE RESULT SCREEN IS EVER MISSING THE GAME NOW OPENS IT.'],
  ['NEW IN 6.4','THE STANDS REACT: banners in the crowd now answer the match - goals, a big lead, conceding, red cards, penalties and dull nil-nil spells (BANNERS REACT TO THE MATCH). DERBY CHANT DUELS: in a derby the home end sings from the left and the away end answers from the right. CHEEKY BALL BOYS: in the second half the home ball boy dawdles when his side leads and sprints when they trail. MUDDY GOALMOUTHS: in the second half the pitch around the goals is churned up and in wet weather players can slip. RETRO TV BROADCAST (options, view): VHS REPLAYS adds tape noise, a REW and PLAY counter and tape timecode to replays; FULL 80s TV adds scanlines, colour smear and a K6128 TV logo.'],
  ['NEW IN 6.3','PAUSE SUMMARY: while paused a LIVE panel beside the menu shows the score, possession, shots, corners, fouls and cards (all menus still work). STAMINA BAR above your player when he is tired. GOAL-LINE CHECK banner on very close goals (cm inside the post or under the bar). COACH SUBSTITUTION HINTS: when a player is exhausted or on a yellow and tired, the coach suggests a sub and the pause menu has a COACH SUGGESTS line that opens the subs list on him. FULL-TIME HIGHLIGHTS (options, off by default) plays your goals and saves before the result screen; ENTER skips a clip, ESC stops. OPTION PROFILES (keys and options) save and load three sets of options.'],
  ['NEW IN 6.2','FREE KICK STYLES: when you take a free kick press SKILL (V) to choose KNUCKLEBALL (a wobbling, unpredictable shot), CURLER, DRIVEN (low and hard) or DIPPER (rises then drops quickly); turn it off with FREE KICK STYLES in the options. AFTERTOUCH STRENGTH (LOW, MEDIUM, HIGH) in the options. CHANT STYLE (CROWD, SOFT, CHOIR, NO DRUM) in the sound options. EUROPEAN 1980s AD BOARDS (Philips, Canon, JVC, Fiat, Adidas, Martini, Heineken, Marlboro, Camel and more) are used automatically with the European clubs; AD BOARD BRANDS in the options now has BY TEAM SET, GREEK, GENERIC or EUROPEAN.'],
@@ -5450,6 +5451,11 @@ function banTick2(){
   if(S.half===1&&S.score[0]===0&&S.score[1]===0&&S.clock>S.halfLen*.45&&!S.banDull){S.banDull=1;banReact('dull',2)}
   if(S.half===0)S.banDull=0;
 }
+function endWatch(){
+  if(S.mode!=='end'){S.ewT=0;return}
+  if(S.menu.length||S.swap||S.swapMenu||S.replay||S.cere||S.ttx||S.cc||S.pg||S.sd||S.sm){S.ewT=0;return}
+  S.ewT=(S.ewT|0)+1;if(S.ewT>120){S.ewT=0;S.menu=[{id:'result',sel:0,lines:['FULL TIME',(S.score?S.score[0]+' - '+S.score[1]:'')]}]}
+}
 function subHintTick(){
   if(!O.sgh||S.mode!=='play'||S.menu.length||S.replay||S.tr||S.demo||S.pso||NET.role||!S.subs||!M||!M.teams||S.t%120!==7)return;
   if(S.shn){const d=S.t-S.shn.at;if(d>=0&&d<1500)return}
@@ -5596,7 +5602,7 @@ function rsTick(){
 function extraTick(){
   rsTick();fmTick();autoTick();
   springTick();scxTick();gkTick();shieldTick();windTick();swapTick();
-  mgrTick();medTick();walkOffTick();ambTick();bbTick();wallTick();fxTick();lostTick();banTick();blTick();atTick();fkxTick();subHintTick();banTick2();
+  mgrTick();medTick();walkOffTick();ambTick();bbTick();wallTick();fxTick();lostTick();banTick();blTick();atTick();fkxTick();subHintTick();banTick2();endWatch();
   if(S.mode==='play'&&!S.menu.length&&!S.wo&&!S.pg&&!S.tn&&!S.tr&&!S.pso&&!S.demo&&!NET.role&&S.tod===2&&O.flf){
     if(S.flAt===undefined)S.flAt=(!S.flDone&&Math.random()<.35)?Math.floor(S.halfLen*(.3+Math.random()*.5)):-1;
     if(S.flAt>=0&&!S.pause&&!S.fOut&&S.clock>=S.flAt){S.fOut={t:0,dur:380+((Math.random()*260)|0)};S.flDone=1;S.flAt=-1;S.msg='FLOODLIGHT FAILURE';S.msgT=120;say('THE FLOODLIGHTS HAVE FAILED! PLAY IS SUSPENDED');whistle()}
@@ -7511,7 +7517,7 @@ function buildMenu(m){
     sp.title='GAMEPAD BUTTONS';
     I.push(quitItem());
     I.push(oi('GAMEPAD LAYOUT','padp',['CLASSIC','PES STYLE']));
-    if(O.padp===1)sp.lines=['PES STYLE: X PASS  TRI THROUGH  CIRCLE LOB  SQUARE SHOOT','R2 SKILL  R1 TIME WARP  L2 TRAP  WITHOUT BALL: X JOCKEY','CIRCLE TACKLE  SQUARE PRESS  L1 SWITCH PLAYER'];
+    if(O.padp===1)sp.lines=['PES STYLE: X LOW PASS  O LOB / CROSS  SQUARE SHOOT','TRIANGLE THROUGH BALL  R2 SKILL (FINESSE)  L2 TRAP / WALL','L1 SWITCH PLAYER  R1 PRESS  R3 TIME WARP','WITHOUT BALL: X JOCKEY  O TACKLE  SQUARE PRESS'];
     const gp=padOf0();I.push({k:'txt',label:'PAD',val:()=>gp?'CONNECTED':'NOT FOUND (PRESS A BUTTON)',fn:()=>{}});
     GPACTS.forEach(a=>I.push({k:'key',label:a[0],val:()=>'BUTTON '+(O.gp[a[1]]+1),fn:()=>{S.edit={kind:'pad',act:a[1],held:null}}}));
     I.push({k:'act',label:'PRESET: FACE BUTTONS',fn:()=>{Object.assign(O.gp,{k:0,a:1,s:2,v:3,w:5,t:4,pr:7,tr:6});saveOpt();S.msg='PAD SET';S.msgT=60}});
@@ -7770,7 +7776,7 @@ function buildMenu(m){
   case'about':
     sp.title='ABOUT KICKOFF 6128';sp.w=330;
     sp.lines=['AN ORIGINAL FIVE-A-SIDE FOOTBALL GAME','A TRIBUTE TO MATCH DAY II','AND THE 8-BIT CLASSICS OF THE AMSTRAD CPC','',
-      'VERSION 6.4','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
+      'VERSION 6.5','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
       'CLUB NAMES ARE USED FOR FUN ONLY','AND ARE NOT AFFILIATED OR OFFICIAL'].concat(ERRL?['','LAST ERROR: '+ERRL]:[]);
     I.push({k:'act',label:'BACK',fn:back});
     break;
@@ -8184,7 +8190,7 @@ let instEv=null;
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();instEv=e});
 addEventListener('appinstalled',()=>{instEv=null});
 try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))addEventListener('load',()=>{navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).catch(()=>{})})}catch(e){}
-const APPV='6.4';
+const APPV='6.5';
 const UPD={nw:'',st:'',ck:0};
 function updNewer(a,b){const x=a.split('.').map(Number),y=b.split('.').map(Number);for(let i=0;i<4;i++){const p=x[i]||0,q=y[i]||0;if(p!==q)return p>q}return false}
 async function updCheck(manual){
