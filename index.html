@@ -234,7 +234,7 @@ const ROSTER=[
  /*PANACHAIKI*/[['DESYLLAS',3],['KYZAS',3,2,4],['KOURBANAS',3,2,4],['VAITSIS',4,5,2],['CHARDALIAS',4,4,2]]];
 const BENCH={0:['MAVRIDIS','KAROULIAS','VLACHOS','KALANTZIS','DIMOPOULOS'],1:['KRITIKOPOULOS','ARDIZOGLOU'],2:['KLOPAS','PAPAIOANNOU','KARAGIOZOPOULOS','PATIKAS','PITTAS'],3:['BERIOS','MARANGOS','ZAKKAS','KOUTROPOULOS','CHATZIMOUSIADIS'],4:['OIKONOMIDIS','GIOUKOUDIS','BAHTIC','MOLLER','BALLIS'],5:['VASILAKOS','SINGAS','ROUSSOMANIS','IORDANIDIS','BORBOKIS'],6:['PAPAVASILEIOU','VERA','PERSIAS','VASILIOU','BATSINILAS'],7:['DRAKOPOULOS','ZIKOS','VOSDOU','ZERDEVAS','PANAGIOTIDIS']};
 const SHIRT=[1,4,5,8,9];
-let SET=0;const sfx=()=>SET?'-n':'';
+let SET=0;const sfx=()=>['','-n','-e'][SET];
 let CUST={};
 function loadCust(){CUST={};try{const c=JSON.parse(localStorage.getItem('kickoff6128-custom'+sfx())||'null');if(c&&typeof c==='object')for(const k in c){if(!(k>=0&&k<8)||typeof c[k]!=='object')continue;CUST[k]={};for(const j in c[k]){const a=c[k][j];if(!(j>=0&&j<10)||!a||typeof a!=='object')continue;const o={};if(typeof a.nm==='string')o.nm=a.nm.replace(/[^A-Za-z0-9 .'-]/g,'').toUpperCase().slice(0,12);for(const q of['num','pac','sht','tkl','gk']){const v=+a[q];if(a[q]!=null&&isFinite(v))o[q]=q==='num'?Math.max(1,Math.min(99,v|0)):Math.max(1,Math.min(5,v|0))}if(a.gs!=null&&+a.gs>=0&&+a.gs<4)o.gs=+a.gs|0;CUST[k][j]=o}}}catch(e){CUST={}}}loadCust();
 function saveCust(){try{localStorage.setItem('kickoff6128-custom'+sfx(),JSON.stringify(CUST))}catch(e){}}
@@ -321,9 +321,9 @@ function derbyOf(x,y){return DERBIES.find(d=>(d.a===x&&d.b===y)||(d.a===y&&d.b==
 const DEFKEYS=[
   {left:'ArrowLeft',right:'ArrowRight',up:'ArrowUp',down:'ArrowDown',kick:'Space',lob:'KeyX',pass:'KeyC',warp:'KeyT',skill:'KeyV',through:'KeyB',press:'KeyN'},
   {left:'KeyJ',right:'KeyL',up:'KeyI',down:'KeyK',kick:'Enter',lob:'Period',pass:'Slash',warp:'Backslash',skill:'Comma',through:'KeyU',press:'KeyO'}];
-const O={gks:1,wood:1,cramp:1,cxk:{0:{},1:{}},cxp:{},cxt:{},gkc:1,ctr:1,view:0,map:1,at:1,tdz:1,tdl:1,mps:1,mpc:0,mpa:1,fx:1,fun:1,swap:1,ads:1,glow:1,cpos:1,kon:1,kof:0,kox:0,stt:1,stc:0,coq:0,mgr:1,reel:1,cvd:0,rsc:1,pers:1,cs:{on:0,st:0,bd:0,pt:0,nm:'',t:['','','']},jdz:1,jsn:1,pdz:2,pud:1,xb:1,obm:0,strip:1,cz:1,cdt:1,hint:1,intro:0,fav:[],vm:4,vc:4,vf:4,vs:4,afk:1,tut:0,last:null,grs:1,adv:1,mom:2,dtn:1,bnc:1,asw:0,aswS:1,ib:1,gp:{k:0,a:1,s:4,v:2,w:5,t:3,pr:7,tr:6},hv:2,gs:0,aimg:1,curl:0,ctr:1,fog:1,cf:[null,null],stm:1,hts:1,lefty:0,spd:1,rdl:1,bcm:0,tun:1,spdD:null,clip:1,gr:0,wear:1,zoom:0,flt:0,psz:1,bb:1,tw:1,flf:1,rb:3,wch:1,boo:1,vr:1,prog:1,music:1,rq:1,sound:0,half:0,km:0,cm:0,skill:1,keep:[0,0],tac:[0,0],kit:[-1,-1],club:[0,1],v:2,pitch:0,dev:0,seen:0,replay:1,weather:4,tod:3,offs:1,fouls:1,pens:1,assist:1,ball:0,swipe:(typeof matchMedia!=='undefined'&&matchMedia('(pointer:coarse)').matches)?1:0,vib:1,tpad:0,bsz:1,ref:4,evt:1,inj:1,walk:1,pyro:1,boot:1,comm:1,pk:[0,0],fkt:[0,0],cap:[0,0],form:[0,0],sty:[0,0],mc:[0,0],sn:0,cb:0,tsz:0,mce:0,cor:[4,4],fk:[3,3],inv:5,iv:1,surf:0,stad:0,
-  names:DEFNAMES.slice(),nn:['HOLLAND','CCCP','ENGLAND','FRANCE','SPAIN','WEST GERMANY','ITALY','YUGOSLAVIA'],set:0,booth:1,keys:JSON.parse(JSON.stringify(DEFKEYS)),hcap:[0,0]};
-function saveOpt(){try{localStorage.setItem('kickoff6128',JSON.stringify(Object.assign({},O,{names:SET?NAMESETS[0]:O.names,nn:SET?O.names:O.nn,set:SET})))}catch(e){}}
+const O={gks:1,wood:1,cramp:1,cxk:{0:{},1:{}},cxp:{},cxt:{},gkc:1,ctr:1,view:0,map:1,at:1,atp:1,ban2:1,duel:1,bbc:1,mud:1,rtv:0,stb:1,glt:1,sgh:1,fth:0,psm:1,chs:0,adset:0,fkv:1,tdz:1,tdl:1,mps:1,mpc:0,mpa:1,fx:1,fun:1,swap:1,ads:1,glow:1,cpos:1,kon:1,kof:0,kox:0,stt:1,stc:0,coq:0,mgr:1,reel:1,cvd:0,rsc:1,pers:1,cs:{on:0,st:0,bd:0,pt:0,nm:'',t:['','','']},jdz:1,jsn:1,pdz:2,pud:1,xb:1,obm:0,strip:1,cz:1,cdt:1,hint:1,intro:0,fav:[],vm:4,vc:4,vf:4,vs:4,afk:1,tut:0,last:null,grs:1,adv:1,mom:2,dtn:1,bnc:1,asw:0,aswS:1,ib:1,gp:{k:0,a:1,s:4,v:2,w:5,t:3,pr:7,tr:6},hv:2,gs:0,aimg:1,curl:0,ctr:1,fog:1,cf:[null,null],stm:1,hts:1,lefty:0,spd:1,rdl:1,bcm:0,tun:1,spdD:null,clip:1,gr:0,wear:1,zoom:0,flt:0,psz:1,bb:1,tw:1,flf:1,rb:3,wch:1,boo:1,vr:1,prog:1,music:1,rq:1,sound:0,half:0,km:0,cm:0,skill:1,keep:[0,0],tac:[0,0],kit:[-1,-1],club:[0,1],v:2,pitch:0,dev:0,seen:0,replay:1,weather:4,tod:3,offs:1,fouls:1,pens:1,assist:1,ball:0,swipe:(typeof matchMedia!=='undefined'&&matchMedia('(pointer:coarse)').matches)?1:0,vib:1,tpad:0,bsz:1,ref:4,evt:1,inj:1,walk:1,pyro:1,boot:1,comm:1,pk:[0,0],fkt:[0,0],cap:[0,0],form:[0,0],sty:[0,0],mc:[0,0],sn:0,cb:0,tsz:0,mce:0,cor:[4,4],fk:[3,3],inv:5,iv:1,surf:0,stad:0,
+  names:DEFNAMES.slice(),nn:['HOLLAND','CCCP','ENGLAND','FRANCE','SPAIN','WEST GERMANY','ITALY','YUGOSLAVIA'],ne:['LIVERPOOL','REAL MADRID','AC MILAN','JUVENTUS','BAYERN','PORTO','BARCELONA','DYNAMO KIEV'],set:0,booth:1,keys:JSON.parse(JSON.stringify(DEFKEYS)),hcap:[0,0]};
+function saveOpt(){try{const N=NAMESETS.slice();N[SET]=O.names;localStorage.setItem('kickoff6128',JSON.stringify(Object.assign({},O,{names:N[0],nn:N[1],ne:N[2],set:SET})))}catch(e){}}
 /* ---------- achievements ---------- */
 const ACH=[
  ['first','FIRST BLOOD','SCORE YOUR FIRST GOAL'],
@@ -376,12 +376,13 @@ function loadOpt(){
     if(!(O.adv===0||O.adv===1))O.adv=1;if(!(O.mom>=0&&O.mom<=2))O.mom=2;if(!(O.dtn===0||O.dtn===1))O.dtn=1;if(!(O.bnc===0||O.bnc===1))O.bnc=1;
     if(!(O.jdz>=0&&O.jdz<=2))O.jdz=1;if(!(O.jsn>=0&&O.jsn<=2))O.jsn=1;if(!(O.pdz>=0&&O.pdz<=4))O.pdz=2;O.pud=O.pud===0?0:1;
     O.xb=O.xb===0?0:1;O.obm=O.obm?1:0;O.strip=O.strip===0?0:1;if(!(O.cz>=0&&O.cz<=2))O.cz=1;if(!(O.cdt>=0&&O.cdt<=2))O.cdt=1;if(!(O.hint>=0&&O.hint<=2))O.hint=1;if(!(O.intro>=0&&O.intro<=2))O.intro=0;if(!Array.isArray(O.fav)||O.fav.some(v=>typeof v!=='string'))O.fav=[];
-    for(const q of['vm','vc','vf','vs'])if(!(O[q]>=0&&O[q]<=4))O[q]=4;O.afk=O.afk===0?0:1;O.tut=O.tut?1:0;
+    for(const q of['vm','vc','vf','vs'])if(!(O[q]>=0&&O[q]<=4))O[q]=4;O.afk=O.afk===0?0:1;O.tut=O.tut?1:0;if(!(O.atp>=0&&O.atp<=2))O.atp=1;if(!(O.chs>=0&&O.chs<=3))O.chs=0;if(!(O.adset>=0&&O.adset<=3))O.adset=0;O.fkv=O.fkv===0?0:1;for(const q of['stb','glt','sgh','psm','ban2','duel','bbc','mud'])O[q]=O[q]===0?0:1;if(!(O.rtv>=0&&O.rtv<=2))O.rtv=0;O.fth=O.fth?1:0;
     if(O.last&&!(Array.isArray(O.last.teams)&&Array.isArray(O.last.spec)))O.last=null;
     if(!(O.grs===0||O.grs===1))O.grs=1;if(!(O.asw>=0&&O.asw<=2))O.asw=0;if(!(O.aswS>=0&&O.aswS<=2))O.aswS=1;if(!(O.ib>=0&&O.ib<=2))O.ib=1;
     {const gd={k:0,a:1,s:4,v:2,w:5,t:3,pr:7,tr:6};if(!O.gp||typeof O.gp!=='object')O.gp={};for(const q in gd)if(!(O.gp[q]>=0&&O.gp[q]<32))O.gp[q]=gd[q];else O.gp[q]|=0}
+    if(!Array.isArray(O.ne)||O.ne.length!==8||O.ne.some(v=>typeof v!=='string'))O.ne=['LIVERPOOL','REAL MADRID','AC MILAN','JUVENTUS','BAYERN','PORTO','BARCELONA','DYNAMO KIEV'];
     O.nn=O.nn.map(v=>v==='GERMANY'?'WEST GERMANY':v);if(SET===1&&O.names)O.names=O.names.map(v=>v==='GERMANY'?'WEST GERMANY':v);
-    if(!(O.set===0||O.set===1))O.set=0;if(!(O.booth===0||O.booth===1))O.booth=1;
+    if(!(O.set>=0&&O.set<=2))O.set=0;if(!(O.booth===0||O.booth===1))O.booth=1;
     if(o.v!==2){O.names=DEFNAMES.slice();O.kit=[-1,-1];O.club=[0,1]}
     O.v=2;
     if(o.hv!==1&&o.hv!==2)O.half=0;if(o.hv!==2)O.gs=0;O.hv=2;if(!(O.gs>=-50&&O.gs<=50))O.gs=0;
@@ -398,7 +399,7 @@ function loadOpt(){
   }catch(e){}
 }
 loadOpt();
-const NAMESETS=[O.names,O.nn];
+const NAMESETS=[O.names,O.nn,O.ne];
 
 const S={mode:'menu',menu:[],edit:null,replay:null,rbuf:[],conf:[],t:0,clock:0,halfLen:1,half:0,flip:0,score:[0,0],pause:0,msg:'',msgT:0,diff:1,
   km:0,owner:null,after:null,paused:false,scorer:0,hum:[false,false],st:null,pf:0,pso:null,penT:0,off:null,sp:null,card:null,fl:[],warp:null,shake:0,trail:[],tod:0,wea:0,wet:false,wmax:0,wang:0,flash:0,rain:[],surf:0,stad:0,tr:null,derby:null,red:[],reds:[],mul:[1,1],ban:[0,0],invDone:false,invT:1e9};
@@ -864,6 +865,12 @@ function biasItem(){return{k:'opt',label:'REFEREE FAVOURS',val:biasName,step:d=>
 const RQ_OFF=[0,.06,.14,.28],RQ_FOU=[0,.05,.12,.25],RQ_PH=[0,.04,.1,.22],RQ_HARSH=[0,.04,.1,.2],RQ_PHO=[0,.03,.08,.16];
 const rqv=t=>t[S.rq==null?1:S.rq]||0;
 const WC=19,WR=8;
+function mudUp(a){
+  if(!O.mud||!S.wear||S.tr||S.demo||!O.wear)return;
+  for(const gx of[X0+14,X1-14])for(let dy=-26;dy<=26;dy+=10)for(let dx=-12;dx<=12;dx+=12)wearAdd(gx+dx*(gx<CX?1:-1),CY+dy,a);
+  for(const gx of[X0+24,X1-24])wearAdd(gx,CY,a*.8);
+  wearAdd(CX,CY,a*.5);
+}
 function wearAt(x,y){const w=S.wear;if(!w||!O.wear||S.tr)return 0;return w[clamp(((y-Y0)/20.5)|0,0,WR-1)*WC+clamp(((x-X0)/16)|0,0,WC-1)]}
 function wearAdd(x,y,a){const w=S.wear;if(!w)return;const i=clamp(((y-Y0)/20.5)|0,0,WR-1)*WC+clamp(((x-X0)/16)|0,0,WC-1);w[i]=Math.min(1,w[i]+a)}
 function matchMin(c){const cl=Math.min(c==null?S.clock:c,S.halfLen||1);return S.dc?75+Math.floor(cl/(S.halfLen||1)*15):S.half>=2?Math.min(120,90+(S.half-2)*15+Math.floor(cl/(S.halfLen||1)*15)):Math.min(90,S.half*45+Math.floor(cl/(S.halfLen||1)*45))}
@@ -916,6 +923,7 @@ function refStep(){
   R.x+=R.vx;R.y+=R.vy;R.an+=Math.hypot(R.vx,R.vy);
 }
 const L_AST=['OFF','STANDARD','STRONG','VERY STRONG','LOCK-ON'],ASSL=[null,{pw:.55,d:150,m:16,pull:.75},{pw:.45,d:185,m:30,pull:.88},{pw:.35,d:220,m:48,pull:.96},{pw:.25,d:260,m:80,pull:1}];
+const L_FKV=['FREE AIM','KNUCKLEBALL','CURLER','DRIVEN','DIPPER'];
 const L_CST=['FREE AIM','NEAR POST','FAR POST','EDGE OF BOX','SHORT'],CSW=1;
 function cornerAim(p,sc){
   const sp=S.sp,cs=sp.cs,sg=sp.y<CY?-1:1,gl=sp.tm?X0:X1,dA=sp.tm?-1:1;
@@ -949,6 +957,15 @@ function kickBall(p,dx,dy,power,spin,lob){
     S.sp.cov=1;const c=cornerAim(p,(1-clamp(power,.3,1))*14);dx=c.dx;dy=c.dy;power=c.pw;spin=c.spin;lob=c.lob;S.pf=1;
     say(['','THE NEAR POST CORNER','A FAR POST DELIVERY','PULLED BACK TO THE EDGE OF THE BOX','A SHORT CORNER'][S.sp.cs]);
   }
+  S.fkx=null;
+  if(S.sp&&S.sp.kind==='FREE'&&S.sp.taker===p&&!p.gk&&S.sp.fv>0&&O.fkv&&!S.pso&&!S.tr&&HU.some(h=>h.ctrl===p)){
+    const fv=S.sp.fv,sg=(spin&&Math.abs(spin)>.01)?Math.sign(spin):(p.y<CY?-1:1);
+    if(fv===1){spin=0;lob=false;power=Math.max(power,.82);S.fkx={k:1,t:0,ph:Math.random()*6.28}}
+    else if(fv===2){lob=true;power=Math.max(power,.7);spin=sg*clamp(Math.max(Math.abs(spin||0)*1.5,.075),0,.18)}
+    else if(fv===3){lob=false;power=1;spin=0}
+    else if(fv===4){lob=true;power=Math.max(power,.82);spin=(spin||0)*.5;S.fkx={k:4,t:0}}
+    say(['','A KNUCKLEBALL!','A CURLING FREE KICK','A DRIVEN FREE KICK','A DIPPING FREE KICK'][fv]);
+  }
   if(S.sp&&S.sp.kind==='PEN'&&S.sp.taker===p&&!p.gk){
     const st=S.penSt||0;
     if(st===2&&!p.stutDone){
@@ -964,7 +981,7 @@ function kickBall(p,dx,dy,power,spin,lob){
     S.penUsed=st;
   }
   if(S.lastK&&S.lastK.tm===p.tm&&S.lastK.i!==p.i)S.pk={tm:p.tm,i:S.lastK.i,t:S.t};
-  S.lastK={tm:p.tm,i:p.i};
+  S.lastK={tm:p.tm,i:p.i,t:S.t,gk:!!p.gk};
   {const hh=O.at&&!S.demo&&!S.pso&&!S.tr&&!NET.role&&power>=.38&&!(S.sp&&S.sp.kind==='THROW'&&S.sp.taker===p)?HU.find(q=>q.ctrl===p&&!q.net):null;S.at=hh?{h:hh,p,t:0,k:S.lastK}:null}
   const AS=S.diff===3?null:ASSL[O.assist|0];
   if(AS&&!lob&&!S.pf&&power>=AS.pw&&!p.gk&&!S.pso&&HU.some(h=>h.ctrl===p)){
@@ -1069,9 +1086,9 @@ function planOf(team){
   if(O.pers&&!S.tr&&!S.pso&&!S.dc&&!S.demo&&S.mode==='play'&&S.halfLen>0&&M.teams&&!S.hum[sideOf(team)]){const fr=(S.half*S.halfLen+S.clock)/(2*S.halfLen),d2=S.score[team]-S.score[1-team];if(fr>.42){if(d2>=2)return 1;if(d2<=-2)return 2}}
   return 0;
 }
-const PERS=[0,1,2,2,1,2,3,3],PERSN=[1,3,0,2,1,0,3,2],PERSNAME=['BALANCED','PRESS HIGH','COUNTER ATTACK','PARK THE BUS'];
+const PERS=[0,1,2,2,1,2,3,3],PERSN=[1,3,0,2,1,0,3,2],PERSE=[1,2,1,3,0,2,0,1],PERSNAME=['BALANCED','PRESS HIGH','COUNTER ATTACK','PARK THE BUS'];
 const smartOk=team=>O.pers&&!S.tr&&!S.pso&&!S.dc&&!S.demo&&M.teams&&!S.hum[sideOf(team)];
-function persOf(team){return smartOk(team)?((SET?PERSN:PERS)[M.teams[team]]||0):0}
+function persOf(team){return smartOk(team)?(([PERS,PERSN,PERSE][SET])[M.teams[team]]||0):0}
 function styOf(team){const pl=planOf(team);if(pl===1)return 3;if(pl===2)return 1;if(S.mgB&&S.mgB[team]>0&&smartOk(team))return 1;return O.sty[team]||persOf(team)}
 function ctrapRoll(t){if(!O.ctr)return false;if(!S.ctr||S.ctr.h!==S.half){const p=[.15,.25,.4,.5][S.diff];S.ctr={h:S.half,v:[Math.random()<p,Math.random()<p]}}return S.ctr.v[t]}
 function trapOn(team){return !!((S.trap&&S.trap[team])||(smartOk(team)&&(styOf(team)===1||(styOf(team)===0&&ctrapRoll(team)))))}
@@ -1307,6 +1324,10 @@ function doLunge(p,sd,sp){
   const wm=S.wet?1.2:1,tx=p.fx*sp*1.9*wm,ty=p.fy*sp*1.9*wm;p.lunge-=S.wet?.8:1;if(p.lunge<0)p.lunge=0;
   const o=S.owner;
   let victim=null;
+  if(o&&o.gk&&o.tm!==sd&&dist(p,o)<9&&!S.pso&&!S.tr&&Math.abs(o.x-(o.tm?X1:X0))<44){
+    if(O.fouls&&!S.sp&&Math.random()<.5){foul(p,o);p.lunge=0;return[tx,ty]}
+    p.fall=18;p.cd=40;p.lunge=0;p.vx=p.vy=0;S.msg='KEEPER HOLDS ON';S.msgT=30;return[0,0];
+  }
   if(o&&o.tm!==sd&&dist(p,o)<9)victim=o;
   else for(const q of players){
     if(q.tm!==sd&&q!==o&&!q.gk&&dist(p,q)<5.5&&Math.hypot(q.vx,q.vy)>.3){victim=q;break}
@@ -1337,8 +1358,8 @@ function doLunge(p,sd,sp){
 
 /* ---------- set pieces and fouls ---------- */
 function startSet(kind,tm,x,y,ex){
-  S.off=null;
-  if(kind==='PEN')kml('PENALTY AWARDED');
+  S.off=null;S.ind=null;S.gkT=0;
+  if(kind==='PEN'){kml('PENALTY AWARDED');banReact('pen',2)}
   if(kind==='CORNER')momAdd(tm,.08);
   if(S.wallOn)clearWall();
   const gl=tm?X0:X1,dA=tm?-1:1;
@@ -1589,7 +1610,7 @@ function foulCommit(p,v,card,inBox){
   injure(v,.025*(S.derby?1+.3*S.derby.lv:1)*(card===2?2:1));
 }
 function sendOff(p){
-  const team=teamOf(p.tm);
+  const team=teamOf(p.tm);banReact('red',2);
   S.red.push({team,i:p.i});pt(p,-3);
   if(!S.demo&&!S.tr){const wk=Object.assign({},p,{vx:0,vy:0,lunge:0,dive:null,hold:0,cd:0,fall:0});(S.offW=S.offW||[]).push({p:wk,t:0});if(S.card&&S.card.p===p){S.card.p=wk;S.card.t=Math.max(S.card.t,200)}}
   if(M.teams)S.reds.push(M.teams[team]);
@@ -1773,7 +1794,7 @@ function setPieceStep(){
     }
   }
   if(S.pso&&sp.kind==='PEN'&&sp.t===70&&!HU.some(h=>h.ctrl===t))whistle();
-  if(!HU.some(h=>h.ctrl===t)&&sp.t>(sp.kind==='PEN'?90:70+(sp.tw?sp.dl:0)+(sp.kind==='FREE'?(qfkAI(sp)?-44:8):0))&&!S.pause)aiSet(sp);
+  if(!HU.some(h=>h.ctrl===t)&&sp.t>(sp.kind==='PEN'?90:70+(sp.tw?sp.dl:0)+(sp.bbd||0)+(sp.kind==='FREE'?(qfkAI(sp)?-44:8):0))&&!S.pause)aiSet(sp);
   else if(sp.kind==='THROW'&&sp.t>900)aiSet(sp);
 }
 
@@ -1832,6 +1853,7 @@ function humanStep(h){
   const sp=(p.gk?.9:.98)*(has?.94:1)*(p.boost>0?1.28:1)*(p.scr>0?1.18:1);
   const dead=!!(S.sp&&S.sp.taker===p&&S.sp.kind!=='THROW');
   if(pressV&&dead&&S.sp.kind==='PEN'&&S.sp.taker===p){S.penSt=((S.penSt||0)+1)%4;beep(520,.05,'square',.04)}
+  if(pressV&&dead&&S.sp.kind==='FREE'&&S.sp.taker===p&&O.fkv&&!p.gk){S.sp.fv=((S.sp.fv||0)+1)%5;beep(520,.05,'square',.04)}
   if(pressV&&dead&&S.sp.kind==='CORNER'&&S.sp.taker===p){S.sp.cs=((S.sp.cs||0)+1)%5;S.sp.rt=[null,0,1,3,2][S.sp.cs];beep(520,.05,'square',.04)}
   if(S.pso&&dead&&S.sp.kind==='PEN'){
     h.aim=clamp((h.aim||0)+iy*.9,-20,20);
@@ -2173,12 +2195,12 @@ function aiMove(p){
     if(S.prs&&S.prs.sd===p.tm&&S.prs.set.has(p)&&owner&&owner.tm!==p.tm){
       tx=owner.x+owner.vx*3;ty=owner.y+owner.vy*3;chase=true;
       if(p.st!=null)p.st=Math.max(.2,p.st-.0007);
-      if(!p.lunge&&p.tc<=0&&dist(p,owner)<12&&dist(p,owner)>5&&Math.random()<.004){p.fx=(owner.x-p.x)/dist(p,owner);p.fy=(owner.y-p.y)/dist(p,owner);p.lunge=10;p.tc=80}
+      if(!owner.gk&&!p.lunge&&p.tc<=0&&dist(p,owner)<12&&dist(p,owner)>5&&Math.random()<.004){p.fx=(owner.x-p.x)/dist(p,owner);p.fy=(owner.y-p.y)/dist(p,owner);p.lunge=10;p.tc=80}
     }
   }
   if(!chase&&owner&&owner.tm===p.tm&&p!==owner){const lm=offLimit(p.tm);tx=p.tm?Math.max(tx,lm):Math.min(tx,lm)}
   p.th--;
-  if(cpu&&!p.lunge&&p.tc<=0&&owner&&owner.tm!==p.tm){const dd=dist(p,owner);if(dd<12&&dd>5&&Math.random()<.0035*[1,1.6,1,.6][styOf(teamOf(p.tm))]*(.8+.1*(p.rt?p.rt.tkl:3))*(S.derby?.7:1)){p.fx=(owner.x-p.x)/dd;p.fy=(owner.y-p.y)/dd;p.lunge=10;p.tc=80}}
+  if(cpu&&!p.lunge&&p.tc<=0&&owner&&!owner.gk&&owner.tm!==p.tm){const dd=dist(p,owner);if(dd<12&&dd>5&&Math.random()<.0035*[1,1.6,1,.6][styOf(teamOf(p.tm))]*(.8+.1*(p.rt?p.rt.tkl:3))*(S.derby?.7:1)){p.fx=(owner.x-p.x)/dd;p.fy=(owner.y-p.y)/dd;p.lunge=10;p.tc=80}}
   if(!p.gk&&!p.jz&&p.cd<=0&&ball.z>9&&ball.z<26&&dist(p,ball)<16&&Math.random()<.3)jump(p);
   if(owner===p&&cpu&&!p.gk){
     const gx=p.tm?X0:X1,dg=Math.abs(gx-p.x);
@@ -2217,7 +2239,17 @@ function separate(){
 
 /* physics 4.1: drag grows a little with speed; rolling balls lose a fixed amount (they stop sooner); livelier bounce */
 const airFr=(vx,vy)=>.9972-.00045*Math.hypot(vx,vy);
+function gkBack(q){
+  return !!(O.fouls&&!S.tr&&!S.pso&&!S.sp&&S.lastK&&S.lastK.tm===q.tm&&!S.lastK.gk&&lastTouch===q.tm&&S.t-S.lastK.t<300);
+}
 function ballStep(){
+  /* 5 second rule: a keeper may not keep the ball in his hands longer than that */
+  const po=(S.owner&&S.owner.gk)?S.owner:players.find(q=>q.gk&&q.hold>0);
+  if(po&&!S.sp&&!S.tr&&!S.pso&&!S.demo&&Math.abs(po.x-(po.tm?X1:X0))<34&&Math.abs(po.y-CY)<38){
+    if((S.gkT=(S.gkT|0)+1)>300&&O.fouls){const k=po;S.gkT=0;S.owner=null;for(const q of players)q.hold=0;
+      say('THE KEEPER HAS HELD IT FOR TOO LONG - INDIRECT FREE KICK');S.msg='5 SECOND RULE';S.msgT=60;
+      const t=startSet('FREE',1-k.tm,clamp(k.x,X0+8,X1-8),k.y);S.ind={k:S.lastK,tm:1-k.tm};return}
+  }else S.gkT=0;
   const hk=players.find(q=>q.gk&&q.hold>0);
   if(hk){
     hk.hold--;
@@ -2229,13 +2261,21 @@ function ballStep(){
     return;
   }
   let best=null,bd=9;
+  const sb=Math.hypot(ball.vx,ball.vy);
+  let og=(S.owner&&S.owner.gk&&!S.owner.dive&&!S.tr&&!S.sp)?S.owner:null;
+  if(!og&&!S.sp&&!S.tr&&sb<2.6){/* a loose ball in his own area: the keeper claims it with his hands unless it was passed back */
+    for(const q of players)if(q.gk&&!q.dive&&q.cd<=0&&Math.abs(ball.x-(q.tm?X1:X0))<34&&Math.abs(ball.y-CY)<38&&dist(q,ball)<(sb<1.8?12:7)&&!gkBack(q)){og=q;break}
+  }
+  const ogIn=!!(og&&og.cd<=0&&Math.abs(og.x-(og.tm?X1:X0))<44&&Math.abs(og.y-CY)<44&&sb<2.6&&dist(og,ball)<13);
+
   for(const p of players){
+    if(ogIn&&!p.gk&&p.tm!==og.tm)continue;/* a keeper with the ball at his feet is not robbed by attackers */
     if(S.sp&&p!==S.sp.taker)continue;
     if(S.pso&&!p.gk&&!S.sp)continue;
     if(p.wall)continue;
     const dv=!!(p.dive&&p.dive.t<p.dive.dur+4);
     if(p.cd>0||(!p.gk&&p.jz>2.5)||ball.z>(p.gk?(dv?36:26)+p.jz*.8:11))continue;
-    const d=dist(p,ball)-(dv?9:0)-(p.gk?2:0);
+    const d=dist(p,ball)-(dv?9:0)-(p.gk?((Math.abs(p.x-(p.tm?X1:X0))<44&&Math.hypot(ball.vx,ball.vy)<2.2)?4.5:2):0);
     if(d<bd){bd=d;best=p}
   }
   S.owner=best;
@@ -2252,25 +2292,25 @@ function ballStep(){
   if(p){
     if(p.gk){
       const away=p.tm?-1:1,dv=!!p.dive,st=gkSty(p),sk=st.rf+(S.hum[p.tm]?.92:(S.hum[1-p.tm]?[.55,.75,.88,.95]:[.7,.9,1,1.06])[S.diff])*(.88+.04*(p.rt?p.rt.gk:3));
-      const outB=O.gks&&!S.sp&&!S.tr&&!S.pso&&!stOn()&&(Math.abs(p.x-(p.tm?X1:X0))>34||Math.abs(p.y-CY)>38);
+      const bpk=gkBack(p),outB=O.gks&&!S.sp&&!S.tr&&!S.pso&&!stOn()&&(Math.abs(p.x-(p.tm?X1:X0))>34||Math.abs(p.y-CY)>38||bpk);
       if(outB){
         p.cd=24;lastTouch=p.tm;
         if(spd<3.4){
-          if(!p.swC&&!S.demo){p.swC=1;say(pick(['THE KEEPER CLEARS WITH HIS FEET - NO HANDS OUTSIDE THE AREA','OUTSIDE HIS BOX - HE HAS TO USE HIS BOOT']))}
+          if(!p.swC&&!S.demo){p.swC=1;say(bpk?pick(['A BACK PASS - THE KEEPER CANNOT PICK IT UP, HE MUST USE HIS FEET','DELIBERATELY PLAYED BACK - NO HANDS FOR THE KEEPER']):pick(['THE KEEPER CLEARS WITH HIS FEET - NO HANDS OUTSIDE THE AREA','OUTSIDE HIS BOX - HE HAS TO USE HIS BOOT']))}
           const hh=HU.find(q=>q.ctrl===p);if(hh&&(hh.ix||hh.iy))gkDistribute(p,hh.ix,hh.iy,2);else gkDistribute(p,0,0,2);
         }else{ball.vx=-ball.vx*.55+rnd(-.6,.6);ball.vy=ball.vy*.7+rnd(-1,1);ball.sp=0;ball.vz=Math.max(ball.vz,1.2)}
       }else if(spd>1.4){
         const edge=Math.abs(ball.y-CY)/GH;
         const near=clamp(1-Math.max(0,bd)/11,0,1),pS=clamp((.5+near*.3+(dv?.03:0)-Math.max(0,spd-3.2)*.06-edge*.07)*(.62+.38*sk)*st.sv*((S.pso||S.penT>0)?(dv?.8:.3):1)*(S.hum[p.tm]?1:S.hum[1-p.tm]?.82:1)*glareK(p),(S.pso||S.penT>0)?.05:.15,.95);
         if(gafSave(p,away,spd)){}
-        else if(Math.random()>((S.pso||S.penT>0)?pS:spd<2.6?Math.max(pS,.93):spd<3.4?Math.max(pS,.78):pS)){p.cd=dist(p,ball)>6?2:spd<3.4?3:14}
+        else if(Math.random()>((S.pso||S.penT>0)?pS:spd<2.6?Math.max(pS,.96):spd<3.4?Math.max(pS,.87):pS)){p.cd=dist(p,ball)>6?2:spd<3.4?3:14}
         else if(Math.random()>clamp((spd-2.6)*.24+edge*.18-(sk-.9)*.4+st.hd,.06,.9)){
           p.hold=16+(Math.random()*10|0);ball.vx=0;ball.vy=0;ball.sp=0;ball.z=0;ball.vz=0;lastTouch=p.tm;
           S.msg='SAVE!';S.msgT=40;hlAdd('SAVE');if(Math.random()<.6)say(pick(['WHAT A SAVE!','THE KEEPER DENIES THEM!','SUPERB STOP!']));beep(140,.12,'triangle',.06);if(S.st)S.st.saves[teamOf(p.tm)]++;pt(p,1.5);p.sv=(p.sv||0)+1;if(!S.tr&&!S.pso&&(p.sv===3||p.sv===5))memSay('THE KEEPER HAS NOW MADE '+p.sv+' SAVES - HE IS IN FINE FORM','Ο ΤΕΡΜΑΤΟΦΥΛΑΚΑΣ ΕΧΕΙ ΗΔΗ '+p.sv+' ΑΠΟΚΡΟΥΣΕΙΣ - ΕΧΕΙ ΥΠΕΡΟΧΗ ΦΟΡΜΑ');
         }else{
-          const mid=Math.random()<.28;
+          const mid=Math.random()<.18;
           ball.vx=away*rnd(.8,1.8);ball.vy=mid?(CY>=ball.y?1:-1)*rnd(.8,1.6):(ball.y>=CY?1:-1)*rnd(2,3.4);ball.sp=0;ball.z=0;ball.vz=0;
-          scrSet();p.cd=14;p.rec=14;lastTouch=p.tm;S.msg='PARRIED!';S.msgT=40;hlAdd('SAVE');if(Math.random()<.7)say(pick(mid?['PARRIED INTO DANGER - THE REBOUND IS LOOSE!','HE CANNOT HOLD IT - SCRAMBLE IN THE BOX!']:['PARRIED AWAY!','THE KEEPER PUSHES IT WIDE','A STRONG HAND - BUT IT IS STILL LIVE']));beep(120,.1,'triangle',.06);if(S.st)S.st.saves[teamOf(p.tm)]++;
+          scrSet();p.cd=9;p.rec=10;lastTouch=p.tm;S.msg='PARRIED!';S.msgT=40;hlAdd('SAVE');if(Math.random()<.7)say(pick(mid?['PARRIED INTO DANGER - THE REBOUND IS LOOSE!','HE CANNOT HOLD IT - SCRAMBLE IN THE BOX!']:['PARRIED AWAY!','THE KEEPER PUSHES IT WIDE','A STRONG HAND - BUT IT IS STILL LIVE']));beep(120,.1,'triangle',.06);if(S.st)S.st.saves[teamOf(p.tm)]++;
         }
       }else{
         if(S.gkk===p.tm){S.gkk=null;S.gkF=1;p.hold=12+(Math.random()*8|0)}else p.hold=18+(Math.random()*14|0);ball.vx=0;ball.vy=0;ball.sp=0;ball.z=0;ball.vz=0;lastTouch=p.tm;
@@ -2319,10 +2359,14 @@ function place(tm,x,y,label){
 }
 
 function goal(tm){
+  if(S.ind&&S.ind.k===S.lastK&&!S.tr){S.ind=null;const dt=1-tm;S.msg='INDIRECT - NO GOAL';S.msgT=60;say('AN INDIRECT FREE KICK - IT HAS TO TOUCH ANOTHER PLAYER FIRST, NO GOAL');place(dt,dt?X1-6:X0+6,CY,'GOAL KICK');return}
   {const dd=tm^1;if(S.sprT&&S.sprT[dd]!=null&&S.t-S.sprT[dd]<320&&S.sprF&&S.sprF[dd]&&!S.demo&&!S.tr)say(pick(['THE OFFSIDE TRAP WAS BEATEN!','ONE DEFENDER STAYED BACK AND IT COST THEM','THE TRAP HAS BACKFIRED - HE IS THROUGH AND SCORES']))}
   S.nr={s:ball.x>CX?1:0,y:ball.y,z:clamp(ball.z,2,18),t0:S.t,a:Math.min(6,2+Math.hypot(ball.vx,ball.vy)*.9)};
+  S.glt=null;
+  if(O.glt&&!S.tr&&!S.demo&&!S.pso&&(ball.x<X0+3||ball.x>X1-3)){const ds=GH-Math.abs(ball.y-CY),dh=20-ball.z,mg=Math.min(ds,dh);if(mg<4){S.glt={t:0,cm:Math.max(1,Math.round(mg*7)),why:ds<dh?'INSIDE THE POST':'UNDER THE BAR'};say('A VERY CLOSE ONE - THE GOAL-LINE CHECK CONFIRMS IT, '+S.glt.cm+' CENTIMETRES '+S.glt.why)}}
   S.rmist=null;S.adv=null;momAdd(tm,.3);
   S.score[teamOf(tm)]++;S.scorer=tm;
+  {const df=Math.abs(S.score[0]-S.score[1]);if(df>=3){banReact('blow',1);banReact('conc',1)}else{banReact('goal',1);banReact('conc',1)}}
   {const L=S.st&&S.st.sl;if(L)for(let i=L.length-1;i>=0;i--)if(L[i].tm===teamOf(tm)&&!L[i].g){if(S.t>=0&&L.length-i<4)L[i].g=1;break}}
   S.gsc=null;
   {const ct=1-teamOf(tm);if(S.score[ct]<=S.score[1-ct])captRally(ct,false)}
@@ -2973,7 +3017,7 @@ function step(){
     if(S.surf===3&&!p.dive&&!(p.fall>0)){p.lx=p.lx||0;p.ly=p.ly||0;p.vx=p.lx+(p.vx-p.lx)*.16;p.vy=p.ly+(p.vy-p.ly)*.16;p.lx=p.vx;p.ly=p.vy}
     const tt=teamOf(p.tm);let sm=(O.pud&&S.pud&&pudAt(p.x,p.y)?.85:1)*SURF_SPD[S.surf]*S.mul[tt]*(.86+.14*(p.st==null?1:p.st))*(p.pm||1)*(p.scr>0?1.18:1)*(p.shield>0?.5:1)*(p.fool>0?.4:1)*(1+momB(p.tm));if(!p.gk&&!S.tr)p.st=Math.max(.2,(p.st==null?1:p.st)-Math.hypot(p.vx,p.vy)*.00003*[.6,1,1.6][O.stm==null?1:O.stm]*(S.drn?S.drn[tt]:1)*(styOf(tt)===1?1.5:1)*(planOf(tt)===2?1.25:planOf(tt)===1?.8:1));
     if(S.ban[tt]&&p.i===4)sm*=.9;
-    if(O.wear&&S.wear&&!S.pso){const sp=Math.hypot(p.vx,p.vy);if(sp>.05){const w0=wearAt(p.x,p.y);wearAdd(p.x,p.y,(S.wet?.00048:.0003)*sp*(p.fall>0||p.dive?4:1)*(Math.abs(p.x-(p.x<CX?X0:X1))<30?1.6:1));sm*=1-.09*w0*(S.wet?1.4:1)}}
+    if(O.wear&&S.wear&&!S.pso){const sp=Math.hypot(p.vx,p.vy);if(sp>.05){const w0=wearAt(p.x,p.y);wearAdd(p.x,p.y,(S.wet?.00048:.0003)*sp*(p.fall>0||p.dive?4:1)*(Math.abs(p.x-(p.x<CX?X0:X1))<30?1.6:1));sm*=1-.09*w0*(S.wet?1.4:1);if(O.mud&&S.wet&&w0>.6&&sp>1.9&&!p.dive&&!(p.fall>0)&&!p.gk&&!p.ref&&p.tm<2&&!S.demo&&!S.tr&&!S.pause&&Math.random()<.0012*(w0-.55)){p.dive={t:0,dur:12,vx:0,vy:0,dir:Math.random()<.5?1:-1};p.fall=32;p.cd=32;p.vx=p.vy=0;if(Math.random()<.4)say(pick(['HE SLIPS IN THE MUD','THE GOALMOUTH IS A QUAGMIRE','HE LOSES HIS FOOTING ON THE CHURNED PITCH']))}}}
     p.x=clamp(p.x+p.vx*sm,X0+2,X1-2);p.y=clamp(p.y+p.vy*sm,Y0+3,Y1);
     p.an+=Math.hypot(p.vx,p.vy);
   }
@@ -3054,39 +3098,49 @@ function chantSeq(c,tp){
   return q;
 }
 function chantRender(ctx,dest,t0,seq,vol,cr){
-  /* a crowd SHOUTS rather than sings: many unpitched, breathy voices spread over a wide pitch range, sharp attacks, stadium drum on the beat */
-  const rv=stadRev(ctx,dest),N=Math.round(26+16*cr);
-  if(!ctx._nb){const n=ctx.sampleRate>>1,b=ctx.createBuffer(1,n,ctx.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=Math.random()*2-1;ctx._nb=b}
-  const lvl=.5*vol*(.55+.7*cr);
+  /* v5.24: a crowd, not a robot. Voices are split into groups of different "speaker sizes" (own formant sets, low Q so nothing rings),
+     each voice has its own pitch, vibrato and timing, the waveform is soft and breathy, no comb-filter echo, room reverb on top */
+  const rv=stadRev(ctx,dest),G=5,PW=ctx._pw||(ctx._pw=(()=>{const n=24,re=new Float32Array(n),im=new Float32Array(n);for(let k=1;k<n;k++)im[k]=1/Math.pow(k,1.7)*(k%2?1:.6);return ctx.createPeriodicWave(re,im)})());
+  if(!ctx._nb){const n=ctx.sampleRate*2|0,b=ctx.createBuffer(1,n,ctx.sampleRate),d=b.getChannelData(0);let l=0;for(let i=0;i<n;i++){l+=((Math.random()*2-1)-l)*.55;d[i]=l*1.6}ctx._nb=b}
+  const CS_=O.chs|0,N=Math.round(30+20*cr),lvl=.46*vol*(.55+.7*cr)*(CS_===1?.85:1);
   for(const s of seq){
-    const vw=VOWL[s.w]||VOWL.a,bus=ctx.createGain(),mix=ctx.createGain();
-    mix.gain.value=lvl*s.v;
-    vw.forEach((fq,k)=>{
-      const f=ctx.createBiquadFilter();f.type='bandpass';f.frequency.value=fq*(.95+Math.random()*.1);f.Q.value=[3.5,4.5,5][k];
-      const fg=ctx.createGain();fg.gain.value=[1,.7,.35][k];bus.connect(f);f.connect(fg);fg.connect(mix);
-    });
-    const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=s.sg?3000:4200;
-    if(s.pn&&ctx.createStereoPanner){const pn=ctx.createStereoPanner();pn.pan.value=s.pn;mix.connect(pn);pn.connect(lp)}else mix.connect(lp);
-    const dry=ctx.createGain();dry.gain.value=.55;lp.connect(dry);dry.connect(dest);
-    const dl=ctx.createDelay(.5);dl.delayTime.value=.11;const dg=ctx.createGain();dg.gain.value=.3;lp.connect(dl);dl.connect(dg);dg.connect(dest);
-    lp.connect(rv);
-    for(let v=0;v<N;v++){
-      const o=ctx.createOscillator(),eg=ctx.createGain();o.type='sawtooth';
-      const fo=(s.f*.32+70)*(s.sg?(.94+Math.random()*.12):(.75+Math.random()*.6));
-      const st=Math.max(t0,t0+s.t+(Math.random()-.5)*.12),en=st+s.d*(.8+Math.random()*.3),pk=1.6/Math.sqrt(N);
-      o.frequency.setValueAtTime(fo*1.12,st);o.frequency.exponentialRampToValueAtTime(fo*(s.g||1)*.94,en);
-      eg.gain.setValueAtTime(0,st);eg.gain.linearRampToValueAtTime(pk,st+.018);eg.gain.exponentialRampToValueAtTime(pk*.45,en);eg.gain.linearRampToValueAtTime(0,en+.09);
-      o.connect(eg);eg.connect(bus);o.start(st);o.stop(en+.14);
+    const vw=VOWL[s.w]||VOWL.a,mix=ctx.createGain();mix.gain.value=lvl*s.v;
+    const hp=ctx.createBiquadFilter();hp.type='highpass';hp.frequency.value=110;
+    const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=CS_===1?1700:(s.sg||CS_===2)?2600:3300;lp.Q.value=.5;
+    if(s.pn&&ctx.createStereoPanner){const pn=ctx.createStereoPanner();pn.pan.value=s.pn;mix.connect(pn);pn.connect(hp)}else mix.connect(hp);
+    hp.connect(lp);
+    const dry=ctx.createGain();dry.gain.value=.62;lp.connect(dry);dry.connect(dest);
+    const wet=ctx.createGain();wet.gain.value=.7;lp.connect(wet);wet.connect(rv);
+    for(let gi=0;gi<G;gi++){
+      const bus=ctx.createGain(),size=.86+gi*.07+Math.random()*.04;
+      bus.gain.value=1/Math.sqrt(G);
+      vw.forEach((fq,k)=>{
+        const f=ctx.createBiquadFilter();f.type='bandpass';f.frequency.value=fq*size;f.Q.value=[1.6,2,2.4][k];
+        const fg=ctx.createGain();fg.gain.value=[1,.75,.4][k];bus.connect(f);f.connect(fg);fg.connect(mix);
+      });
+      const lfo=ctx.createOscillator(),lg=ctx.createGain();lfo.frequency.value=4+Math.random()*3;lg.gain.value=((s.sg||CS_===2)?18:30)+Math.random()*25;lfo.connect(lg);
+      const gs=Math.max(t0,t0+s.t-.1);lfo.start(gs);lfo.stop(t0+s.t+s.d+.4);
+      const nv=Math.round(N/G);
+      for(let v=0;v<nv;v++){
+        const o=ctx.createOscillator(),eg=ctx.createGain();o.setPeriodicWave(PW);
+        const fo=(s.f*.32+70)*(s.sg?(.9+Math.random()*.2):(.7+Math.random()*.75))*(gi%2?1.1:.93);
+        const st=Math.max(t0,t0+s.t+(Math.random()-.4)*.2),en=st+s.d*(.75+Math.random()*.4),pk=1.5/Math.sqrt(N);
+        o.frequency.setValueAtTime(fo*(1+Math.random()*.05),st);o.frequency.linearRampToValueAtTime(fo*(s.g||1)*(.95+Math.random()*.04),en);
+        o.detune.value=(Math.random()-.5)*60;lg.connect(o.detune);
+        eg.gain.setValueAtTime(0,st);eg.gain.linearRampToValueAtTime(pk,st+(CS_===0||CS_===3?.07:.16)+Math.random()*.06);eg.gain.linearRampToValueAtTime(pk*.55,en);eg.gain.linearRampToValueAtTime(0,en+.2);
+        o.connect(eg);eg.connect(bus);o.start(st);o.stop(en+.16);
+      }
+      const nz=ctx.createBufferSource(),ng=ctx.createGain();nz.buffer=ctx._nb;nz.loop=true;nz.loopStart=Math.random()*.5;
+      const ns=t0+s.t+(Math.random()-.4)*.1;
+      const nk=CS_===2?.4:CS_===1?.7:1;ng.gain.setValueAtTime(0,ns);ng.gain.linearRampToValueAtTime(.26*nk,ns+.1);ng.gain.linearRampToValueAtTime(.12*nk,ns+s.d);ng.gain.linearRampToValueAtTime(0,ns+s.d+.2);
+      nz.connect(ng);ng.connect(bus);nz.start(ns);nz.stop(ns+s.d+.2);
     }
-    const nz=ctx.createBufferSource(),ng=ctx.createGain();
-    nz.buffer=ctx._nb;nz.loop=true;
-    ng.gain.setValueAtTime(0,t0+s.t);ng.gain.linearRampToValueAtTime(.5,t0+s.t+.02);ng.gain.exponentialRampToValueAtTime(.12,t0+s.t+s.d);ng.gain.linearRampToValueAtTime(0,t0+s.t+s.d+.08);
-    nz.connect(ng);ng.connect(bus);nz.start(t0+s.t);nz.stop(t0+s.t+s.d+.12);
-    /* stadium bass drum under each shout */
+    /* stadium drum under each shout */
+    if(CS_>=1)continue;
     const bd=ctx.createOscillator(),bg=ctx.createGain();bd.type='sine';
-    bd.frequency.setValueAtTime(110,t0+s.t);bd.frequency.exponentialRampToValueAtTime(48,t0+s.t+.14);
-    bg.gain.setValueAtTime(0,t0+s.t);bg.gain.linearRampToValueAtTime(.55*lvl,t0+s.t+.006);bg.gain.exponentialRampToValueAtTime(.001,t0+s.t+.3);
-    bd.connect(bg);bg.connect(dry);bg.connect(rv);bd.start(t0+s.t);bd.stop(t0+s.t+.34);
+    bd.frequency.setValueAtTime(78,t0+s.t);bd.frequency.exponentialRampToValueAtTime(50,t0+s.t+.22);
+    bg.gain.setValueAtTime(0,t0+s.t);bg.gain.linearRampToValueAtTime(.16*lvl,t0+s.t+.035);bg.gain.exponentialRampToValueAtTime(.001,t0+s.t+.38);
+    bd.connect(bg);bg.connect(dry);bg.connect(rv);bd.start(t0+s.t);bd.stop(t0+s.t+.42);
   }
 }
 function chantFx(){
@@ -3096,9 +3150,22 @@ function chantFx(){
   try{
     ac=ac||new(window.AudioContext||window.webkitAudioContext)();
     if(ac.state==='suspended')ac.resume();
-    chantRender(ac,ac.destination,ac.currentTime+.05,chantSeq(c,tp),vol,S.cr||0);
+    chantRender(ac,ac.destination,ac.currentTime+.05,(O.duel&&S.derby?chantSeq(c,tp).map(e=>Object.assign({},e,{pn:-.75})):chantSeq(c,tp)),vol,S.cr||0);
   }catch(e){}
   setTimeout(()=>rhythmClap(tp===1||tp===5?3:2),[2150,1500,1450,1500,3300,3700][tp]);
+  if(O.duel&&S.derby&&M&&M.teams&&!S.demo&&!S.tr&&!S.pso&&!S.duelB){
+    const aw=M.teams.find(t=>t!==S.hm);
+    if(aw!==undefined&&CHANT[aw]){
+      S.duelB=1;
+      const dur=[2150,1500,1450,1500,3300,3700][tp]+450;
+      setTimeout(()=>{S.duelB=0;if(S.mode!=='play')return;try{
+        const sq=chantSeq(CHANT[aw],tp===4?4:0).map(e=>Object.assign({},e,{pn:.75}));
+        chantRender(ac,ac.destination,ac.currentTime+.05,sq,vol*.9,Math.min(1,(S.cr||0)+.15));
+        const an=O.names[aw]||'',ag=O.gr&&typeof grName==='function'?grName(an):an;
+        S.chantTx={t:0,tx:ag+'! '+ag+'!  (AWAY END ANSWERS)',c:flareCol(aw)};
+      }catch(e){}},dur);
+    }
+  }
   const nm=O.names[S.hm]||'',n=O.gr&&typeof grName==='function'?grName(nm):nm;
   S.chantTx={t:0,tx:[O.gr?'ΟΛΕ ΟΛΕ ΟΛΕ ΟΛΕ':'OLE OLE OLE OLE',n+'! '+n+'!',n+' - '+n+' - '+n,O.gr?'ΠΑΜΕ ΠΑΜΕ ΠΑΜΕ ΠΑΜΕ':'GO GO GO GO',n+' - LA LA LA LA',n+'!  ...  '+n+'!'][tp],c:flareCol(S.hm)};
 }
@@ -3232,7 +3299,7 @@ function drawCrowd(){
     if(S.awJ>0)S.awJ--;
     const fx=(S.awL?146:424)-sh;
     if(fx>-4&&fx<W+4){g.fillStyle='#0a0a1e';g.fillRect(fx-1,28,2.4,36);g.fillStyle='#8f8fc4';g.fillRect(fx-1,28,.8,36)}
-    if(S.awB)drawTifoA();
+    if(S.awB)ov(drawTifoA,'awB');
   }
   if(st.led){for(let x=0;x<W;x+=6){g.fillStyle='hsl('+((x*1.3+S.t*2)%360)+',90%,58%)';g.fillRect(x,28,6,1.6)}}
   drawBan(sh);drawFlgs(sh);
@@ -3311,11 +3378,14 @@ function drawSnow(){
   }
 }
 
-const ADG=[['SOFTEX','#ffffff','#e6228a'],['OLYMPIC AIRWAYS','#ffffff','#0b2f7a'],['ΕΛΕΥΘΕΡΟΤΥΠΙΑ','#111111','#f2f2f2'],['ΕΘΝΟΣ','#ffffff','#c8102e'],['TASTY','#ffe94a','#d81e1e'],['BMW','#1c6bd0','#f4f4f4'],['ΦΙΞ','#d81e1e','#ffd400'],['ΕΒΓΑ','#0b3d91','#f4f4f4'],['ΔΕΛΤΑ','#ffffff','#1456b8'],['COCA-COLA','#ffffff','#e41e26'],['PEPSI','#ffffff','#1546a8'],['ΜΙΝΕΡΒΑ','#ffffff','#2a8a3a'],['ΛΟΥΜΙΔΗΣ','#ffe9b0','#6b3a1a'],['ΟΤΕ','#ffffff','#0a6fc2'],['ΑΛΦΑ ΒΗΤΑ','#ffffff','#1f9a4a'],['ΙΟΝ','#ffd9a0','#7a3a14'],['ΔΩΔΩΝΗ','#ffffff','#2a7fd0'],['ΙΝΤΕΡΑΜΕΡΙΚΑΝ','#ffffff','#7a1fa2']],ADP=['ΠΡΟΠΟ','#ffd400','#10338f'];
+const ADG=[['SOFTEX','#ffffff','#e6228a'],['OLYMPIC AIRWAYS','#ffffff','#0b2f7a'],['ΕΛΕΥΘΕΡΟΤΥΠΙΑ','#111111','#f2f2f2'],['ΕΘΝΟΣ','#ffffff','#c8102e'],['TASTY','#ffe94a','#d81e1e'],['BMW','#1c6bd0','#f4f4f4'],['ΦΙΞ','#d81e1e','#ffd400'],['ΕΒΓΑ','#0b3d91','#f4f4f4'],['ΔΕΛΤΑ','#ffffff','#1456b8'],['COCA-COLA','#ffffff','#e41e26'],['PEPSI','#ffffff','#1546a8'],['ΜΙΝΕΡΒΑ','#ffffff','#2a8a3a'],['ΛΟΥΜΙΔΗΣ','#ffe9b0','#6b3a1a'],['ΟΤΕ','#ffffff','#0a6fc2'],['ΑΛΦΑ ΒΗΤΑ','#ffffff','#1f9a4a'],['ΙΟΝ','#ffd9a0','#7a3a14'],['ΔΩΔΩΝΗ','#ffffff','#2a7fd0'],['ΙΝΤΕΡΑΜΕΡΙΚΑΝ','#ffffff','#7a1fa2'],['MARLBORO','#ffffff','#d6141f'],['CAMEL','#5a2d0c','#e8b73a'],['ASSOS','#ffffff','#1457b8']],ADP=['ΠΡΟΠΟ','#ffd400','#10338f'];
 const ADS0=[['NOVA','#ff5a3c'],['PIXEL','#3cd0ff'],['TURBO','#ffd400'],['ORBIT','#8cff6a'],['HEXA','#ff6aff'],['LUNA','#ffffff'],['ZETA','#ffa23c'],['MOTO','#6a8cff']];
-const adRot=()=>(O.adset===1?ADS0:ADG);
-function adAt(i){if(O.adset!==1&&((i%6)+6)%6===3)return ADP;const L=adRot();return L[(((i*7+Math.floor(S.t/260)+80)%L.length)+L.length)%L.length]}
-const ADTAG={'SOFTEX':'ΧΑΡΤΙ','OLYMPIC AIRWAYS':'ΟΛΥΜΠΙΑΚΗ ΑΕΡΟΠΟΡΙΑ','ΕΛΕΥΘΕΡΟΤΥΠΙΑ':'ΕΦΗΜΕΡΙΔΑ','ΕΘΝΟΣ':'ΕΦΗΜΕΡΙΔΑ','TASTY':'FAST FOOD','BMW':'ΑΥΤΟΚΙΝΗΤΑ','ΦΙΞ':'ΜΠΥΡΑ','ΕΒΓΑ':'ΓΑΛΑΚΤΟΚΟΜΙΚΑ','ΔΕΛΤΑ':'ΓΑΛΑ','COCA-COLA':'ΑΝΑΨΥΚΤΙΚΟ','PEPSI':'ΑΝΑΨΥΚΤΙΚΟ','ΜΙΝΕΡΒΑ':'ΕΛΑΙΟΛΑΔΟ','ΛΟΥΜΙΔΗΣ':'ΚΑΦΕΣ','ΟΤΕ':'ΤΗΛΕΠΙΚΟΙΝΩΝΙΕΣ','ΑΛΦΑ ΒΗΤΑ':'ΣΟΥΠΕΡ ΜΑΡΚΕΤ','ΙΟΝ':'ΣΟΚΟΛΑΤΑ','ΔΩΔΩΝΗ':'ΓΑΛΑΚΤΟΚΟΜΙΚΑ','ΙΝΤΕΡΑΜΕΡΙΚΑΝ':'ΑΣΦΑΛΕΙΕΣ','ΠΡΟΠΟ':'ΠΡΟΓΝΩΣΤΙΚΑ'};
+const ADE=[['PHILIPS','#ffffff','#1456b8'],['CANON','#ffffff','#c8102e'],['JVC','#ffd400','#141414'],['FIAT','#ffffff','#a01830'],['ADIDAS','#ffffff','#141414'],['MARTINI','#ffffff','#c8102e'],['HEINEKEN','#ffffff','#1f7a34'],['SHARP','#ffffff','#d81e2a'],['TDK','#ffffff','#1456b8'],['MARLBORO','#ffffff','#d6141f'],['CAMEL','#5a2d0c','#e8b73a'],['CARLSBERG','#ffffff','#1f6b3a'],['FUJI','#ffffff','#1f9a4a'],['SANYO','#ffffff','#e0a000'],['BP','#ffe000','#0b8a3a'],['LUFTHANSA','#ffd400','#0b2a6a']];
+const ADTE={PHILIPS:'ELECTRONICS',CANON:'CAMERAS',JVC:'VIDEO',FIAT:'MOTORS',ADIDAS:'SPORT',MARTINI:'VERMOUTH',HEINEKEN:'LAGER',SHARP:'HI-FI',TDK:'TAPES',MARLBORO:'CIGARETTES',CAMEL:'CIGARETTES',CARLSBERG:'LAGER',FUJI:'FILM',SANYO:'ELECTRONICS',BP:'PETROL',LUFTHANSA:'AIRLINE'};
+const adEU=()=>O.adset===3||(O.adset===0&&SET===2);
+const adRot=()=>(O.adset===2?ADS0:adEU()?ADE:ADG);
+function adAt(i){if(O.adset!==2&&!adEU()&&((i%6)+6)%6===3)return ADP;const L=adRot();return L[(((i*7+Math.floor(S.t/260)+80)%L.length)+L.length)%L.length]}
+const ADTAG={'SOFTEX':'ΧΑΡΤΙ','OLYMPIC AIRWAYS':'ΟΛΥΜΠΙΑΚΗ ΑΕΡΟΠΟΡΙΑ','ΕΛΕΥΘΕΡΟΤΥΠΙΑ':'ΕΦΗΜΕΡΙΔΑ','ΕΘΝΟΣ':'ΕΦΗΜΕΡΙΔΑ','TASTY':'FAST FOOD','BMW':'ΑΥΤΟΚΙΝΗΤΑ','ΦΙΞ':'ΜΠΥΡΑ','ΕΒΓΑ':'ΓΑΛΑΚΤΟΚΟΜΙΚΑ','ΔΕΛΤΑ':'ΓΑΛΑ','COCA-COLA':'ΑΝΑΨΥΚΤΙΚΟ','PEPSI':'ΑΝΑΨΥΚΤΙΚΟ','ΜΙΝΕΡΒΑ':'ΕΛΑΙΟΛΑΔΟ','ΛΟΥΜΙΔΗΣ':'ΚΑΦΕΣ','ΟΤΕ':'ΤΗΛΕΠΙΚΟΙΝΩΝΙΕΣ','ΑΛΦΑ ΒΗΤΑ':'ΣΟΥΠΕΡ ΜΑΡΚΕΤ','ΙΟΝ':'ΣΟΚΟΛΑΤΑ','ΔΩΔΩΝΗ':'ΓΑΛΑΚΤΟΚΟΜΙΚΑ','ΙΝΤΕΡΑΜΕΡΙΚΑΝ':'ΑΣΦΑΛΕΙΕΣ','MARLBORO':'ΤΣΙΓΑΡΑ','CAMEL':'ΤΣΙΓΑΡΑ','ASSOS':'ΤΣΙΓΑΡΑ','ΠΡΟΠΟ':'ΠΡΟΓΝΩΣΤΙΚΑ'};
 function adFrame(A,B,B1,A1,ad,idx){
   const bl=(u,v)=>lerp(lerp(A,B,u),lerp(A1,B1,u),v);
   poly([bl(0,.55),bl(1,.55),bl(1,1),bl(0,1)],'rgba(255,255,255,.1)');
@@ -3334,7 +3404,7 @@ function adFrame(A,B,B1,A1,ad,idx){
   g.save();g.globalAlpha=.8;for(const u of[.07,.93]){const c=bl(u,.52);g.fillStyle=ad[1];g.beginPath();g.arc(c[0],c[1],.7,0,6.2832);g.fill()}g.restore();
 }
 function adTxt(ad,mx,my,bw){
-  const tg=ADTAG[ad[0]];if(tg&&bw>22){g.font='700 2.3px Silkscreen,"Courier New",monospace';let w=g.measureText(tg).width,sz=2.3;if(w>bw-4)sz=Math.max(1.6,2.3*(bw-4)/w);txt(tg,mx,my+5.6,ad[1],sz);my-=1}let sz=4.5;g.font='700 '+sz+'px Silkscreen,"Courier New",monospace';const w=g.measureText(ad[0]).width;if(w>bw-1)sz=Math.max(2.6,sz*(bw-1)/w);txt(ad[0],mx,my+(4.5-sz)/2,ad[1],sz)}
+  const tg=(adEU()?ADTE:ADTAG)[ad[0]];if(tg&&bw>22){g.font='700 2.3px Silkscreen,"Courier New",monospace';let w=g.measureText(tg).width,sz=2.3;if(w>bw-4)sz=Math.max(1.6,2.3*(bw-4)/w);txt(tg,mx,my+5.6,ad[1],sz);my-=1}let sz=4.5;g.font='700 '+sz+'px Silkscreen,"Courier New",monospace';const w=g.measureText(ad[0]).width;if(w>bw-1)sz=Math.max(2.6,sz*(bw-1)/w);txt(ad[0],mx,my+(4.5-sz)/2,ad[1],sz)}
 function drawScoreboard(){
   return;/* removed: the scoreboard does not belong on the pitch */
   if(!O.ads||S.tr||!S.score||TDV())return;
@@ -3438,14 +3508,18 @@ const LOOKS=[
   /*OFI*/[[1,0],[1,1],[1,0],[1,0],[1,1]],/*PANACHAIKI*/[[1,0],[1,1],[1,0],[0,2],[1,1]]],
  [/*HOL*/[[0,2],[3,0],[0,3],[0,2],[3,0,3]],/*CCCP*/[[0,1],[0,3],[0,1],[0,2],[0,3]],/*ENG*/[[0,1],[0,2],[0,2],[0,2,3],[0,2]],
   /*FRA*/[[0,1],[0,2],[0,1],[4,0,1],[1,0]],/*ESP*/[[1,1],[1,0],[1,0],[1,1],[1,1]],/*FRG*/[[0,3],[0,3],[0,2],[0,1,1],[0,4,3]],
-  /*ITA*/[[1,0],[0,2],[1,0],[1,0],[1,0]],/*YUG*/[[1,1],[0,4],[1,0],[1,0],[1,0]]]];
+  /*ITA*/[[1,0],[0,2],[1,0],[1,0],[1,0]],/*YUG*/[[1,1],[0,4],[1,0],[1,0],[1,0]]],
+ [/*LIV*/[[0,2],[0,3],[0,2],[3,0],[0,1]],/*RMA*/[[1,1],[1,1],[1,1],[1,1],[2,0]],/*MIL*/[[1,1],[1,0],[1,1],[3,0,3],[0,2]],
+  /*JUV*/[[1,1],[0,2],[1,1],[0,2],[0,3]],/*FCB*/[[0,3],[0,3],[0,2],[0,4,3],[0,3]],/*POR*/[[0,3],[1,1],[1,1],[1,0],[2,0]],
+  /*BAR*/[[1,1],[1,0],[0,4],[1,0,1],[0,2]],/*DYN*/[[0,1],[0,3],[0,1],[0,3],[0,2]]]];
 const LOOKB=[
  [[[1,0],[1,0],[1,0]],[[1,1],[1,0],[1,1]],[[1,0],[1,1],[0,3]],[[1,0],[1,1],[1,0]],[[1,0],[1,1],[0,2]],[[1,1],[1,0],[0,1]],[[1,0],[1,1],[1,0]],[[1,0],[1,1],[0,2]]],
- [[[0,2],[0,4],[3,0]],[[0,1],[0,3],[0,2]],[[0,2],[0,3],[0,1]],[[0,1],[1,0],[0,2]],[[1,0],[1,1],[0,1]],[[0,3],[0,4],[0,2]],[[1,0],[1,1],[0,2]],[[1,0],[1,1],[0,1]]]];
-const LOOKN={BARNES:[3,0],'E. KOEMAN':[0,3],BOSSIS:[0,1]};
+ [[[0,2],[0,4],[3,0]],[[0,1],[0,3],[0,2]],[[0,2],[0,3],[0,1]],[[0,1],[1,0],[0,2]],[[1,0],[1,1],[0,1]],[[0,3],[0,4],[0,2]],[[1,0],[1,1],[0,2]],[[1,0],[1,1],[0,1]]],
+ [[[0,2],[0,3],[3,0]],[[1,1],[1,0],[0,2]],[[1,0],[1,1],[0,2]],[[1,1],[1,0],[0,3]],[[0,3],[0,4],[0,2]],[[1,0],[1,1],[0,2]],[[1,0],[1,1],[0,2]],[[0,1],[0,3],[0,2]]]];
+const LOOKN={BARNES:[3,0],'E. KOEMAN':[0,3],BOSSIS:[0,1],LAUDRUP:[0,3],'FERNANDO GOMES':[1,1]};
 function clubOf(p){const t=teamOf(p.tm);return(M&&M.teams&&M.teams[t]!==undefined)?M.teams[t]:t}
 function lookOf(p){
-  const c=clubOf(p),st=SET?1:0;
+  const c=clubOf(p),st=SET;
   if(p.sub||p.bs!==undefined||p.i>4||p.i==null){
     const n=p.nm&&LOOKN[p.nm];if(n)return n;
     const l=(LOOKB[st][c]||LOOKB[st][0]);let h=0;const key=(p.nm||'')+(p.num||'');for(let i=0;i<key.length;i++)h=(h*31+key.charCodeAt(i))>>>0;
@@ -3514,6 +3588,7 @@ function drawP(p){
   if(((O.pnm|0)>=2)&&!p.ref&&!p.stw&&!p.lin&&!p.med&&!p.mg&&p.tm<2){txt(String(p.num||SHIRT[p.i]||''),q0[0],q0[1]-(TDV()?10*tdRel():30),'#fff',4)}
   if(p.med){g.fillStyle='#fff';g.fillRect(q0[0]-.5,q0[1]-15.4,1.3,3.6);g.fillRect(q0[0]-1.7,q0[1]-14.2,3.7,1.3)}
   if(!p.gk&&!p.ref&&!p.stw&&!p.lin&&!p.dive&&O.cap[teamOf(p.tm)]&&capOf(teamOf(p.tm))===p&&S.mode!=='menu'&&!S.tr){const q=q0;g.fillStyle='#ffd400';g.fillRect(q[0]-3.2,q[1]-10.5,1.6,1.2);g.fillStyle='#000';g.fillRect(q[0]-3.2,q[1]-10.7,1.6,.3)}
+  if(O.stb&&!p.gk&&!p.ref&&!p.stw&&!p.lin&&!p.mg&&!p.dive&&!p.med&&p.tm<2&&p.st!=null&&p.st<.62&&S.mode!=='menu'&&!S.replay&&HU.some(h=>h.ctrl===p)){const f=clamp((p.st-.2)/.8,0,1),bx=q0[0]-4,by=q0[1]-(TDV()?12*tdRel():33);g.fillStyle='#000';g.fillRect(bx-.6,by-.6,9.2,2.2);g.fillStyle=f>.4?'#ffd400':'#ff3030';g.fillRect(bx,by,8*f,1)}
   if(O.cvd>0&&!p.ref&&!p.stw&&!p.lin&&!p.mg&&!p.dive&&S.mode!=='menu'){const q=q0;g.lineWidth=1;g.strokeStyle='#000';g.fillStyle='rgba(255,255,255,.85)';if(teamOf(p.tm)===0){g.beginPath();g.ellipse(q[0],q[1]+.5,4.2,2,0,0,7);g.stroke();g.strokeStyle='#fff';g.lineWidth=.6;g.stroke()}else{g.strokeRect(q[0]-4,q[1]-1.4,8,3.4);g.strokeStyle='#fff';g.lineWidth=.6;g.strokeRect(q[0]-4,q[1]-1.4,8,3.4)}}
   g.restore();
 }
@@ -3969,6 +4044,15 @@ const INSTR=[
  ['PENALTY SHOOTOUT AND CUP','Penalty shootout (main menu): steer up and down to aim, hold Space to charge, release to shoot. Defending, steer a direction and press Space to dive. The Penalty Cup is a knockout of eight clubs decided on penalties; watch the NERVES bar, high nerves make your aim wobble.'],
  ['TRAINING AND CHALLENGES','Training (main menu): finishing with corner targets, free kicks over a wall, and a skills arena against three defenders. Daily challenge: a fresh scenario each day, with share codes for friends and a custom challenge builder.'],
  ['NEW IN 3.4','ADVANTAGE RULE: after a foul the referee may play on while the fouled team keeps the ball; if they lose it, play comes back for the free kick. MOMENTUM METER: a bar by the score shows who is on top, and with BAR + EFFECTS the dominant side is a little quicker and the crowd gets louder. SUNSET MATCHES: dusk games fade to night and the floodlights come on. On a SNOW pitch it snows and the lines slowly disappear until half time. SUBSTITUTES WARM UP on the touchline and celebrate your goals.'],
+ ['NEW IN 6.4','THE STANDS REACT: banners in the crowd now answer the match - goals, a big lead, conceding, red cards, penalties and dull nil-nil spells (BANNERS REACT TO THE MATCH). DERBY CHANT DUELS: in a derby the home end sings from the left and the away end answers from the right. CHEEKY BALL BOYS: in the second half the home ball boy dawdles when his side leads and sprints when they trail. MUDDY GOALMOUTHS: in the second half the pitch around the goals is churned up and in wet weather players can slip. RETRO TV BROADCAST (options, view): VHS REPLAYS adds tape noise, a REW and PLAY counter and tape timecode to replays; FULL 80s TV adds scanlines, colour smear and a K6128 TV logo.'],
+ ['NEW IN 6.3','PAUSE SUMMARY: while paused a LIVE panel beside the menu shows the score, possession, shots, corners, fouls and cards (all menus still work). STAMINA BAR above your player when he is tired. GOAL-LINE CHECK banner on very close goals (cm inside the post or under the bar). COACH SUBSTITUTION HINTS: when a player is exhausted or on a yellow and tired, the coach suggests a sub and the pause menu has a COACH SUGGESTS line that opens the subs list on him. FULL-TIME HIGHLIGHTS (options, off by default) plays your goals and saves before the result screen; ENTER skips a clip, ESC stops. OPTION PROFILES (keys and options) save and load three sets of options.'],
+ ['NEW IN 6.2','FREE KICK STYLES: when you take a free kick press SKILL (V) to choose KNUCKLEBALL (a wobbling, unpredictable shot), CURLER, DRIVEN (low and hard) or DIPPER (rises then drops quickly); turn it off with FREE KICK STYLES in the options. AFTERTOUCH STRENGTH (LOW, MEDIUM, HIGH) in the options. CHANT STYLE (CROWD, SOFT, CHOIR, NO DRUM) in the sound options. EUROPEAN 1980s AD BOARDS (Philips, Canon, JVC, Fiat, Adidas, Martini, Heineken, Marlboro, Camel and more) are used automatically with the European clubs; AD BOARD BRANDS in the options now has BY TEAM SET, GREEK, GENERIC or EUROPEAN.'],
+ ['NEW IN 6.1','NEW STADIUM AD BOARDS: MARLBORO (RED AND WHITE), CAMEL (SAND YELLOW WITH BROWN LETTERING) AND ASSOS (BLUE AND WHITE) NOW LINE THE PITCH IN ALL THREE TEAM SETS.'],
+ ['NEW IN 6.0','A THIRD TEAM SET: EUROPEAN CLUBS of the 1980s - Liverpool, Real Madrid, AC Milan, Juventus, Bayern, Porto, Barcelona and Dynamo Kiev, each with a squad of 80s stars, kits, stadium, derbies (El Clasico, the Italian Classic and more), a European Cup and a Euro League season. Change it with TEAMS in the main menu. The sticker album now has 120 stickers.'],
+ ['NEW IN 5.25','KEEPER RULES: in his own area a keeper now claims loose balls with his hands (attackers cannot rob him there). A deliberate pass back from a teammate cannot be picked up - he has to use his feet. A keeper who holds the ball longer than 5 seconds concedes an indirect free kick (a goal straight from it does not count). CHANTS: softer attack and a gentler drum, so they no longer sound like gunshots.'],
+ ['NEW IN 5.24','FAN CHANTS REBUILT: they no longer sound metallic or robotic. The crowd is now made of several groups of different voices, each with its own pitch, vibrato and timing, a softer breathy sound, no echo ringing, and room reverb on top.'],
+ ['NEW IN 5.23','KEEPERS: attackers can no longer rob a keeper who has the ball at his feet in his own area - a tackle there is a foul or simply fails, and a keeper wins loose balls nearby more often. AFTERTOUCH is much gentler: weaker bend, shorter window and less float or dip.'],
+ ['NEW IN 5.22','FIX: the screen could go black after a match, leaving only the crowd, until you pressed ESC. A drawing error left the picture clipped; the game now recovers the screen straight away and notes the error on the ABOUT screen.'],
  ['NEW IN 5.21','PANATHINAIKOS LOOKS: Zajec is blond and the rest of the squad (bench included) has black hair. Zajec is blond for Yugoslavia too.'],
  ['NEW IN 5.20','PLAYER LOOKS: every player now has his own skin tone and hair colour - Greek clubs, the national sides and their benches - instead of a generic mix. A few have their own hair style (Gullit, Voller, Tigana, Hoddle, Rummenigge).'],
  ['NEW IN 5.19','CORNER KICKS drill in TRAINING: take corners from either flag with teammates and defenders in the box, and the coach grades the delivery (direct goal, teammate found, short, long, keeper claims). FREE KICKS keep their wall and coach. More fan chants: GO GO GO, a sung phrase and a call and response between two stands. MATCH CARDS are now an option (MATCH CARDS, OFF by default).'],
@@ -4481,7 +4565,12 @@ function netOverlay(){
   txt(NET.spec?'SPECTATING':'ONLINE',W-8,32,NET.ready?'#3be06a':C.dim,6,'right');
 }
 
-let last=0,acc=0;
+let last=0,acc=0,ERRL='';
+try{ERRL=localStorage.getItem('kickoff6128-err')||''}catch(e){}
+function ctxReset(){try{if(g.reset)g.reset();else cv.width=cv.width}catch(e){}g.imageSmoothingEnabled=false;g.setTransform(K,0,0,K,0,0)}
+function noteErr(e){ERRL=String(e&&e.message||e).slice(0,70);try{localStorage.setItem('kickoff6128-err',ERRL)}catch(e2){}if(window.console)console.error(e)}
+function guard(f){try{f()}catch(e){ctxReset();noteErr(e)}}
+function ov(f,key){try{f()}catch(e){ctxReset();if(key)S[key]=null;noteErr(e)}}
 
 /* flares, teletext, boot screen */
 const HFC=['#1fdc5a','#ff3b1f','#ffd400','#3f8fff','#ffe033','#ffffff','#b0c8ff','#ff5050'];
@@ -4534,11 +4623,11 @@ function drawTifoA(){
   const sh=Math.round(cam*.6),A0=S.awL?0:430,bw=104,bh=13,x=A0+18-sh,y=50+Math.sin(S.t*.04)*.6;
   if(x>W||x+bw<0)return;
   g.save();g.beginPath();g.rect(0,27,W,36);g.clip();
-  const rc=rgbOf(S.awk[0]);g.fillStyle='rgb('+(rc[0]*.6|0)+','+(rc[1]*.6|0)+','+(rc[2]*.6|0)+')';g.fillRect(x,y,bw,bh);
+  try{const rc=rgbOf(S.awk[0]);g.fillStyle='rgb('+(rc[0]*.6|0)+','+(rc[1]*.6|0)+','+(rc[2]*.6|0)+')';g.fillRect(x,y,bw,bh);
   g.fillStyle=S.awk[5];g.fillRect(x,y,bw,1.5);g.fillRect(x,y+bh-1.5,bw,1.5);
   g.fillStyle='#14143a';g.fillRect(x-1,y-2,2,bh+10);g.fillRect(x+bw-1,y-2,2,bh+10);
   {const ls=S.awB.split('|');if(ls.length>1){txt(ls[0],x+bw/2,y+1,'#fff',5);txt(ls[1],x+bw/2,y+7,'#fff',5)}else txt(S.awB,x+bw/2,y+3.5,'#fff',6)}
-  g.restore();
+  }finally{g.restore()}
 }
 const TIFO_PAO='ΕΙΜΑΣΤΕ ΑΠΟ ΤΟ ΜΕΛΛΟΝ.|ΠΟΥΛΑ ΚΑΙ ΦΥΓΕ';
 const paoHome=()=>!SET&&S.hm===0;
@@ -4551,13 +4640,13 @@ function drawTifo(){
   let x=f.x-sh;if(x>W*1.2)x-=W*1.4;if(x<-W*.2)x+=W*1.4;
   const bw=176,bh=22,y=64-bh*k+Math.sin(f.t*.05)*1;
   g.save();g.beginPath();g.rect(0,27,W,36);g.clip();g.globalAlpha=fade;
-  const rc=rgbOf(f.c);
+  try{const rc=rgbOf(f.c);
   g.fillStyle='rgb('+(rc[0]*.55|0)+','+(rc[1]*.55|0)+','+(rc[2]*.55|0)+')';g.fillRect(x,y,bw,bh);
   g.fillStyle=f.c;for(let i=0;i<bw;i+=22){g.fillRect(x+i,y,11,3);g.fillRect(x+i+11,y+bh-3,11,3)}
   g.fillStyle='#14143a';g.fillRect(x-1,y-2,2,bh+8);g.fillRect(x+bw-1,y-2,2,bh+8);
   g.globalAlpha=1;
   {const ls=f.tx.split('|');if(ls.length>1){txt(ls[0],x+bw/2,y+3.5,'#fff',6);txt(ls[1],x+bw/2,y+12,'#fff',6)}else txt(f.tx,x+bw/2,y+7,'#fff',7)}
-  g.restore();
+  }finally{g.restore()}
 }
 /* teletext */
 const TTP=[100,101,102,103,104,105,106,107,108],TTN={100:'INDEX',101:'LEAGUE TABLE',102:'FIXTURES AND RESULTS',103:'MATCHDAY CUP',104:'TOP SCORERS',105:'TEAM NEWS',106:'HONOURS',107:'MATCH NEWS',108:'SEASON STORIES'};
@@ -4953,11 +5042,40 @@ const NATD={
  derbies:[{a:0,b:5,name:'DUTCH-GERMAN CLASH',lv:3},{a:2,b:5,name:'THE OLD RIVALRY',lv:3},{a:1,b:5,name:'COLD WAR CLASH',lv:2},{a:3,b:6,name:'ALPINE CLASH',lv:2},{a:2,b:3,name:'CHANNEL CLASH',lv:2},{a:4,b:6,name:'MEDITERRANEAN CLASH',lv:1}],
  hfc:['#ff7a00','#ff2020','#ffffff','#3f8fff','#ffd400','#ffffff','#3fa0ff','#ff3b3b']
 };
-const SETS=[null,null];
+const EURD={
+ names:['LIVERPOOL','REAL MADRID','AC MILAN','JUVENTUS','BAYERN','PORTO','BARCELONA','DYNAMO KIEV'],
+ roster:[
+  [['GROBBELAAR',4,1],['HANSEN',3,2,5,6],['DALGLISH',4,5,3,7],['BARNES',5,4,2,10],['RUSH',4,5,2,9]],
+  [['BUYO',4,1],['SANCHIS',3,2,5,4],['MICHEL',4,4,3,8],['BUTRAGUENO',4,5,2,7],['HUGO SANCHEZ',4,5,2,9]],
+  [['GALLI',4,1],['BARESI',3,2,5,6],['DONADONI',5,4,3,7],['GULLIT',5,5,3,10],['VAN BASTEN',4,5,2,9]],
+  [['TACCONI',4,1],['SCIREA',3,2,5,6],['CABRINI',4,3,4,3],['PLATINI',3,5,3,10],['BONIEK',4,5,2,7]],
+  [['PFAFF',5,1],['AUGENTHALER',3,3,5,4],['MATTHAUS',4,4,5,8],['HOENESS',4,5,2,9],['RUMMENIGGE',4,5,2,11]],
+  [['MLYNARCZYK',4,1],['LIMA PEREIRA',3,2,5,4],['SOUSA',4,3,4,8],['FUTRE',5,4,2,7],['MADJER',4,5,2,10]],
+  [['URRUTI',4,1],['MIGUELI',3,2,5,5],['SCHUSTER',3,5,3,8],['MARADONA',5,5,3,10],['LINEKER',5,5,1,9]],
+  [['CHANOV',4,1],['DEMYANENKO',3,2,5,5],['ZAVAROV',4,4,3,9],['BLOKHIN',5,4,2,11],['BELANOV',4,5,2,19]]],
+ bench:{0:['LAWRENSON','MOLBY','WHELAN','NICOL','ALDRIDGE'],1:['CHENDO','GORDILLO','SANTILLANA','MARTIN VAZQUEZ','VALDANO'],2:['TASSOTTI','MALDINI','COSTACURTA','ANCELOTTI','COLOMBO'],3:['BRIO','GENTILE','TARDELLI','ROSSI','LAUDRUP'],4:['WEGMANN','DREMMLER','NACHTWEIH','FLICK','EDER'],5:['JOSE CARLOS','FREDERICO','FERNANDO GOMES','QUIM','JAIME PACHECO'],6:['ALEXANKO','CARRASCO','ARCHIBALD','VICTOR','CALDERE'],7:['BESSONOV','RATS','YAREMCHUK','MIKHAILICHENKO','LITOVCHENKO']},
+ kits:[
+  {n:'LIVERPOOL',c:['#d81e2a','#9a121b','#ffffff','#d81e2a','#d81e2a']},
+  {n:'REAL MADRID',c:['#f4f4f8','#c8c8d8','#2a3f9a','#f4f4f8','#f4f4f8']},
+  {n:'AC MILAN',c:['#d81e2a','#9a121b','#111111','#ffffff','#111111'],st:'#111111'},
+  {n:'JUVENTUS',c:['#f2f2f2','#b8b8c8','#111111','#111111','#f2f2f2'],st:'#111111'},
+  {n:'BAYERN',c:['#d81e2a','#9a121b','#ffffff','#ffffff','#d81e2a']},
+  {n:'PORTO',c:['#f2f2f2','#b8b8c8','#1f4fd8','#1f4fd8','#f2f2f2'],st:'#1f4fd8'},
+  {n:'BARCELONA',c:['#a31c3c','#6e1228','#ffd400','#1f3fa8','#1f3fa8'],st:'#1f3fa8'},
+  {n:'DYNAMO KIEV',c:['#f2f2f2','#b8b8c8','#1f4fd8','#1f4fd8','#f2f2f2']}],
+ stadn:['ANFIELD','SANTIAGO BERNABEU','SAN SIRO','STADIO COMUNALE','OLYMPIASTADION','ESTADIO DAS ANTAS','CAMP NOU','REPUBLICAN STADIUM'],
+ stadc:[45000,90000,85000,70000,70000,60000,100000,100000],
+ chant:[[330,392,330],[440,494,440],[392,440,392],[349,392,349],[294,349,330],[392,330,262],[330,370,330],[262,294,330]],
+ tsk:[1,0,1,1,0,1,-1,0],
+ derbies:[{a:1,b:6,name:'EL CLASICO',lv:3},{a:2,b:3,name:'THE ITALIAN CLASSIC',lv:3},{a:0,b:4,name:'ANGLO-GERMAN TIE',lv:2},{a:1,b:2,name:'ROYALS OF EUROPE',lv:2},{a:7,b:4,name:'IRON CURTAIN CLASH',lv:2},{a:5,b:6,name:'IBERIAN CLASH',lv:1}],
+ hfc:['#ff3030','#ffffff','#ff2d2d','#f0f0f0','#ff3030','#4f8fff','#4466ff','#ffffff']
+};
+const SETS=[null,null,null];
 function swapArr(a,b){a.length=0;for(const x of b)a.push(x)}
 function snapSet0(){
   SETS[0]={roster:ROSTER.slice(),bench:Object.assign({},BENCH),stadn:STADN.slice(),stadc:STADC.slice(),chant:CHANT.slice(),tsk:TSK.slice(),derbies:DERBIES.slice(),hfc:HFC.slice(),defn:DEFNAMES.slice(),kits:KITS.slice(0,8),k0:KITS0.slice()};
   SETS[1]={roster:NATD.roster,bench:NATD.bench,stadn:NATD.stadn,stadc:NATD.stadc,chant:NATD.chant,tsk:NATD.tsk,derbies:NATD.derbies,hfc:NATD.hfc,defn:NATD.names,kits:NATD.kits,k0:NATD.kits.map(k=>JSON.stringify(k))};
+  SETS[2]={roster:EURD.roster,bench:EURD.bench,stadn:EURD.stadn,stadc:EURD.stadc,chant:EURD.chant,tsk:EURD.tsk,derbies:EURD.derbies,hfc:EURD.hfc,defn:EURD.names,kits:EURD.kits,k0:EURD.kits.map(k=>JSON.stringify(k))};
 }
 function applySet(n){
   if(!SETS[0])snapSet0();
@@ -4969,12 +5087,12 @@ function applySet(n){
   for(let i=0;i<8;i++)KITS[i]=T.kits[i];KITS0=T.k0.slice();
   O.names=NAMESETS[n];
   loadCust();loadKcust();loadScr();loadH2H();Tleague=null;Tcup=null;
-  TTN[103]=n?'WORLD CUP':'MATCHDAY CUP';
+  TTN[103]=['MATCHDAY CUP','WORLD CUP','EUROPEAN CUP'][n];
   saveOpt();
 }
 /* sticker album */
 let STK={};
-try{const c=JSON.parse(localStorage.getItem('kickoff6128-stickers')||'{}');if(c&&typeof c==='object')for(const k in c)if(/^\d{1,3}$/.test(k)&&+k<200&&+c[k]>0)STK[k]=Math.min(99,c[k]|0)}catch(e){STK={}}
+try{const c=JSON.parse(localStorage.getItem('kickoff6128-stickers')||'{}');if(c&&typeof c==='object')for(const k in c)if(/^\d{1,3}$/.test(k)&&+k<300&&+c[k]>0)STK[k]=Math.min(99,c[k]|0)}catch(e){STK={}}
 function stkSave(){try{localStorage.setItem('kickoff6128-stickers',JSON.stringify(STK))}catch(e){}}
 const stkId=(st,c,i)=>st*100+c*10+i;
 function stkTotal(){return Object.keys(STK).length}
@@ -4987,7 +5105,7 @@ function stkEarn(){
   const out=[],pool=[];
   const mt=M.teams||[0,1];
   const pick5=()=>stkId(SET,mt[Math.random()<.5?0:1],(Math.random()*5)|0);
-  const any=()=>stkId(Math.random()<.5?SET:1-SET,(Math.random()*8)|0,(Math.random()*5)|0);
+  const any=()=>stkId(Math.random()<.5?SET:((Math.random()*3)|0),(Math.random()*8)|0,(Math.random()*5)|0);
   const sc=S.scIds||[];
   pool.push(sc.length?sc[(Math.random()*sc.length)|0]:pick5());
   pool.push(Math.random()<.6?pick5():any());
@@ -5000,7 +5118,8 @@ function stkEarn(){
 let CLOG=[];
 const CATCH=[
  ['THE TREFOIL SHINES!','THE REDS ARE ON FIRE!','THE YELLOW-BLACKS ROAR!','THE BLUE-REDS FROM SMYRNI!','THE YELLOW ELECTRICITY OF ARIS!','THE DOUBLE-HEADED EAGLE SOARS!','THE PRIDE OF CRETE!','PATRAS GOES WILD!'],
- ['TOTAL FOOTBALL!','THE RED MACHINE ROLLS ON!','THE THREE LIONS ROAR!','LES BLEUS DAZZLE!','LA ROJA SHINES!','THE GERMAN MACHINE NEVER STOPS!','GLI AZZURRI STRIKE!','THE BALKAN MAGICIANS!']];
+ ['TOTAL FOOTBALL!','THE RED MACHINE ROLLS ON!','THE THREE LIONS ROAR!','LES BLEUS DAZZLE!','LA ROJA SHINES!','THE GERMAN MACHINE NEVER STOPS!','GLI AZZURRI STRIKE!','THE BALKAN MAGICIANS!'],
+ ['YOU WILL NEVER WALK ALONE!','HALA MADRID!','FORZA MILAN!','THE OLD LADY OF TURIN!','MIA SAN MIA!','THE DRAGONS ROAR!','MES QUE UN CLUB!','THE KIEV MACHINE ROLLS ON!']];
 const COLP={
  goal:['WHAT A STRIKE, MY FRIEND!','THE KEEPER NEVER SAW IT','THAT IS WHY WE LOVE THIS GAME','POETRY IN MOTION!','THE DEFENCE WAS ASLEEP','I TOLD YOU THEY WOULD SCORE'],
  card:['THE REFEREE HAD NO CHOICE','THAT IS A COSTLY MISTAKE','HE WILL NOT BE POPULAR IN THE DRESSING ROOM'],
@@ -5071,6 +5190,13 @@ function bootCol(p){
 }
 const SLOG=['MY WIFE THINKS I AM AT WORK','HI MUM!','WE CAME FOR THE PIES','OFFSIDE? I BARELY KNOW HER','PLEASE SEND SNACKS','THE REF IS WATCHING ANOTHER GAME','I PAID FOR THE WHOLE SEAT','THE KEEPER IS MY COUSIN','MY BET LOST AT HALF TIME','SORRY, I WAS AT THE BAR','WHO LET THE DOGS OUT?','I LEFT THE OVEN ON','HAVE YOU SEEN MY SEAT?','COME ON YOU... SOMEBODIES','LOUDER! I CANNOT HEAR ME','PIES, PINTS, AND PENALTIES','MY DOG PICKS THE TEAM','I CAME FOR THE TOILETS','BRING BACK THE TERRACES','THIS BANNER IS A TRIBUTE'];
 const BANC=[['#c8102e','#fff'],['#ffd400','#111'],['#1c3fa8','#fff'],['#f2f2f2','#111'],['#1f8a3b','#fff'],['#ff7a00','#111']];
+const BANR={goal:['GOOOAL! I SPILLED MY BEER','WHAT A STRIKE!','LOUDER! LOUDER!','NOW THAT IS FOOTBALL','I TOLD YOU SO!'],blow:['WE ARE NOT WORTHY','EASY EASY EASY','PLEASE STOP - THEY HAVE FAMILIES'],conc:['SACK THE KEEPER','DEFENDING IS OPTIONAL?','WAKE UP LADS!','WHO WAS MARKING HIM?'],red:['THAT WAS NEVER RED!','SEND THE REF HOME','CARD? WHAT CARD?'],dull:['WAKE ME WHEN IT STARTS','NIL NIL? I WANT MY MONEY BACK','ANYONE GOT A BOOK?'],pen:['PLEASE DO NOT MISS','I CANNOT LOOK']};
+function banReact(k,n){
+  if(!O.ban2||!O.fx||S.tr||S.demo||S.street||!S.ban||S.banM!==M)return;
+  const L=BANR[k];if(!L)return;
+  const ix=S.ban.map((b,i)=>i).sort(()=>Math.random()-.5);
+  for(let j=0;j<Math.min(n||1,ix.length);j++){const b=S.ban[ix[j]];b.s=pick(L);b.w=0;b.r=S.t;b.c=BANC[(Math.random()*BANC.length)|0]}
+}
 function twd(s2,sz){g.font='700 '+sz+'px Silkscreen,"Courier New","DejaVu Sans Mono",Arial,monospace';return g.measureText(s2).width}
 function drawBan(sh){
   if(!O.fx||S.street||TDV()||(S.replay&&S.replay.pass))return;
@@ -5318,17 +5444,39 @@ function lostTick(){
 }
 
 /* v5.2 aftertouch: steer the ball in flight */
+function banTick2(){
+  if(S.mode==='play'&&!S.menu.length&&S.halfLen&&S.clock>S.halfLen*.5&&!S.mudMid){S.mudMid=1;mudUp(S.half>=1?.2:.12)}
+  if(S.mode!=='play'||S.menu.length||S.replay||S.t%600!==11||!S.score||!S.halfLen)return;
+  if(S.half===1&&S.score[0]===0&&S.score[1]===0&&S.clock>S.halfLen*.45&&!S.banDull){S.banDull=1;banReact('dull',2)}
+  if(S.half===0)S.banDull=0;
+}
+function subHintTick(){
+  if(!O.sgh||S.mode!=='play'||S.menu.length||S.replay||S.tr||S.demo||S.pso||NET.role||!S.subs||!M||!M.teams||S.t%120!==7)return;
+  if(S.shn){const d=S.t-S.shn.at;if(d>=0&&d<1500)return}
+  for(const tm of[0,1]){
+    if(!S.hum[sideOf(tm)]||!(S.subs[tm]>0))continue;
+    const sd=sideOf(tm);let w=null;
+    for(const p of players)if(p.tm===sd&&!p.gk&&!p.ref&&!p.stw&&!p.lin&&!p.med&&!p.mg&&p.st!=null&&(p.st<.36||(p.yel&&p.st<.5))&&(!w||p.st<w.st))w=p;
+    if(w){S.shn={tm,sd,p:w,at:S.t};say('THE COACH IS THINKING ABOUT A SUBSTITUTION');return}
+  }
+}
+function fkxTick(){
+  const f=S.fkx;if(!f)return;
+  if(S.mode!=='play'||S.replay||S.menu.length||++f.t>70||(f.t>8&&ball.z<.3&&f.k===4)||Math.hypot(ball.vx,ball.vy)<.6){S.fkx=null;return}
+  if(f.k===1){const v=Math.hypot(ball.vx,ball.vy)||1,w=Math.sin(f.t*.55+f.ph)*.05+(Math.random()-.5)*.05;ball.vx+=-ball.vy/v*w;ball.vy+=ball.vx/v*w;const v2=Math.hypot(ball.vx,ball.vy)||1;ball.vx*=v/v2;ball.vy*=v/v2}
+  else if(f.k===4&&ball.vz<.4&&ball.z>1)ball.vz-=.06;
+}
 function atTick(){
   const a=S.at;if(!a)return;
-  if(S.lastK!==a.k||S.mode!=='play'||S.replay||S.menu.length||++a.t>55||(a.t>10&&ball.z<.3&&Math.hypot(ball.vx,ball.vy)<1.1)){S.at=null;return}
+  if(S.lastK!==a.k||S.mode!=='play'||S.replay||S.menu.length||++a.t>38||(a.t>10&&ball.z<.3&&Math.hypot(ball.vx,ball.vy)<1.1)){S.at=null;return}
   const h=a.h;if(!h.ix&&!h.iy)return;
   const v=Math.hypot(ball.vx,ball.vy);if(v<.45)return;
   const dx=ball.vx/v,dy=ball.vy/v,lat=h.ix*(-dy)+h.iy*dx,fw=h.ix*dx+h.iy*dy;
-  const cv2=lat*.08*Math.min(1,v/2.6)*(1-a.t/70);
+  const AM=[.5,1,1.6][O.atp|0],cv2=lat*.032*AM*Math.min(1,v/2.6)*(1-a.t/50);
   ball.vx+=-dy*cv2;ball.vy+=dx*cv2;
   const v2=Math.hypot(ball.vx,ball.vy)||1;ball.vx*=v/v2;ball.vy*=v/v2;
-  if(fw<-.45&&ball.z>2)ball.vz-=.07;else if(fw>.45&&ball.z>1&&ball.vz<2)ball.vz+=.035;
-  ball.sp=clamp((ball.sp||0)+lat*.01,-.4,.4);
+  if(fw<-.45&&ball.z>2)ball.vz-=.035*AM;else if(fw>.45&&ball.z>1&&ball.vz<2)ball.vz+=.018*AM;
+  ball.sp=clamp((ball.sp||0)+lat*.004*AM,-.18,.18);
 }
 
 /* v5.2 banana sprite and top-down versions of side-on extras */
@@ -5384,12 +5532,20 @@ function bbTick(){
   const sp=S.sp;
   if(O.bb&&sp&&sp!==S.bbSp&&(sp.kind==='THROW'||sp.kind==='CORNER')&&S.mode==='play'&&!S.pso&&!S.tr&&!S.demo&&!NET.role){
     S.bbSp=sp;const top=sp.y<CY,yb=top?Y0-9:Y1+9,sx=clamp(sp.x+(Math.random()<.5?-1:1)*(30+Math.random()*40),X0,X1);
-    S.bb={x:sx,y:yb,hx:sx,hy:yb,tx:sp.x+(Math.random()-.5)*8,ty:sp.y+(top?-6:6),ph:0,t:0,slow:false,tw:0};
+    S.bb={x:sx,y:yb,hx:sx,hy:yb,tx:sp.x+(Math.random()-.5)*8,ty:sp.y+(top?-6:6),ph:0,t:0,slow:false,tw:0,fast:false};
+    if(O.bbc&&S.half>=1&&S.hm>=0&&M&&M.teams&&!S.sp.tw){
+      const hs=M.teams.indexOf(S.hm),ts=teamOf(sp.tm);
+      if(hs>=0&&S.score[hs]!==S.score[1-hs]&&Math.random()<.55){
+        const homeAhead=S.score[hs]>S.score[1-hs];
+        if(ts!==hs&&homeAhead){S.bb.slow=true;sp.bbd=110;S.msg='THE BALL BOY IS IN NO HURRY';S.msgT=70;say(pick(['THE BALL BOY IS TAKING HIS TIME - HE KNOWS THE SCORE','A VERY SLOW BALL BOY - THE HOME CROWD LOVES IT','THE BALL BOY WANDERS OVER... IN NO HURRY AT ALL']))}
+        else if(ts===hs&&!homeAhead){S.bb.fast=true;S.bb.slow=false;S.msg='THE BALL BOY SPEEDS IT UP';S.msgT=70;say(pick(['THE BALL BOY SPRINTS WITH THE BALL - THE HOME SIDE NEED A GOAL','QUICK BALL FROM THE BALL BOY - NO TIME TO WASTE']))}
+      }
+    }
   }
   const b=S.bb;if(!b)return;
   if(S.sp&&S.sp===S.bbSp&&S.sp.tw)b.slow=true;
   b.t++;
-  const sp2=b.slow?.45:1.6,mv=(tx,ty)=>{const dx=tx-b.x,dy=ty-b.y,d=Math.hypot(dx,dy);if(d<2)return true;b.x+=dx/d*sp2;b.y+=dy/d*sp2;b.fx=dx;return false};
+  const sp2=b.slow?.45:b.fast?2.6:1.6,mv=(tx,ty)=>{const dx=tx-b.x,dy=ty-b.y,d=Math.hypot(dx,dy);if(d<2)return true;b.x+=dx/d*sp2;b.y+=dy/d*sp2;b.fx=dx;return false};
   if(b.ph===0){if(mv(b.tx,b.ty))b.ph=1}
   else if(b.ph===1){if(!S.sp||S.sp!==S.bbSp||b.t>1200)b.ph=2}
   else if(mv(b.hx,b.hy))S.bb=null;
@@ -5440,7 +5596,7 @@ function rsTick(){
 function extraTick(){
   rsTick();fmTick();autoTick();
   springTick();scxTick();gkTick();shieldTick();windTick();swapTick();
-  mgrTick();medTick();walkOffTick();ambTick();bbTick();wallTick();fxTick();lostTick();banTick();blTick();atTick();
+  mgrTick();medTick();walkOffTick();ambTick();bbTick();wallTick();fxTick();lostTick();banTick();blTick();atTick();fkxTick();subHintTick();banTick2();
   if(S.mode==='play'&&!S.menu.length&&!S.wo&&!S.pg&&!S.tn&&!S.tr&&!S.pso&&!S.demo&&!NET.role&&S.tod===2&&O.flf){
     if(S.flAt===undefined)S.flAt=(!S.flDone&&Math.random()<.35)?Math.floor(S.halfLen*(.3+Math.random()*.5)):-1;
     if(S.flAt>=0&&!S.pause&&!S.fOut&&S.clock>=S.flAt){S.fOut={t:0,dur:380+((Math.random()*260)|0)};S.flDone=1;S.flAt=-1;S.msg='FLOODLIGHT FAILURE';S.msgT=120;say('THE FLOODLIGHTS HAVE FAILED! PLAY IS SUSPENDED');whistle()}
@@ -5620,6 +5776,9 @@ function drawExtras(){
   if(S.trap&&S.mode==='play'&&!S.menu.length&&(S.trap[0]||S.trap[1]))txt('OFFSIDE TRAP',W-34,O.cpos?H-24:H-13,'#7fe0ff',5);
   if(S.chantTx){const c=S.chantTx;c.t++;if(c.t>220||S.replay)S.chantTx=null;else if(!TDV()&&!S.street){g.globalAlpha=Math.min(1,(220-c.t)/50);g.fillStyle='rgba(8,8,30,.72)';const cw=Math.min(W-8,c.tx.length*4.4+10);g.fillRect(SCX-cw/2,41,cw,9);txt(c.tx,SCX,43.5,c.c,6);g.globalAlpha=1}}
   if(S.pyro)drawPyro();
+  if(S.glt){const c=S.glt;if(++c.t>170||S.replay)S.glt=null;else{g.globalAlpha=Math.min(1,(170-c.t)/40);g.fillStyle='rgba(8,8,30,.8)';g.fillRect(SCX-70,56,140,17);txt('GOAL-LINE CHECK: GOAL CONFIRMED',SCX,58,'#7fe0ff',5);txt(c.cm+' CM '+c.why,SCX,65,'#fff',5);g.globalAlpha=1}}
+  if(S.shn&&S.t-S.shn.at<420&&S.t>=S.shn.at&&S.shn.p&&S.shn.p.st!=null&&S.shn.p.st<.55&&!S.menu.length&&S.mode==='play'&&!S.replay&&players.indexOf(S.shn.p)>=0)txt('COACH: SUB '+(S.shn.p.nm||'A PLAYER').slice(0,10)+'? (PAUSE)',W/2,H-30,'#ffd400',5);
+  if(S.sp&&S.sp.kind==='FREE'&&O.fkv&&!S.pso&&!S.tr&&!S.menu.length&&S.mode==='play'&&!S.replay&&HU.some(h=>h.ctrl===S.sp.taker))txt('V: FREE KICK  '+L_FKV[S.sp.fv|0],W/2,H-40,'#ffd400',7);
   if(S.sp&&S.sp.kind==='CORNER'&&!S.menu.length&&S.mode==='play'&&!S.replay&&HU.some(h=>h.ctrl===S.sp.taker))txt('V: CORNER  '+L_CST[S.sp.cs|0],W/2,H-40,'#ffd400',7);
   if(S.sp&&S.sp.kind==='PEN'&&!S.menu.length&&S.mode==='play'&&!S.replay&&HU.some(h=>h.ctrl===S.sp.taker)&&!S.sp.taker.stutK)txt('V: RUN-UP  '+L_PEN[S.penSt||0],W/2,H-40,'#ffd400',7);
   if(S.wo&&!S.menu.length){
@@ -5634,13 +5793,13 @@ function drawExtras(){
     else txt('SPEED X'+(S.spd||1)+'  (F)',W-4,57,C.dim,6,'right');
   }
   const c=S.cere;
-  if(S.ttx)drawTtx();
-  if(S.cc)drawCC();
-  if(S.tifo&&!S.cc&&!S.ttx)drawTifo();
-  if(S.var&&!S.cc)drawVar();
-  if(S.pg)drawProg();
-  if(!S.cc){drawInsp();drawBcast()}
-  if(S.tn&&!S.pg&&!S.wo)drawTn();
+  if(S.ttx)ov(drawTtx,'ttx');
+  if(S.cc)ov(drawCC,'cc');
+  if(S.tifo&&!S.cc&&!S.ttx)ov(drawTifo,'tifo');
+  if(S.var&&!S.cc)ov(drawVar,'var');
+  if(S.pg)ov(drawProg,'pg');
+  if(!S.cc){ov(drawInsp);ov(drawBcast)}
+  if(S.tn&&!S.pg&&!S.wo)ov(drawTn,'tn');
   if(S.sd)sdDraw();
   if(S.sm&&S.menu.length){if(S.sm===2)msDraw();else smDraw()}
   if(S.tb)tbDraw();
@@ -5664,6 +5823,25 @@ function drawExtras(){
   }
 }
 let FLC=null,FSM=null;
+function drawRTV(){
+  const r=O.rtv|0;if(!r||S.mode==='menu')return;
+  g.setTransform(K,0,0,K,0,0);
+  const rp=S.replay&&!S.menu.length;
+  if(r===2||rp){g.save();g.globalAlpha=rp?.16:.1;g.globalCompositeOperation='lighter';g.imageSmoothingEnabled=true;g.drawImage(cv,0,0,cv.width,cv.height,1.3,0,W,H);g.restore()}
+  if(r===2){g.fillStyle='rgba(0,0,0,.14)';for(let y=0;y<H;y+=2)g.fillRect(0,y+1,W,1)}
+  if(rp){
+    const i=S.replay.i|0,band=((S.t*2.3)%(H+40))-20;
+    g.fillStyle='rgba(255,255,255,.07)';g.fillRect(0,band,W,10);g.fillStyle='rgba(0,0,0,.18)';g.fillRect(0,band+10,W,3);
+    for(let k=0;k<7;k++){const y=((S.t*7+k*37+(i*13))%H);g.fillStyle='rgba(255,255,255,'+(.12+((k+S.t)%3)*.07)+')';const w=20+((k*53+S.t*3)%160);g.fillRect((k*91+S.t*5)%(W-w),y,w,1)}
+    g.fillStyle='rgba(255,255,255,.35)';for(let k=0;k<40;k++)g.fillRect(Math.random()*W,H-52+Math.random()*7,1.5+Math.random()*2.5,.8);
+    const rew=i<26;
+    txt(rew?'<< REW':'PLAY >',10,H-48,rew?'#ffffff':'#53ff6a',6,'left');
+    const sc=((i/60)|0),mm=((sc/60)|0);
+    txt('TAPE '+String(mm).padStart(2,'0')+':'+String(sc%60).padStart(2,'0')+':'+String(i%60).padStart(2,'0'),W-10,H-48,'#ffffff',6,'right');
+    if(rew){g.fillStyle='rgba(0,0,0,.32)';g.fillRect(0,28,W,H-52);for(let y=30;y<H-24;y+=6)g.fillRect(((y*7+S.t*9)%40)-20,y,W,1.2)}
+  }
+  if(r===2&&S.mode==='play'){const bl=(S.t>>5)&1;g.fillStyle='rgba(0,0,0,.55)';g.fillRect(W-47,32,43,10);txt('K6128 TV',W-25,34,'#ffd400',5.4);if(!rp&&bl)txt('LIVE',W-25,44,'#ff4040',5)}
+}
 function drawFilter(){
   const f=O.flt|0;if(!f)return;
   g.setTransform(K,0,0,K,0,0);
@@ -5690,10 +5868,10 @@ function frame(t){
     stepConf();extraTick()}
   if(NET.role==='host')netSendSnap();else if(NET.role==='guest')netSendInput();
   const rs=S.wo?woApply():null;
-  draw();
+  guard(draw);
   if(rs)rs();
-  if(S.ph)phHint();else drawExtras();
-  drawFilter();
+  guard(()=>{if(S.ph)phHint();else drawExtras()});
+  guard(drawFilter);guard(drawRTV);
   if(S.shot){S.shot=0;shotSave()}
 }
 
@@ -6161,6 +6339,7 @@ function startHalf(h){
   if(h===1&&S.surf===2&&!S.tr&&!S.demo&&NET.role!=='guest')setTimeout(()=>say('THE GROUNDSTAFF HAVE CLEARED THE LINES AT HALF TIME'),1500);
   updateHum();reset(sideOf(S.flip));if(h)for(const p of players)p.st=Math.min(1,(p.st||1)+.25);startSet('KICKOFF',sideOf(S.flip),CX,CY);
   if(h===1)applyTalk();
+  S.mudMid=0;if(h>=1){mudUp(.3);if(S.wet&&!S.demo&&!S.tr&&Math.random()<.6)setTimeout(()=>{if(S.mode==='play')say('THE GOALMOUTHS ARE CHURNED UP - IT WILL BE HEAVY GOING IN THE SECOND HALF')},2200)}
   S.pause=60;S.msg=h>=2?(h===2?'EXTRA TIME':'ET 2ND HALF'):h?'2ND HALF':'KICK OFF';S.msgT=60;
   sr.textContent=h>=2?'Extra time':h?'Second half':'Kick off';
   beep(880,.2);
@@ -6226,7 +6405,7 @@ function saveLabel(n){
 function saveGame(n,q){
   if(!canSave()){if(!q){S.msg='CANNOT SAVE HERE';S.msgT=90}return false}
   const pl=players.map(p=>{const o={};for(const k in p){const v=p[k];if((typeof v==='number'&&isFinite(v))||typeof v==='string'||typeof v==='boolean')o[k]=v}return o});
-  const d={v:1,ts:Date.now(),set:SET?1:0,M:{kind:M.kind,teams:M.teams.slice(),fx:M.fx},spec:HU.map(h=>[h.slot,h.team]),diff:S.diff,score:S.score.slice(),
+  const d={v:1,ts:Date.now(),set:SET,M:{kind:M.kind,teams:M.teams.slice(),fx:M.fx},spec:HU.map(h=>[h.slot,h.team]),diff:S.diff,score:S.score.slice(),
     clock:S.clock,half:S.half,toss:S.toss||0,halfLen:S.halfLen,lost:S.lost||0,subs:S.subs.slice(),red:S.red.slice(),reds:S.reds.slice(),mul:S.mul.slice(),ban:S.ban.slice(),
     st:S.st,surf:S.surf,stad:S.stad,tod:S.tod,wea:S.wea,wang:S.wang,ball:[ball.x,ball.y],players:pl};
   try{localStorage.setItem('kickoff6128-save'+n,JSON.stringify(d))}catch(e){S.msg='SAVE FAILED';S.msgT=90;return false}
@@ -6235,7 +6414,7 @@ function saveGame(n,q){
 function loadGame(n){
   const d=saveGet(n);if(!d)return false;
   try{
-    if((SET?1:0)!==d.set)applySet(d.set);
+    if(SET!==d.set)applySet(d.set);
     M={kind:d.M.kind,teams:d.M.teams.slice(),fx:d.M.fx};
     beginMatch(M.teams,d.spec,d.diff,d.score.slice());
     S.tn=null;S.pg=null;S.wo=null;S.toss=d.toss;
@@ -6657,7 +6836,7 @@ function fullTime(){
   {const mm=motm();if(mm&&M.teams)lines.splice(1,0,'MAN OF THE MATCH: '+mm.nm+' ('+O.names[M.teams[mm.t]].slice(0,10)+')')}
   if(HU.length>=1&&!NET.role&&!S.demo&&['1P','2P','TWIN','league','cup'].includes(M.kind)&&!S.tr&&!S.dc&&!S.pso){
     const before=stkTotal(),pack=stkEarn(),nw=pack.filter(p=>p.isNew).map(p=>stkInfo(Math.floor(p.id/100),Math.floor(p.id/10)%10,p.id%10).name);
-    lines.splice(1,0,'PANINI PACK: '+(nw.length?'NEW '+nw.join(', ').slice(0,34):'ONLY DUPLICATES')+'  ('+stkTotal()+'/80)');
+    lines.splice(1,0,'PANINI PACK: '+(nw.length?'NEW '+nw.join(', ').slice(0,34):'ONLY DUPLICATES')+'  ('+stkTotal()+'/120)');
     if(before<80&&stkTotal()===80)lines.splice(2,0,'ALBUM COMPLETE - WELL DONE!');
   }
   S.press=(HU.length>=1&&!NET.role&&!S.demo&&!S.tr&&!S.dc&&!S.pso&&M.teams)?pressLines():null;
@@ -6670,6 +6849,7 @@ function fullTime(){
     else{lines.splice(2,0,SER.g>=SER.n?'SERIES LEVEL - A DECIDER IS NEXT':'GAME '+(SER.g+1)+' OF '+SER.n+' IS NEXT');serCont=()=>serStart()}
   }
   {const resM={id:'result',sel:0,lines,cont:serCont,cl:serCont?'NEXT GAME':null};if(swapStart()){S.swapMenu=resM;S.menu=[]}else S.menu=[resM]}
+  if(O.fth&&!NET.role&&!S.tr&&!S.demo&&!S.dc&&!S.pso&&!S.swapMenu&&S.hl&&S.hl.length&&S.menu.length)startHL();
   sr.textContent='Full time. '+S.score[0]+' to '+S.score[1];
   [784,659,523].forEach((f,i)=>setTimeout(()=>beep(f,.25,'triangle',.06),i*160));
 }
@@ -6967,6 +7147,10 @@ const TLAY=[['RIGHT HAND STICK',0,1,0],['LEFT HAND STICK',0,1,1],['RIGHT HAND D-
 function tlayName(){const i=TLAY.findIndex(t=>t[1]===O.tpad&&t[2]===O.bsz&&t[3]===O.lefty);return i<0?'CUSTOM':TLAY[i][0]}
 function touchLayoutItem(){return{k:'opt',label:'TOUCH LAYOUT',val:tlayName,step:d=>{let i=TLAY.findIndex(t=>t[1]===O.tpad&&t[2]===O.bsz&&t[3]===O.lefty);i=(i<0?(d>0?-1:0):i)+d;i=(i+TLAY.length)%TLAY.length;const t=TLAY[i];O.tpad=t[1];O.bsz=t[2];O.lefty=t[3]}}}
 function gsItem(){return{k:'opt',label:'GAMEPLAY SPEED',val:()=>(O.gs>0?'+':'')+O.gs+'%'+(O.gs===-50?' MATCH DAY II':O.gs===0?' NORMAL':''),step:d=>{O.gs=clamp(O.gs+d*10,-50,50)}}}
+const PROFK='kickoff6128-prof';
+function profGet(){try{const a=JSON.parse(localStorage.getItem(PROFK));if(Array.isArray(a)&&a.length===3)return a}catch(e){}return[null,null,null]}
+function profSave(n){const o={};for(const k in O){if(k==='set'||k==='seen'||k==='tut')continue;const v=O[k];if(typeof v==='number'||typeof v==='boolean'||typeof v==='string')o[k]=v}const a=profGet();a[n]=o;try{localStorage.setItem(PROFK,JSON.stringify(a))}catch(e){}}
+function profLoad(n){const o=profGet()[n];if(!o)return false;for(const k in o)if(k in O&&typeof O[k]===typeof o[k])O[k]=o[k];saveOpt();return true}
 function oi(label,key,list,idx){
   return{k:'opt',label,val:()=>list[idx?O[key][idx-1]:O[key]],step:d=>{
     if(idx)O[key][idx-1]=cyc(O[key][idx-1],d,list.length);else O[key]=cyc(O[key],d,list.length);
@@ -6995,6 +7179,7 @@ function optionItems(){
     oi('KICKOMETER','km',L_KM),
     oi('GOAL CLIPS','clip',L_ONOFF),
     oi('PITCH WEAR','wear',L_ONOFF),
+    oi('MUDDY GOALMOUTHS (2ND HALF)','mud',L_ONOFF),
     oi('VIEW','view',L_VIEW),
     oi('PASSING MAP','map',L_MAP),
     oi('MAP SIZE','mps',L_MPS),
@@ -7010,9 +7195,13 @@ function optionItems(){
     oi('REPLAY VIEW','rpv',['SAME AS GAME','ISOMETRIC','TOP-DOWN SIDEWAYS','TOP-DOWN VERTICAL','ALL ANGLES']),
     oi('REPLAY ZOOM','rpz',['AUTO','FAR','NORMAL','NEAR','CLOSE']),
     oi('AFTERTOUCH (STEER AFTER A KICK)','at',L_ONOFF),
+    oi('AFTERTOUCH STRENGTH','atp',['LOW','MEDIUM','HIGH']),
     oi('CAMERA','zoom',L_ZOOM),
     oi('PLAYER SIZE','psz',L_PSZ),
+    oi('STAMINA BAR (TIRED PLAYERS)','stb',L_ONOFF),
+    oi('PAUSE SUMMARY PANEL','psm',L_ONOFF),
     oi('SCREEN FILTER','flt',L_FLT),
+    oi('RETRO TV BROADCAST','rtv',['OFF','VHS REPLAYS','FULL 80s TV']),
     oi('SET PIECE DESIGNER','spd',L_ONOFF),
     oi('STAMINA DRAIN','stm',['LOW','NORMAL','HIGH']),
     oi('GAMEPAD LAYOUT','padp',['CLASSIC','PES STYLE']),
@@ -7031,6 +7220,8 @@ function optionItems(){
     oi('INPUT BUFFER','ib',['OFF','SHORT','LONG']),
     oi('ADVANTAGE RULE','adv',L_ONOFF),
     oi('MOMENTUM METER','mom',['OFF','BAR ONLY','BAR + EFFECTS']),
+    oi('GOAL-LINE CHECK','glt',L_ONOFF),
+    oi('COACH SUBSTITUTION HINTS','sgh',L_ONOFF),
     oi('SUNSET MATCHES','dtn',L_ONOFF),
     oi('FAN MOOD EFFECTS','fmoff',['ON','OFF']),
     oi('ABANDONED MATCHES','abn',['RARE','LIKELY','OFF']),
@@ -7038,10 +7229,12 @@ function optionItems(){
     oi('SUBSTITUTES WARM UP','bnc',L_ONOFF),
     oi('AIM GUIDE','aimg',['OFF','SHORT','LONG']),
     oi('CURL POWER','curl',['NORMAL','STRONG','EXTREME']),
+    oi('FREE KICK STYLES (V)','fkv',L_ONOFF),
     oi('CURL TRAIL','ctr',L_ONOFF),
     oi('FOG','fog',['OFF','RARE','ALWAYS']),
     oi('PUDDLES IN THE RAIN','pud',L_ONOFF),
     oi('HALF-TIME SCREEN','hts',L_ONOFF),
+    oi('FULL-TIME HIGHLIGHTS','fth',L_ONOFF),
     oi('RAIN DELAYS','rdl',L_ONOFF),
     oi('BROADCAST MODE','bcm',L_ONOFF),
     oi('PRE-MATCH TUNNEL','tun',L_ONOFF),
@@ -7075,13 +7268,16 @@ function optionItems(){
     oi('CPU OFFSIDE TRAP','ctr',L_ONOFF),
     oi('SHIRT SWAP AT FULL TIME','swap',L_ONOFF),
     oi('STADIUM ADS AND CLOCK','ads',L_ONOFF),
-    oi('AD BOARD BRANDS','adset',['GREEK 1980s','GENERIC']),
+    oi('AD BOARD BRANDS','adset',['BY TEAM SET','GREEK 1980s','GENERIC','EUROPEAN 1980s']),
     oi('FLOODLIGHT GLOW AND VIGNETTE','glow',L_ONOFF),
     oi('MATCHDAY EXTRAS (CAMERAS, BANNERS)','fx',L_ONOFF),
     oi('FUNNY MOMENTS (BANANA, GAFFES)','fun',L_ONOFF),
     oi('COMMENTATOR BOOTH','booth',L_ONOFF),
     oi('WALK-OUT','walk',L_ONOFF),
     oi('FLARES AND BANNERS','pyro',L_ONOFF),
+    oi('BANNERS REACT TO THE MATCH','ban2',L_ONOFF),
+    oi('DERBY CHANT DUELS','duel',L_ONOFF),
+    oi('CHEEKY BALL BOYS','bbc',L_ONOFF),
     oi('CLUB PERSONALITIES','pers',L_ONOFF),
     oi('SCORER CAM IN REPLAYS','rsc',L_ONOFF),
     oi('TOUCHLINE MANAGERS','mgr',L_ONOFF),
@@ -7092,6 +7288,7 @@ function optionItems(){
     oi('WEATHER CHANGES','wch',L_ONOFF),
     oi('VAR','vr',L_ONOFF),
     oi('MATCH PROGRAMME','prog',L_ONOFF),
+    oi('CHANT STYLE','chs',['CROWD','SOFT','CHOIR','NO DRUM']),
     oi('MENU MUSIC','music',L_ONOFF),
     oi('PAUSE WHEN SWITCHED AWAY','afk',L_ONOFF),
     oi('BOOING','boo',L_BOO),
@@ -7108,12 +7305,12 @@ function optionItems(){
 
 const OPTGR=['GAMEPLAY AND RULES','CONTROLS AND ASSISTS','VIEW AND CAMERA','WEATHER AND STADIUM','ATMOSPHERE AND EXTRAS','SOUND AND COMMENTARY','REPLAYS AND RECORDS','SYSTEM AND OTHER'];
 const OPTMAP={};
-[[0,'RULES|TIME EACH HALF|OFFSIDES|FOULS|PENALTIES|ADVANTAGE RULE|REFEREE|REFEREE QUALITY|VAR|INJURIES|FAKE CRAMPS (TIME WASTING)|TIME WASTING|STAMINA DRAIN|RAIN DELAYS|KEEPER STYLES|POSTS AND CROSSBAR|KEEPER SHOUTS AND MARKING|CPU OFFSIDE TRAP|FAN MOOD EFFECTS|ABANDONED MATCHES|SUBSTITUTIONS|SUBSTITUTES WARM UP|SET PIECE DESIGNER|COMPUTER MATCHES|COMPUTER SKILL|FUNNY MOMENTS (BANANA, GAFFES)|MOMENTUM METER'],
- [1,'GAMEPAD LAYOUT|PLAYER SWITCHING|SWITCH SPEED|SHOOTING ASSIST|AIM GUIDE|CURL POWER|CURL TRAIL|KICKOMETER|AFTERTOUCH (STEER AFTER A KICK)|INPUT BUFFER|ONE-BUTTON MODE|EXTRA TOUCH BUTTONS|TOUCH STICK DEAD ZONE|TOUCH DIAGONALS|PAD STICK DEAD ZONE|TOUCH STICK|BUTTON SIZE|SWIPE TO SHOOT|VIBRATION|CONTROL HINTS|KEEPER 1|KEEPER 2'],
- [2,'VIEW|PASSING MAP|MAP SIZE|MAP CORNER|MAP OPACITY|TOP-DOWN ZOOM|TOP-DOWN LOOK-AHEAD|TOP-DOWN CAMERA FOCUS|MENU TEXT SIZE|COLOUR-BLIND MODE|MATCH CARDS|PLAYER NUMBERS|CAMERA|REPLAY VIEW|REPLAY ZOOM|PLAYER SIZE|SCREEN FILTER|BROADCAST MODE|COLOUR VISION|STAMINA AND CARD STRIP|FULLSCREEN|SUBTITLE SIZE|SUBTITLE TIME|GREEK TEXT'],
- [3,'WEATHER|WEATHER CHANGES|WEATHER EVENTS|TIME OF DAY|SUNSET MATCHES|PITCH SURFACE|PITCH WEAR|STADIUM|FOG|PUDDLES IN THE RAIN|FLOODLIGHT FAILURES|FLOODLIGHT GLOW AND VIGNETTE|STADIUM ADS AND CLOCK|AD BOARD BRANDS'],
- [4,'MATCHDAY EXTRAS (CAMERAS, BANNERS)|FLARES AND BANNERS|PITCH INVADER|BALL BOYS|TOUCHLINE MANAGERS|WALK-OUT|PRE-MATCH TUNNEL|MATCH INTRO|HALF-TIME SCREEN|SHIRT SWAP AT FULL TIME|CLUB PERSONALITIES|BOOING|MATCH PROGRAMME'],
- [5,'MENU MUSIC|COMMENTATOR BOOTH|COMMENTARY|COMMENTARY POSITION|COMMENTARY LANGUAGE'],
+[[0,'RULES|TIME EACH HALF|OFFSIDES|FOULS|PENALTIES|ADVANTAGE RULE|REFEREE|REFEREE QUALITY|VAR|INJURIES|FAKE CRAMPS (TIME WASTING)|TIME WASTING|STAMINA DRAIN|RAIN DELAYS|KEEPER STYLES|POSTS AND CROSSBAR|KEEPER SHOUTS AND MARKING|CPU OFFSIDE TRAP|FAN MOOD EFFECTS|GOAL-LINE CHECK|COACH SUBSTITUTION HINTS|ABANDONED MATCHES|SUBSTITUTIONS|SUBSTITUTES WARM UP|SET PIECE DESIGNER|COMPUTER MATCHES|COMPUTER SKILL|FUNNY MOMENTS (BANANA, GAFFES)|MOMENTUM METER'],
+ [1,'GAMEPAD LAYOUT|PLAYER SWITCHING|SWITCH SPEED|SHOOTING ASSIST|AIM GUIDE|CURL POWER|FREE KICK STYLES (V)|CURL TRAIL|KICKOMETER|AFTERTOUCH (STEER AFTER A KICK)|AFTERTOUCH STRENGTH|INPUT BUFFER|ONE-BUTTON MODE|EXTRA TOUCH BUTTONS|TOUCH STICK DEAD ZONE|TOUCH DIAGONALS|PAD STICK DEAD ZONE|TOUCH STICK|BUTTON SIZE|SWIPE TO SHOOT|VIBRATION|CONTROL HINTS|KEEPER 1|KEEPER 2'],
+ [2,'VIEW|PASSING MAP|MAP SIZE|MAP CORNER|MAP OPACITY|TOP-DOWN ZOOM|TOP-DOWN LOOK-AHEAD|TOP-DOWN CAMERA FOCUS|MENU TEXT SIZE|COLOUR-BLIND MODE|MATCH CARDS|PLAYER NUMBERS|CAMERA|REPLAY VIEW|REPLAY ZOOM|PLAYER SIZE|STAMINA BAR (TIRED PLAYERS)|PAUSE SUMMARY PANEL|SCREEN FILTER|RETRO TV BROADCAST|BROADCAST MODE|COLOUR VISION|STAMINA AND CARD STRIP|FULLSCREEN|SUBTITLE SIZE|SUBTITLE TIME|GREEK TEXT'],
+ [3,'WEATHER|WEATHER CHANGES|WEATHER EVENTS|TIME OF DAY|SUNSET MATCHES|PITCH SURFACE|PITCH WEAR|MUDDY GOALMOUTHS (2ND HALF)|STADIUM|FOG|PUDDLES IN THE RAIN|FLOODLIGHT FAILURES|FLOODLIGHT GLOW AND VIGNETTE|STADIUM ADS AND CLOCK|AD BOARD BRANDS'],
+ [4,'MATCHDAY EXTRAS (CAMERAS, BANNERS)|FLARES AND BANNERS|BANNERS REACT TO THE MATCH|DERBY CHANT DUELS|CHEEKY BALL BOYS|PITCH INVADER|BALL BOYS|TOUCHLINE MANAGERS|WALK-OUT|PRE-MATCH TUNNEL|MATCH INTRO|HALF-TIME SCREEN|FULL-TIME HIGHLIGHTS|SHIRT SWAP AT FULL TIME|CLUB PERSONALITIES|BOOING|MATCH PROGRAMME'],
+ [5,'CHANT STYLE|MENU MUSIC|COMMENTATOR BOOTH|COMMENTARY|COMMENTARY POSITION|COMMENTARY LANGUAGE'],
  [6,'GOAL REPLAYS|GOAL CLIPS|SCORER CAM IN REPLAYS|SAVE GOALS TO SEASON REEL'],
  [7,'PAUSE WHEN SWITCHED AWAY|BOOT SCREEN']].forEach(a=>a[1].split('|').forEach(l=>{OPTMAP[l]=a[0]}));
 const optGrp=l=>OPTMAP[l]==null?7:OPTMAP[l];
@@ -7143,7 +7340,7 @@ function buildMenu(m){
     {const au=saveGet('A');if(au&&!NET.role&&!O.post){sp.lines.push('UNFINISHED MATCH FOUND');I.push({k:'act',label:'CONTINUE MATCH: '+(O.names[au.M.teams[0]]||'').slice(0,5)+' '+au.score[0]+'-'+au.score[1]+' '+(O.names[au.M.teams[1]]||'').slice(0,5)+'  H'+(au.half+1),fn:()=>loadGame('A')})}}
     if(O.last&&O.names[O.last.teams[0]]&&O.names[O.last.teams[1]])I.push({k:'act',label:'PLAY AGAIN: '+O.names[O.last.teams[0]].slice(0,7)+' V '+O.names[O.last.teams[1]].slice(0,7),fn:rematch});
     ['1P','2P','TWIN'].forEach(k=>I.push({k:'act',label:KINDNAME[k],fn:()=>{M={kind:k,teams:[0,1]};goMenu('pre')}}));
-    I.push({k:'opt',label:'TEAMS',val:()=>SET?'NATIONS':'GREEK CLUBS',step:()=>{applySet(1-SET)}});
+    I.push({k:'opt',label:'TEAMS',val:()=>['GREEK CLUBS','NATIONS','EUROPEAN CLUBS'][SET],step:d=>{applySet((SET+(d||1)+3)%3)}});
     I.push({k:'act',label:'WATCH MATCH',fn:()=>{M={kind:'AI',teams:[O.club[0],O.club[1]]};goMenu('pre')}});
     I.push({k:'act',label:'ONLINE MATCH',fn:()=>{if(SET)applySet(0);goMenu('online')}});
     I.push({k:'act',label:'LOAD GAME',fn:()=>goMenu('saves',{mode:'load'})});
@@ -7158,8 +7355,8 @@ function buildMenu(m){
   case'm_comp':
     sp.title='COMPETITIONS';
     I.push(quitItem());
-    I.push({k:'act',label:SET?'WORLD CUP':'MATCHDAY CUP',fn:()=>{tourOf('cup');goMenu('cup')}});
-    I.push({k:'act',label:SET?'NATIONS LEAGUE SEASON':'SUPER LEAGUE SEASON',fn:()=>{tourOf('league');goMenu('league')}});
+    I.push({k:'act',label:['MATCHDAY CUP','WORLD CUP','EUROPEAN CUP'][SET],fn:()=>{tourOf('cup');goMenu('cup')}});
+    I.push({k:'act',label:['SUPER LEAGUE SEASON','NATIONS LEAGUE SEASON','EURO LEAGUE SEASON'][SET],fn:()=>{tourOf('league');goMenu('league')}});
     I.push({k:'act',label:KO?'TOURNAMENT BUILDER (ACTIVE)':'TOURNAMENT BUILDER',fn:()=>{S.note='';goMenu(KO?'ko':'kob')}});
     I.push({k:'act',label:'PENALTY CUP',fn:()=>{if(!PC)pcNew();goMenu('pcup')}});
     I.push({k:'act',label:'BEST-OF SERIES'+(SER?' (ACTIVE)':''),fn:()=>goMenu('series')});
@@ -7199,7 +7396,7 @@ function buildMenu(m){
     sp.title='RECORDS AND EXTRAS';
     I.push(quitItem());
     I.push({k:'act',label:'ACHIEVEMENTS '+acCount()+'/'+ACH.length,fn:()=>goMenu('ach')});
-    I.push({k:'act',label:'PANINI ALBUM '+stkTotal()+'/80',fn:()=>goMenu('album')});
+    I.push({k:'act',label:'PANINI ALBUM '+stkTotal()+'/120',fn:()=>goMenu('album')});
     I.push({k:'act',label:'TOP SCORERS',fn:()=>goMenu('scorers')});
     I.push({k:'act',label:'PLAYER STATS',fn:()=>goMenu('pstats')});
     I.push({k:'act',label:'SEASON REEL ('+REEL.length+')',fn:()=>goMenu('reel')});
@@ -7274,7 +7471,18 @@ function buildMenu(m){
     I.push({k:'act',label:'CONTROLS AND KEYS  >',fn:()=>goMenu('k_ctrl')});
     I.push({k:'act',label:'TEAMS AND TACTICS  >',fn:()=>goMenu('k_team')});
     I.push({k:'act',label:'APP AND SYSTEM  >',fn:()=>goMenu('k_sys')});
+    I.push({k:'act',label:'OPTION PROFILES  >',fn:()=>goMenu('profiles')});
     break;
+  case'profiles':{
+    sp.title='OPTION PROFILES';sp.lines=['SAVE ALL YOUR OPTIONS INTO A SLOT AND LOAD THEM LATER','TEAMS, KEYS AND PAD BUTTONS ARE NOT INCLUDED'];
+    I.push(quitItem());
+    const pg=profGet();
+    for(let n=0;n<3;n++){
+      I.push({k:'act',label:'SAVE TO PROFILE '+(n+1)+(pg[n]?' (USED)':' (EMPTY)'),fn:()=>{profSave(n);S.msg='PROFILE '+(n+1)+' SAVED';S.msgT=70}});
+      if(pg[n])I.push({k:'act',label:'LOAD PROFILE '+(n+1),fn:()=>{S.msg=profLoad(n)?'PROFILE '+(n+1)+' LOADED':'PROFILE EMPTY';S.msgT=70}});
+    }
+    break;
+  }
   case'k_ctrl':
     sp.title='CONTROLS AND KEYS';
     I.push(quitItem());
@@ -7368,6 +7576,7 @@ function buildMenu(m){
   case'pause':
     sp.title='PAUSED';
     I.push({k:'act',label:'RETURN TO MATCH',fn:resume});
+    if(S.shn&&S.shn.p&&S.shn.p.st!=null&&S.shn.p.st<.55&&players.indexOf(S.shn.p)>=0&&S.subs&&S.subs[S.shn.tm]>0&&!S.tr){const sh=S.shn;I.push({k:'act',label:'COACH SUGGESTS: SUB '+(sh.p.nm||'PLAYER').slice(0,9),fn:()=>{goMenu('subs',{tm:sh.tm});const L=players.filter(q=>q.tm===sh.sd&&!q.gk).sort((a,b)=>a.i-b.i),ix=L.indexOf(sh.p);if(ix>=0)S.menu[S.menu.length-1].sel=ix+1}})}
     if(NET.role==='host'&&NET.ready)I.push({k:'act',label:'ADD A SPECTATOR ('+((NET.sp||[]).length)+')',fn:specBox});
     if(S.tr&&S.tr.drill===3){I.push({k:'act',label:'NEW BALL (R)',fn:()=>{freeBall();resume()}});I.push({k:'act',label:'ADD OPPONENT',fn:()=>freeAdd(1)});I.push({k:'act',label:'REMOVE OPPONENT',fn:()=>freeRem(1)});I.push({k:'act',label:'ADD TEAMMATE',fn:()=>freeAdd(0)});I.push({k:'act',label:'REMOVE TEAMMATE',fn:()=>freeRem(0)})}
     if(!S.tr&&S.subs&&M.teams)for(const tm of[0,1])if(S.hum[sideOf(tm)])I.push({k:'act',label:'SUBS '+O.names[M.teams[tm]].slice(0,10)+' ('+S.subs[tm]+')',fn:()=>goMenu('subs',{tm})});
@@ -7448,12 +7657,12 @@ function buildMenu(m){
   case'album':{
     const st=m.s==null?(m.s=SET):m.s,c=m.c==null?(m.c=0):m.c,i=m.i==null?(m.i=0):m.i;
     const nm=(st===SET?O.names:NAMESETS[st]);
-    sp.title='PANINI ALBUM '+stkTotal()+'/80';sp.w=330;
+    sp.title='PANINI ALBUM '+stkTotal()+'/120';sp.w=330;
     sp.lines=[];
     for(let k=0;k<5;k++){const n=STK[stkId(st,c,k)]||0,x=stkInfo(st,c,k);sp.lines.push((k===i?'> ':'  ')+(n?'NO.'+x.num+'  '+x.name+(n>1?'  X'+n:''):'NO.??  ???'))}
     const x=stkInfo(st,c,i),have=STK[stkId(st,c,i)]||0;
     sp.stk={have,name:x.name,num:x.num,kit:x.kit,team:nm[c],gk:x.gk};
-    I.push({k:'opt',label:'COLLECTION',val:()=>st?'NATIONAL TEAMS':'GREEK CLUBS',step:()=>{m.s=1-st;m.c=0;m.i=0}});
+    I.push({k:'opt',label:'COLLECTION',val:()=>['GREEK CLUBS','NATIONAL TEAMS','EUROPEAN CLUBS'][st],step:d=>{m.s=(st+(d||1)+3)%3;m.c=0;m.i=0}});
     I.push({k:'opt',label:'TEAM',val:()=>nm[c],step:d=>{m.c=((c+d+8)%8);m.i=0}});
     I.push({k:'opt',label:'PLAYER',val:()=>have?x.name:'???',step:d=>{m.i=((i+d+5)%5)}});
     I.push({k:'act',label:'BACK',fn:back});
@@ -7561,8 +7770,8 @@ function buildMenu(m){
   case'about':
     sp.title='ABOUT KICKOFF 6128';sp.w=330;
     sp.lines=['AN ORIGINAL FIVE-A-SIDE FOOTBALL GAME','A TRIBUTE TO MATCH DAY II','AND THE 8-BIT CLASSICS OF THE AMSTRAD CPC','',
-      'VERSION 5.21','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
-      'CLUB NAMES ARE USED FOR FUN ONLY','AND ARE NOT AFFILIATED OR OFFICIAL'];
+      'VERSION 6.4','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
+      'CLUB NAMES ARE USED FOR FUN ONLY','AND ARE NOT AFFILIATED OR OFFICIAL'].concat(ERRL?['','LAST ERROR: '+ERRL]:[]);
     I.push({k:'act',label:'BACK',fn:back});
     break;
   case'daily':{
@@ -7667,7 +7876,7 @@ function buildMenu(m){
     break;
   case'cup':case'league':{
     const t=tourOf(m.id),cup=m.id==='cup';
-    sp.title=cup?(SET?'WORLD CUP':'MATCHDAY CUP'):(SET?'NATIONS LEAGUE':'SUPER LEAGUE');
+    sp.title=cup?['MATCHDAY CUP','WORLD CUP','EUROPEAN CUP'][SET]:['SUPER LEAGUE','NATIONS LEAGUE','EURO LEAGUE'][SET];
     sp.lines=tourLines(t).slice();
     if(!cup){const hl=honoursLine();if(hl)sp.lines.push(hl);if(nextFixture(t)<0)sp.trophy=true}
     if(S.note)sp.lines.push(S.note);
@@ -7860,6 +8069,13 @@ function drawMenu(){
     g.fillStyle='#fff3a0';g.fillRect(tx+2,ty+1,2,6);
     g.fillStyle='#8a6a00';g.fillRect(tx+3,ty+17,10,1);
   }
+  if(m.id==='pause'&&O.psm&&S.st&&M&&M.teams&&!S.tr&&x>=60){
+    const a=S.st,pt=(a.poss[0]+a.poss[1])||1,p0=Math.round(a.poss[0]/pt*100),pw=x-8,px=4;
+    g.fillStyle='rgba(10,10,38,.92)';g.fillRect(px,y,pw,86);panel(px,y,pw,86);
+    txt('LIVE',px+pw/2,y+4,C.home,6);
+    txt(S.score[0]+' - '+S.score[1],px+pw/2,y+13,'#fff',8);
+    [['POSS',p0+'-'+(100-p0)],['SHOTS',a.shots[0]+'-'+a.shots[1]],['ON TGT',a.ot[0]+'-'+a.ot[1]],['CORNERS',a.corners[0]+'-'+a.corners[1]],['FOULS',a.fouls[0]+'-'+a.fouls[1]],['CARDS',(a.yel[0]+a.red[0])+'-'+(a.yel[1]+a.red[1])]].forEach((r,i)=>{txt(r[0],px+4,y+27+i*9,C.dim,4.4,'left');txt(r[1],px+pw-4,y+27+i*9,'#fff',4.8,'right')});
+  }
   if(m.top>0)txt('^',x+w-9,y+h-9,C.dim,7);
   if(m.top+vis<n)txt('v',x+w-9,y+h-9,C.home,7);
 }
@@ -7968,7 +8184,7 @@ let instEv=null;
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();instEv=e});
 addEventListener('appinstalled',()=>{instEv=null});
 try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))addEventListener('load',()=>{navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).catch(()=>{})})}catch(e){}
-const APPV='5.21';
+const APPV='6.4';
 const UPD={nw:'',st:'',ck:0};
 function updNewer(a,b){const x=a.split('.').map(Number),y=b.split('.').map(Number);for(let i=0;i<4;i++){const p=x[i]||0,q=y[i]||0;if(p!==q)return p>q}return false}
 async function updCheck(manual){
@@ -8146,7 +8362,7 @@ document.getElementById('menubtn').addEventListener('click',e=>{
 });
 
 S.menu=[{id:O.seen?'main':'device',sel:0}];
-applySet(O.set===1?1:0);
+applySet(O.set===1||O.set===2?O.set:0);
 updateHum();reset(0);
 if(O.boot!==0&&!NET.role)bootStart();
 requestAnimationFrame(frame);

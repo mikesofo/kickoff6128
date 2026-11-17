@@ -34,6 +34,33 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 6.4
+- Reactive crowd banners, derby chant duels, cheeky ball boys, muddy second-half goalmouths with slips in the wet, retro TV broadcast mode (VHS replays, full 80s TV)
+
+### 6.3
+- Pause summary panel, stamina bar, goal-line check, coach substitution hints, optional full-time highlights, three option profile slots
+
+### 6.2
+- Free kick styles (knuckleball, curler, driven, dipper) chosen with SKILL; aftertouch strength option; chant style option; European 1980s ad boards for the European set (ad board option now has four choices)
+
+### 6.1
+- New stadium ad boards: Marlboro, Camel and Assos in their brand colours
+
+### 6.0
+- Third team set: European clubs of the 1980s (Liverpool, Real Madrid, AC Milan, Juventus, Bayern, Porto, Barcelona, Dynamo Kiev) with squads, kits, stadiums, derbies, a European Cup, a Euro League season and 40 more stickers (album 120).
+
+### 5.25
+- Keeper rules: hands in the area, back-pass rule, 5 second rule with indirect free kick. Chants softened (no more gunshot sound).
+
+### 5.24
+- Fan chants rebuilt (grouped voices, vibrato, softer waveform, no comb echo).
+
+### 5.23
+- Keepers keep the ball against attackers in their own area; aftertouch toned down.
+
+### 5.22
+- Fix: black screen with only the crowd visible after some matches (a draw error left a clip active). Drawing errors are now caught, the canvas state is reset, and the last error shows on the ABOUT screen.
+
 ### 5.21
 - Panathinaikos: Zajec blond, everyone else black hair (also Zajec for Yugoslavia).
 
