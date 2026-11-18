@@ -1,4 +1,3 @@
-
 # Kickoff 6128
 
 A five-a-side football game that runs in a single HTML file. No assets, no libraries, no install: everything is drawn on an HTML5 canvas.
@@ -34,6 +33,33 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 - Line-ups with shirt numbers, a top scorers table and rivalry history
 
 ## Release notes
+
+### 7.1
+- Rain on the camera lens, free-kick spray line, announcer ticker, score bar auto-hide in replays, training retake (R). Each switchable in options.
+
+### 7.0
+- Flags in the broadcast score bar for national teams (toggle: SCORE BAR SHOWS).
+
+### 6.9
+- Broadcast score bug (abbreviated names, top left or right) with SCORE DISPLAY option; scorer caption after goals.
+- Turf marks (skid lines, divots, snow footprints), wet-pitch reflections, replay depth of field, visible ball spin, blimp and birds in the park stadium. Each is switchable in options.
+
+### 6.8
+- What's new screen once per update, team records page, coach advice, goal celebrations, dynamic shadows
+
+### 6.7
+- No low-sun glare in rain, storm or fog
+- Pitch inspection only in a storm or dense fog (no longer in plain wind)
+- Chants rebuilt: the default CROWD style is breathy crowd noise shaped into vowels with a few wavering voices; the old sound is CLASSIC SYNTH in CHANT STYLE
+
+### 6.6
+- Any gamepad button now works on PRESS ANY KEY screens, even when the controls device is keyboard
+- Removed the small tagline text under the ad board names
+
+### 6.5
+- Gamepad uses the PES layout by default: X low pass, O lob/cross, Square shoot, Triangle through ball, R2 skill, L2 trap/wall, L1 switch player, R1 press, R3 time warp (the game has no dash button)
+- Gamepad layout choice is now saved
+- Full-time safety net: opens the result screen if it is ever missing
 
 ### 6.4
 - Reactive crowd banners, derby chant duels, cheeky ball boys, muddy second-half goalmouths with slips in the wet, retro TV broadcast mode (VHS replays, full 80s TV)
