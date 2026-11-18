@@ -34,6 +34,19 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 7.4
+- [ and ] keys for view and zoom during a match; pause menu has VIEW, ZOOM, SOUND and all options at the top.
+- New ad board for Greek-set matches.
+
+### 7.3
+- Crowd sound: English-only chants, fuller and louder, repeated; louder ambience; rebuilt booing (default every match).
+- CCCP and Spain away kits; hair visible from above; rabbit size fixed.
+
+### 7.2
+- Keeper goes up for late corners and free kicks when losing (or level in a must-win match).
+- Goal-line cam replay only for close calls (option), flip-digit board at the midline, wind-driven corner flags.
+- Fix: free-kick spray line no longer clashes with the offside trap.
+
 ### 7.1
 - Rain on the camera lens, free-kick spray line, announcer ticker, score bar auto-hide in replays, training retake (R). Each switchable in options.
 
