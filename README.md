@@ -1,3 +1,4 @@
+<img width="840" height="660" alt="s7x" src="https://github.com/user-attachments/assets/82c5a143-4d5c-4f98-a79c-28bb720faedd" />
 # Kickoff 6128
 
 A five-a-side football game that runs in a single HTML file. No assets, no libraries, no install: everything is drawn on an HTML5 canvas.
