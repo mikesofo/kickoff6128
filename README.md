@@ -34,6 +34,40 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 8.5
+- Set piece close-up (picture-in-picture) at penalties and free kicks; stadium PA announcer strip with chime; top-down jump pose. Both new features are options.
+
+### 8.4
+- Jump pose: arms up and knees tucked while a player or keeper is in the air.
+
+### 8.3
+- Keepers jump for high shots (leap, or dive and leap) and reach higher; curl aim guide matches the natural curl.
+
+### 8.2
+- Curled shots now start along the aim and bend toward the steered direction (no more launch to the opposite side first); low curls bend more.
+
+### 8.1
+- Fan chants on/off option; new chant style DRUMS AND CLAPS (default, also applied once to existing saves): drum beat, rhythmic crowd claps and cheers. Booing when the visitors attack now only in the final third of the pitch.
+
+### 8.0
+- Floodlight shadows (four per player at night), heat shimmer and dust on hot dry days, knee-slide and shirt-over-head celebrations (the latter may draw a yellow card), trophy ceremony with a kitted-out squad and fireworks. Each is switchable in the options.
+
+### 7.9
+- ΡΙΖΟΣΠΑΣΤΗΣ ad board restyled: black lettering, white background, red hammer and sickle each side.
+
+### 7.8
+- Gradual puddles with splashes and ripples; card mosaics, scarves and phone flashes in the crowd; more frequent Mexican waves.
+- Tired and limping players, referee signals, substitution board, goal shot map. Each switchable.
+
+### 7.7
+- Top-down stands and boards (steps, stairways, rail, stewards, end boards, wider camera) and detailed goal nets (options).
+
+### 7.6
+- Top-down extra detail: grass grain, worn patches, socks, shirt shading, collars, cuffs, ball highlight (option).
+
+### 7.5
+- VAR and goal-line technology only for dubious goals (missed offside or foul beforehand, or a hair's-breadth margin).
+
 ### 7.4
 - [ and ] keys for view and zoom during a match; pause menu has VIEW, ZOOM, SOUND and all options at the top.
 - New ad board for Greek-set matches.
