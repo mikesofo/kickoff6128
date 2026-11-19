@@ -34,6 +34,11 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 8.6
+- Black screen hardening: simulation errors are caught, located (About > LAST ERROR) and recovered from.
+- Players 20% smaller by default; PLAYER SIZE option -20%..+50%.
+- Isometric zoom FAR/NORMAL/NEAR/CLOSE, ] key cycles it in every view.
+
 ### 8.5
 - Set piece close-up (picture-in-picture) at penalties and free kicks; stadium PA announcer strip with chime; top-down jump pose. Both new features are options.
 
