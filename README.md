@@ -34,6 +34,21 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 9.0
+- GOAL AND BOX SIZE option (classic / wide +25% / extra wide +50%): goal mouth, six-yard box, penalty area, spot and arc scale together (markings and rules). Default wide.
+
+### 8.9
+- Isometric camera now also follows the ball vertically (option ISOMETRIC CAMERA FOLLOWS UP AND DOWN).
+
+### 8.8
+- Player size normal restored to the v8.5 size (option range -20%..+50% kept).
+- Pitch and goals drawn 20% larger in all views (visual scale; gameplay distances unchanged).
+
+### 8.7
+- Black screen FIXED: banner list `S.ban` clashed with the suspension counters `S.ban=[0,0]` after a menu reset (drawBan0 crashed on `0`). Renamed to `S.bnr`.
+- Duplicate GAMEPLAY SPEED menu entry removed; menu song plays twice then stops.
+- Stand weather (umbrellas, ponchos, fans, sun hats, breath), fans leave after a heavy home defeat (with PA and commentary), sweaty/wrinkled shirts, facial hair, ball styles (leather, winter orange, hi-vis, auto), full-time handshakes and walk-off, SHOOTING MASTERCLASS in Training. All have options.
+
 ### 8.6
 - Black screen hardening: simulation errors are caught, located (About > LAST ERROR) and recovered from.
 - Players 20% smaller by default; PLAYER SIZE option -20%..+50%.
