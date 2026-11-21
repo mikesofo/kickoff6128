@@ -34,6 +34,34 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 9.7
+- Option presets (Classic 1986 / Full atmosphere / Pure gameplay) and a custom page with every on/off switch
+- Direct free kicks can score: wall further back and lower, blind keeper behind the wall, auto-loft for curler and dipper, five-lesson free kick tutorial
+- Free kick school and tutorial: how to curve and dip the ball, low vs high corners; scoreboard digits without shadow
+- Automated health check: `node tests/selftest.js index.html [--quick]`
+- Fix: seven options did not persist; curl trail and CPU offside trap shared one switch
+
+### 9.6
+- Fix: players looked partly bald running towards camera (front hair covered only the top); detailed crowd option (shaded fans, hair colours, eyes, flags, caps, open mouths)
+
+### 9.5
+- Ball bounce: friction-based bounce, surface-dependent, squash on impact, impact-scaled thud (BALL PHYSICS: ENHANCED)
+
+### 9.4
+- Quit to desktop menu item; 50/50 crowd in national matches; enhanced ball physics option; gamepad defaults R1 skill / X press / triangle jockey
+
+### 9.3
+- Half time kiosk (souvlaki queue), boom mic operator along the touchline, radio mode (off by default). Each has an option.
+
+### 9.2
+- Ad boards: shadow removed, bigger lettering; LACTA and ION red with white letters; the Λεωνίδας board is two lines (ΨΗΣΤΑΡΙΕΣ / Ο ΛΕΩΝΙΔΑΣ)
+- FREE KICK SCHOOL: full instruction panel in the FREE KICKS drill (option), more coach tips, four new free-kick lessons in the shooting course
+- New pitch invaders: a ΠΑΣΟΚ fan with a rising-sun flag, and two dogs who sometimes get very friendly (non-graphic). Both in the PITCH INVADER option.
+
+### 9.1
+- Ad boards: taller, shadowed lettering, taglines, pictograms; Greek mode adds REXONA, LACTA and ΛΕΩΝΙΔΑΣ (colours are best-known brand colours, no official logos).
+- SKYCAM RIG, RAINBOW AFTER RAIN (rain stops once in light-rain day matches), LIGHTNING BOLTS (visible bolt + commentary). All switchable.
+
 ### 9.0
 - GOAL AND BOX SIZE option (classic / wide +25% / extra wide +50%): goal mouth, six-yard box, penalty area, spot and arc scale together (markings and rules). Default wide.
 
