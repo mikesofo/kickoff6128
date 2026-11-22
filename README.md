@@ -34,9 +34,19 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 9.9
+- Back-pass rule is a separate switch, off by default (1980s)
+- Free kick wall signal (through-ball button: auto / jumps / stays); a jumping wall can be beaten low
+- Free kick aim line with goal-line marker
+- Pitch invader fans are met by two stewards and escorted off, keeping their flag
+
+### 9.8
+- Fixes: gamepad X for throw-ins, free kicks and corners; Saravakos hair stays the same in both halves; Panathinaikos tifo anchored in the stands for 50 s; keepers react later and dive slower so aimed corners score; flip-digit scoreboard removed
+
 ### 9.7
 - Option presets (Classic 1986 / Full atmosphere / Pure gameplay) and a custom page with every on/off switch
 - Direct free kicks can score: wall further back and lower, blind keeper behind the wall, auto-loft for curler and dipper, five-lesson free kick tutorial
+- Fixes: gamepad X for throw-ins/set pieces, Saravakos hair, PAO tifo anchored, keepers slower to react (aimed corners score), flip scoreboard removed
 - Throw-ins: pass button throws to the teammate you face, hold lob (circle) for a charged long throw; crowd scrolls almost with the boards; tifo/flares stay in the stands; smaller boom-mic man
 - Free kick practice uses the real set-piece mode (V styles, match wall distance)
 - Stands: crowd follows the pitch camera (no fans showing through the grass in front of the boards) and scrolls closer to board speed; score-bug digits drawn crisp, no shadow; ΠΑΣΟΚ fan flag uses the real logo green; `pasok_flag.svg` added
