@@ -34,6 +34,23 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 9.14
+- New FREE KICK ACADEMY tutorial (Training): 16 lessons, one per free kick type, with event detection for over/around the wall and each style.
+- Fixed the ΡΙΖΟΣΠΑΣΤΗΣ adboard hammer and sickle (was upside down).
+
+### 9.13
+- New FOULS AND CARDS TUTORIAL (Training menu): 12 lessons with scripted tasks for free kick, penalty, yellow, second yellow/red, straight red, winning a free kick, winning a penalty and advantage.
+
+### 9.12
+- Pre-match coin toss: if a human wins the toss they pick KICK OFF or CHOOSE ENDS (keys/tap); AI winners still pick automatically.
+
+### 9.11
+- Keepers weaker and scaled by their own GK rating (new `gkSk`, later reactions, bigger aim error, lower save odds).
+- Rule switch KEEPER CAN PICK UP BACK-PASSES (1980S), default ON (replaces BACK-PASS RULE).
+
+### 9.10
+- Fixed Saravakos (and any other player) being bald on one side of the pitch: hair style no longer depends on the team side.
+
 ### 9.9
 - Back-pass rule is a separate switch, off by default (1980s)
 - Free kick wall signal (through-ball button: auto / jumps / stays); a jumping wall can be beaten low
