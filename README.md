@@ -37,6 +37,9 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 ### 9.7
 - Option presets (Classic 1986 / Full atmosphere / Pure gameplay) and a custom page with every on/off switch
 - Direct free kicks can score: wall further back and lower, blind keeper behind the wall, auto-loft for curler and dipper, five-lesson free kick tutorial
+- Throw-ins: pass button throws to the teammate you face, hold lob (circle) for a charged long throw; crowd scrolls almost with the boards; tifo/flares stay in the stands; smaller boom-mic man
+- Free kick practice uses the real set-piece mode (V styles, match wall distance)
+- Stands: crowd follows the pitch camera (no fans showing through the grass in front of the boards) and scrolls closer to board speed; score-bug digits drawn crisp, no shadow; ΠΑΣΟΚ fan flag uses the real logo green; `pasok_flag.svg` added
 - Free kick school and tutorial: how to curve and dip the ball, low vs high corners; scoreboard digits without shadow
 - Automated health check: `node tests/selftest.js index.html [--quick]`
 - Fix: seven options did not persist; curl trail and CPU offside trap shared one switch
