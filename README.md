@@ -34,6 +34,28 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 10.0
+- Manager Career: seasons in the league with budget, training, transfer window, ageing and board targets.
+- Hall of Fame (personal records) and Match History (last 40 matches) with written match stories.
+- Club Creator (generated badges, random kit and squad) and Formation Library (3 slots, mirror, copy).
+- Tutorial Progress page: every lesson with stars, jump straight in.
+- Extra commentary variety (Greek included) and a language switch in the pause menu.
+- 10.0 title card; rebuilt Instructions start page. Every feature has an on/off option.
+
+### 9.17
+- What's New popup lists all versions since last played.
+- Phone landscape: no more 8px vertical scroll.
+- Audit: menus/tutorial panels checked for overlap/overflow (none).
+
+### 9.16
+- New CORNERS AND THROW-INS and PENALTY ACADEMY tutorials.
+- Replay your last kick (Z / L3) in training and tutorials, with path trace.
+- Gamepad button guide screen.
+
+### 9.15
+- Tutorial stars (1-3 per lesson, saved in `kickoff6128-tutstars`), totals in the Training menu.
+- Gamepad: coin toss choice with D-pad/stick + X; Select/Back skips a tutorial lesson.
+
 ### 9.14
 - New FREE KICK ACADEMY tutorial (Training): 16 lessons, one per free kick type, with event detection for over/around the wall and each style.
 - Fixed the ΡΙΖΟΣΠΑΣΤΗΣ adboard hammer and sickle (was upside down).
