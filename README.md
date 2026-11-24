@@ -34,6 +34,11 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 10.1
+- The poster is the first screen: an animated title (crowd, floodlights, striker, diving keeper, goal or save in turns).
+- Menu music starts on the title screen and carries on into the menus; the first key press unlocks sound if the browser blocks it.
+- New options: Title Poster Screen, CPC Boot Before Title, Music Only on Title Screen.
+
 ### 10.0
 - Manager Career: seasons in the league with budget, training, transfer window, ageing and board targets.
 - Hall of Fame (personal records) and Match History (last 40 matches) with written match stories.
