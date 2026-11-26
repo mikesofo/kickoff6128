@@ -34,6 +34,32 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 10.7
+- MOTOR OIL adboard (blue/white, oil drop) in the Greek ad set.
+
+### 10.6
+- Weather mostly clear; fixed weather never changes mid-match, RANDOM changes rarely.
+- Options WEATHER = LOCAL and TIME OF DAY = LOCAL (real weather via open-meteo + device clock).
+- Fans throw flares in derbies (referee stops play, stewards clear them) and bottles when a team trails by 3+.
+- Phones: touch stick/swipe also work in the black side bars (landscape); SND label hidden on touch devices.
+- Options regrouped: WEATHER AND LIGHTING / PITCH AND STADIUM / CROWD AND FANS.
+
+### 10.5
+- OFI gets a GATE 4 banner (home and away).
+
+### 10.4
+- Club fan banners in home and away stands for PAO (GATE 13; result-dependent ΕΙΜΑΣΤΕ ΑΠΟ ΤΟ ΜΕΛΛΟΝ / ΑΛΑΦΟΥΖΟ ΖΗΣΕ), OLY (NO POLITICA, GATE 7), AEK, PANIONIOS, ARIS, PAOK, PANACHAIKI. Switch: OPTIONS > CLUB FAN BANNERS.
+
+### 10.3
+- Second Panathinaikos fan banner "ΑΛΑΦΟΥΖΟ ΖΗΣΕ" in home matches, held by fans in the stands.
+- Fan banners now sit inside the stands (behind adboards, under fog and night shading) and are held up by fans, not floating poles.
+- Fixed: after winning the coin toss and choosing differently from the pre-rolled result, the second half did not switch ends. Ends and kick-off now follow your choice.
+
+### 10.2
+- Floodlights come on earlier at dusk and fade up smoothly.
+- One soft shadow per floodlight tower for every player (four towers, four shadows); towers drawn at all four corners.
+- Clear half-time cue: the half-time screen, arrows and commentary show the teams switching ends.
+
 ### 10.1
 - The poster is the first screen: an animated title (crowd, floodlights, striker, diving keeper, goal or save in turns).
 - Menu music starts on the title screen and carries on into the menus; the first key press unlocks sound if the browser blocks it.
