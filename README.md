@@ -34,6 +34,16 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 10.9
+- Copy bug report button (options, pause menu): version, device, options, match state, keys, last errors and events.
+- Club mascot: jogs the touchline at half time and runs on to celebrate home goals (option).
+- Phone light waves in night stands (option, needs scarves and phone flashes). Ponchos and umbrellas in rain already existed.
+- Free kick curve preview and a default wall size option (the in-kick wall key already existed).
+
+### 10.8
+- Shooting assist aims at the goal corner furthest from the keeper (was: kept the aim line, only dodging the keeper).
+- Crowd reactions (goal cheers/boos, shot excitement, VAR) now follow the club, not the pitch end, so they stay correct after half time / toss side swaps.
+
 ### 10.7
 - MOTOR OIL adboard (blue/white, oil drop) in the Greek ad set.
 
