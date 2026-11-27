@@ -345,7 +345,7 @@ const DEFKEYS=[
   {left:'ArrowLeft',right:'ArrowRight',up:'ArrowUp',down:'ArrowDown',kick:'Space',lob:'KeyX',pass:'KeyC',warp:'KeyT',skill:'KeyV',through:'KeyB',press:'KeyN'},
   {left:'KeyJ',right:'KeyL',up:'KeyI',down:'KeyK',kick:'Enter',lob:'Period',pass:'Slash',warp:'Backslash',skill:'Comma',through:'KeyU',press:'KeyO'}];
 const HAIR2=['#1a1008','#3a2410','#6a4020','#d8b868','#9a9a9a','#8a2a10','#111'];
-const O={mas:1,plw:1,fkc:1,wlz:0,thf:1,thb:1,fbn:1,mto:0,cpc:0,gkb:1,cvx:1,mhs:1,hof:1,car:1,fka:1,tdf:0,pnm:0,rpv:0,rpz:0,fmoff:0,abn:0,rsub:0,ctl:1,fkw:1,cgf:1,nfs:1,bph:1,kio:1,mic:1,rad:0,fkh:1,scm:1,rbw:1,lbt:1,adg:1,gw:1,icy:1,wst:1,swt:1,fhr:1,bst:4,exo:1,snd:1,gks:1,wood:1,cramp:1,cxk:{0:{},1:{}},cxp:{},cxt:{},gkc:1,ctr:1,view:0,map:1,at:1,atp:1,padp:1,bug:1,bgf:1,mos:1,cfx:1,tir:1,fls:1,hsh:1,csq:1,cup:1,pa:1,rsg:1,sbd:1,smap:1,tdd:1,tds:1,gnd:1,gku:1,wfl:1,glcc:1,lens:1,spr:1,tick:1,bah:1,mrk:1,refl:1,dof:1,sky:1,sdw:1,cel:1,wn:'',ban2:1,duel:1,bbc:1,mud:1,rtv:0,stb:1,glt:1,sgh:1,fth:0,psm:1,chs:0,chn:1,m81:0,adset:0,fkv:1,tdz:1,tdl:1,mps:1,mpc:0,mpa:1,fx:1,fun:1,swap:1,ads:1,glow:1,cpos:1,kon:1,kof:0,kox:0,stt:1,stc:0,coq:0,mgr:1,reel:1,cvd:0,rsc:1,pers:1,cs:{on:0,st:0,bd:0,pt:0,nm:'',t:['','','']},jdz:1,jsn:1,pdz:2,pud:1,xb:1,obm:0,strip:1,cz:1,cdt:1,hint:1,intro:0,fav:[],vm:4,vc:4,vf:4,vs:4,afk:1,tut:0,last:null,grs:1,adv:1,mom:2,dtn:1,bnc:1,asw:0,aswS:1,ib:1,gp:{k:0,a:1,s:4,v:2,w:5,t:3,pr:7,tr:6},hv:2,gs:0,aimg:1,curl:0,ctr:1,fog:1,cf:[null,null],stm:1,hts:1,lefty:0,spd:1,rdl:1,bcm:0,tun:1,spdD:null,clip:1,gr:0,wear:1,zoom:0,flt:0,psz:2,izm:1,m86:0,bb:1,tw:1,flf:1,rb:3,wch:1,boo:2,m73:0,vr:1,prog:1,music:1,rq:1,sound:0,half:0,km:0,cm:0,skill:1,keep:[0,0],tac:[0,0],kit:[-1,-1],club:[0,1],v:2,pitch:0,dev:0,seen:0,replay:1,weather:4,tod:3,offs:1,fouls:1,pens:1,assist:1,ball:0,swipe:(typeof matchMedia!=='undefined'&&matchMedia('(pointer:coarse)').matches)?1:0,vib:1,tpad:0,bsz:1,ref:4,evt:1,inj:1,walk:1,pyro:1,boot:1,comm:1,pk:[0,0],fkt:[0,0],cap:[0,0],form:[0,0],sty:[0,0],mc:[0,0],sn:0,cb:0,tsz:0,mce:0,cor:[4,4],fk:[3,3],inv:5,iv:1,surf:0,stad:0,
+const O={phy:0,cdr:1,mas:1,plw:1,fkc:1,wlz:0,thf:1,thb:1,fbn:1,mto:0,cpc:0,gkb:1,cvx:1,mhs:1,hof:1,car:1,fka:1,tdf:0,pnm:0,rpv:0,rpz:0,fmoff:0,abn:0,rsub:0,ctl:1,fkw:1,cgf:1,nfs:1,bph:1,kio:1,mic:1,rad:0,fkh:1,scm:1,rbw:1,lbt:1,adg:1,gw:1,icy:1,wst:1,swt:1,fhr:1,bst:4,exo:1,snd:1,gks:1,wood:1,cramp:1,cxk:{0:{},1:{}},cxp:{},cxt:{},gkc:1,ctr:1,view:0,map:1,at:1,atp:1,padp:1,bug:1,bgf:1,mos:1,cfx:1,tir:1,fls:1,hsh:1,csq:1,cup:1,pa:1,rsg:1,sbd:1,smap:1,tdd:1,tds:1,gnd:1,gku:1,wfl:1,glcc:1,lens:1,spr:1,tick:1,bah:1,mrk:1,refl:1,dof:1,sky:1,sdw:1,cel:1,wn:'',ban2:1,duel:1,bbc:1,mud:1,rtv:0,stb:1,glt:1,sgh:1,fth:0,psm:1,chs:0,chn:1,m81:0,adset:0,fkv:1,tdz:1,tdl:1,mps:1,mpc:0,mpa:1,fx:1,fun:1,swap:1,ads:1,glow:1,cpos:1,kon:1,kof:0,kox:0,stt:1,stc:0,coq:0,mgr:1,reel:1,cvd:0,rsc:1,pers:1,cs:{on:0,st:0,bd:0,pt:0,nm:'',t:['','','']},jdz:1,jsn:1,pdz:2,pud:1,xb:1,obm:0,strip:1,cz:1,cdt:1,hint:1,intro:0,fav:[],vm:4,vc:4,vf:4,vs:4,afk:1,tut:0,last:null,grs:1,adv:1,mom:2,dtn:1,bnc:1,asw:0,aswS:1,ib:1,gp:{k:0,a:1,s:4,v:2,w:5,t:3,pr:7,tr:6},hv:2,gs:0,aimg:1,curl:0,ctr:1,fog:1,cf:[null,null],stm:1,hts:1,lefty:0,spd:1,rdl:1,bcm:0,tun:1,spdD:null,clip:1,gr:0,wear:1,zoom:0,flt:0,psz:2,izm:1,m86:0,bb:1,tw:1,flf:1,rb:3,wch:1,boo:2,m73:0,vr:1,prog:1,music:1,rq:1,sound:0,half:0,km:0,cm:0,skill:1,keep:[0,0],tac:[0,0],kit:[-1,-1],club:[0,1],v:2,pitch:0,dev:0,seen:0,replay:1,weather:4,tod:3,offs:1,fouls:1,pens:1,assist:1,ball:0,swipe:(typeof matchMedia!=='undefined'&&matchMedia('(pointer:coarse)').matches)?1:0,vib:1,tpad:0,bsz:1,ref:4,evt:1,inj:1,walk:1,pyro:1,boot:1,comm:1,pk:[0,0],fkt:[0,0],cap:[0,0],form:[0,0],sty:[0,0],mc:[0,0],sn:0,cb:0,tsz:0,mce:0,cor:[4,4],fk:[3,3],inv:5,iv:1,surf:0,stad:0,
   names:DEFNAMES.slice(),nn:['HOLLAND','CCCP','ENGLAND','FRANCE','SPAIN','WEST GERMANY','ITALY','YUGOSLAVIA'],ne:['LIVERPOOL','REAL MADRID','AC MILAN','JUVENTUS','BAYERN','PORTO','BARCELONA','DYNAMO KIEV'],set:0,booth:1,keys:JSON.parse(JSON.stringify(DEFKEYS)),hcap:[0,0]};
 function saveOpt(){try{const N=NAMESETS.slice();N[SET]=O.names;localStorage.setItem('kickoff6128',JSON.stringify(Object.assign({},O,{names:N[0],nn:N[1],ne:N[2],set:SET})))}catch(e){}}
 /* ---------- achievements ---------- */
@@ -1755,6 +1755,7 @@ function foulCommit(p,v,card,inBox){
   if(S.hm>=0&&teamOf(p.tm)===1)crowdBump(.2);
   const yc=card===1;
   if(v&&O.tir&&!v.gk&&(card||Math.random()<.35))v.limp=420;
+  if(card&&O.cdr&&!S.tr&&!S.pso&&!S.demo&&S.hm>=0)cardCrowd(p,card);
   if(card){S.card={p,t:140,red:card===2,vx:v.x,vy:v.y};vib(card===2?[220]:[90]);kml((card===2?'RED CARD ':'YELLOW CARD ')+pname(p))}
   {const t=teamOf(p.tm),c=(O.cap&&O.cap[t])?capOf(t):null;
     if(c&&c!==p&&card<2&&!S.tr&&!S.pso&&!S.demo&&Math.random()<.16){
@@ -2191,7 +2192,7 @@ function humanStep(h){
   }
   if(p.shield>0&&!p.gk){tx*=.45;ty*=.45}
   if(dead){tx=0;ty=0}
-  p.vx+=(tx-p.vx)*.3;p.vy+=(ty-p.vy)*.3;
+  {const ac=O.phy===1?.5:.3;p.vx+=(tx-p.vx)*ac;p.vy+=(ty-p.vy)*ac}
 }
 
 function predictShot(p){
@@ -2350,7 +2351,7 @@ function gkAI(p){
     tx=line+dir*d;ty=CY+clamp((ball.y-CY)*Math.min(1,d/Math.max(dxb,12)),-GH+4,GH-4);sp=1.2;
   }
   const dx=tx-p.x,dy2=ty-p.y,L=Math.hypot(dx,dy2)||1,m=L>1.2?Math.min(1,L/8):0;
-  p.vx+=(dx/L*sp*m-p.vx)*.35;p.vy+=(dy2/L*sp*m-p.vy)*.35;
+  {const ac=O.phy===1?.5:.35;p.vx+=(dx/L*sp*m-p.vx)*ac;p.vy+=(dy2/L*sp*m-p.vy)*ac}
 }
 
 function aiMove(p){
@@ -2519,6 +2520,14 @@ function ballStep(){
       const dq=p.tm?-1:1;/* clear/block always sends it away from own goal */
       ball.vx=dq*Math.abs(ball.vx)*.5+rnd(-.3,.8)*dq;ball.vy=ball.vy*.7+rnd(-1.2,1.2);
       ball.sp=0;p.cd=12;lastTouch=p.tm;
+    }else if(O.phy===1&&!S.sp&&!S.pso&&!(p.fall>0)){
+      /* Sensible style: the ball is knocked ahead with each touch and rolls free between touches */
+      const pv=Math.hypot(p.vx,p.vy),d=dist(p,ball);
+      ball.sp=0;ball.z=0;ball.vz=0;lastTouch=p.tm;p.tap=(p.tap||0)-1;
+      if(pv>.2){
+        const ahead=(ball.x-p.x)*p.vx/pv+(ball.y-p.y)*p.vy/pv;
+        if(p.tap<=0&&(d<5.5||ahead<2.5)){const k=(pv+.34+(p.boost>0?.1:0))/pv;ball.vx=p.vx*k;ball.vy=p.vy*k;p.tap=8}
+      }else{ball.vx=(p.x+p.fx*4.2-ball.x)*.28;ball.vy=(p.y+p.fy*4.2-ball.y)*.28}
     }else{
       const tx=p.x+p.fx*5,ty=p.y+p.fy*5;
       ball.vx=p.vx+(tx-ball.x)*.25;ball.vy=p.vy+(ty-ball.y)*.25;
@@ -2526,7 +2535,7 @@ function ballStep(){
     }
   }
   ball.x+=ball.vx;ball.y+=ball.vy;
-  const fr=ball.z>.2?airFr(ball.vx,ball.vy):.985+(S.wet?.0035:0)+SURF_FR[S.surf]-(ball.z>.2?0:wearAt(ball.x,ball.y)*(S.wet?.016:.01));ball.vx*=fr;ball.vy*=fr;
+  const fr=ball.z>.2?airFr(ball.vx,ball.vy):.985+(O.phy===1?.003:0)+(S.wet?.0035:0)+SURF_FR[S.surf]-(ball.z>.2?0:wearAt(ball.x,ball.y)*(S.wet?.016:.01));ball.vx*=fr;ball.vy*=fr;
   if(ball.z<=.2){const s0=Math.hypot(ball.vx,ball.vy);if(s0>0){const k=Math.max(0,s0-(.0025+(s0<.45?.0025*(1-s0/.45):0))*(S.wet?.8:1))/s0;ball.vx*=k;ball.vy*=k}}
   if(ball.z<.2&&S.pud&&O.pud&&pudAt(ball.x,ball.y)){ball.vx*=.92;ball.vy*=.92}
   if(ball.z>0||ball.vz>0){
@@ -5079,6 +5088,7 @@ const INSTR=[
  ['MANAGER CAREER (10.0)','Competitions > Manager Career: pick a club and play whole league seasons. You earn budget for each result (win 3, draw 1, plus 1 for scoring three). Spend 2 to train a player (his weakest skill goes up one, twice per season each) and 5 to sign a star in the transfer window (open at the start of the season and at mid-season); sell a player for 3. Between seasons the young improve and veterans decline or retire. The board sets a target position that tightens every year. Switch it off with Options > Manager Career.'],
  ['HALL OF FAME AND HISTORY (10.0)','Records and Extras > Hall of Fame keeps your personal bests: biggest win, fastest goal, longest unbeaten run, longest-range goal, most goals in a match, hat-tricks, tutorial stars, achievements and stickers. Match History keeps the last 40 matches with scorers and a written match story, also shown on the full-time screen. Options: Match Story and History, Hall of Fame Records.'],
  ['CLUB CREATOR AND FORMATIONS (10.0)','Team and Players > Club Creator: pick any club slot, name it, make a badge from up to three letters in four styles, roll random kit colours or a random squad with 1980s shirt numbers, then fine-tune in the editors. Tactics Board > Formation Library: save a formation into three slots, load it onto either team, mirror it left to right or copy team 1 to team 2.'],
+ ['NEW IN 10.10','PHYSICS STYLE: SENSIBLE SOCCER MAKES PLAYERS TURN AND ACCELERATE SHARPLY AND KNOCK THE BALL AHEAD WITH EACH TOUCH INSTEAD OF HOLDING IT ON A STRING, SO IT ROLLS FREE BETWEEN TOUCHES AND CAN BE WON BY A QUICK TACKLE; THE BALL ALSO ROLLS A LITTLE FARTHER (OPTIONS, GAMEPLAY). CLASSIC STAYS THE DEFAULT. CROWD REACTS TO CARDS: RED CARDS SILENCE AND WHISTLE THE HOME END OR SEND IT WILD, AND THE MASCOT CELEBRATES WHEN THE OPPOSITION LOSE A MAN. CORNER PRACTICE ALREADY EXISTS AS TRAINING DRILL 4, SO NOTHING NEW WAS NEEDED THERE.'],
  ['NEW IN 10.9','BUG REPORT: COPY BUG REPORT (OPTIONS, SYSTEM AND OTHER, AND THE PAUSE MENU) COPIES VERSION, DEVICE, OPTIONS, MATCH STATE, KEYS HELD, THE LAST ERRORS AND THE LAST MATCH EVENTS, READY TO PASTE INTO A REPORT. CLUB MASCOT: A BIG-HEADED MASCOT IN THE HOME KIT COLOURS JOGS ALONG THE TOUCHLINE AT HALF TIME AND RUNS ON TO CELEBRATE HOME GOALS (OPTION CLUB MASCOT). PHONE LIGHT WAVES: AT NIGHT A WAVE OF PHONE LIGHTS ROLLS ALONG THE STAND, MORE OFTEN AFTER GOALS OR WHEN THE FLOODLIGHTS FAIL (OPTION PHONE LIGHT WAVES AT NIGHT; NEEDS SCARVES AND PHONE FLASHES ON). FREE KICKS: FREE KICK CURVE PREVIEW DRAWS THE PATH YOUR KICK WILL TAKE FROM YOUR AIM, TURN AND CHARGE, AND DEFAULT WALL SIZE SETS THE WALL YOU FACE (THE WALL KEY STILL CHANGES IT DURING A KICK).'],
  ['NEW IN 10.8','SHOOTING ASSIST now aims for a goal corner (the one furthest from the keeper) instead of the keeper. FANS: after the teams switch ends the home crowd kept cheering goals for the wrong side and reacted to shots by the wrong team; the crowd now follows the club, not the end of the pitch.'],
  ['NEW IN 10.7','MOTOR OIL adboard (blue and white, with an oil drop) added to the Greek advertising set.'],
@@ -6585,6 +6595,14 @@ function plwWave(night){
   if(!night||!O.plw||!O.cfx||S.tr||S.demo||S.hm<0)return null;
   const per=(S.cr>.45||S.fOut)?420:2600,ph=S.t%per,dur=380;
   return ph<dur?ph/dur*(W+160)-80:null;
+}
+function cardCrowd(p,card){
+  const home=teamOf(p.tm)===0;/* the carded player is a home player */
+  if(card===2){
+    if(home){S.cr=Math.max(0,(S.cr||0)-.35);booFx();say(pick(['THE HOME END IS STUNNED - A MAN DOWN','SILENCE AROUND THE GROUND, THEN THE WHISTLES START']))}
+    else{crowdBump(.7);mascotGoal();say(pick(['THE HOME CROWD ROARS - THE VISITORS ARE DOWN TO TEN','THE STANDS ARE ON THEIR FEET - THEY CAN SMELL BLOOD']))}
+  }else if(!home){crowdBump(.25)}
+  else booFx();
 }
 function mascotGoal(){if(!O.mas||S.demo||S.tr||S.pso||S.hm<0)return;S.mas={k:'c',x:cam+64,y:Y0-5,d:-1,t:0,w:0,j:0}}
 function mascotTick(){
@@ -9279,6 +9297,8 @@ function optionItems(){
     oi('FREE KICK STYLES (V)','fkv',L_ONOFF),
     oi('FREE KICK AIM LINE','fka',L_ONOFF),
     oi('FREE KICK CURVE PREVIEW','fkc',L_ONOFF),
+    oi('PHYSICS STYLE','phy',['CLASSIC','SENSIBLE SOCCER']),
+    oi('CROWD REACTS TO CARDS','cdr',L_ONOFF),
     oi('DEFAULT WALL SIZE','wlz',['AUTO','1 MAN','2 MEN','3 MEN','4 MEN','5 MEN']),
     oi('CURL TRAIL','ctl',L_ONOFF),
     oi('FOG','fog',['OFF','RARE','ALWAYS']),
@@ -9386,7 +9406,7 @@ const OPTMAP={};
  [6,'GOAL REPLAYS|GOAL CLIPS|SCORER CAM IN REPLAYS|SAVE GOALS TO SEASON REEL'],
  [7,'PAUSE WHEN SWITCHED AWAY|BOOT SCREEN']].forEach(a=>a[1].split('|').forEach(l=>{OPTMAP[l]=a[0]}));
 {const O2N=[0,1,2,4,6,7,8,9];for(const k in OPTMAP)OPTMAP[k]=O2N[OPTMAP[k]];
- [[1,'FREE KICK CURVE PREVIEW|DEFAULT WALL SIZE'],[5,'PHONE LIGHT WAVES AT NIGHT'],[6,'CLUB MASCOT'],[9,'COPY BUG REPORT'],[0,'GAMEPLAY SPEED|REFEREE FAVOURS'],[1,'TOUCH LAYOUT'],
+ [[0,'PHYSICS STYLE'],[5,'CROWD REACTS TO CARDS'],[1,'FREE KICK CURVE PREVIEW|DEFAULT WALL SIZE'],[5,'PHONE LIGHT WAVES AT NIGHT'],[6,'CLUB MASCOT'],[9,'COPY BUG REPORT'],[0,'GAMEPLAY SPEED|REFEREE FAVOURS'],[1,'TOUCH LAYOUT'],
   [3,'WEATHER|WEATHER CHANGES|WEATHER EVENTS|TIME OF DAY|SUNSET MATCHES|FOG|RAINBOW AFTER RAIN|LIGHTNING BOLTS|PUDDLES IN THE RAIN|RAIN ON THE CAMERA LENS|STAND WEATHER|HEAT SHIMMER AND DUST|CORNER FLAGS BLOW IN THE WIND|WET PITCH REFLECTIONS|FLOODLIGHT GLOW AND VIGNETTE|FLOODLIGHT SHADOWS|FLOODLIGHT FAILURES|RAIN DELAYS'],
   [5,'CROWD CARD MOSAICS|SCARVES AND PHONE FLASHES|DETAILED CROWD|NATIONAL MATCH CROWD 50/50|FLARES AND BANNERS|CLUB FAN BANNERS|FLARES THROWN ON THE PITCH|BOTTLES THROWN AFTER A HEAVY DEFEAT|BANNERS REACT TO THE MATCH|DERBY CHANT DUELS|FANS LEAVE AFTER A HEAVY DEFEAT|BOOING|TROPHY SQUAD AND FIREWORKS|PITCH INVADER|CLUB PERSONALITIES|FAN MOOD EFFECTS'],
   [7,'EXTRA COMMENTARY VARIETY|MUSIC ONLY ON TITLE SCREEN|FAN CHANTS|CHANT STYLE|MENU MUSIC'],
@@ -9999,7 +10019,7 @@ function buildMenu(m){
   case'about':
     sp.title='ABOUT KICKOFF 6128';sp.w=330;
     sp.lines=['AN ORIGINAL FIVE-A-SIDE FOOTBALL GAME','A TRIBUTE TO MATCH DAY II','AND THE 8-BIT CLASSICS OF THE AMSTRAD CPC','',
-      'VERSION 10.9','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
+      'VERSION 10.10','ONE FILE. NO ASSETS. PURE CANVAS.','','CREATED BY M. SOFOPOULOS','MSOFOPOULOS@GMAIL.COM','BUILT WITH CLAUDE','',
       'CLUB NAMES ARE USED FOR FUN ONLY','AND ARE NOT AFFILIATED OR OFFICIAL'].concat(ERRL?[''].concat(wrapTxt('LAST ERROR: '+ERRL,46)):[]);
     I.push({k:'act',label:'THE 10.0 STORY',fn:()=>goMenu('ten')});
     I.push({k:'act',label:'BACK',fn:back});
@@ -10468,7 +10488,7 @@ let instEv=null;
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();instEv=e});
 addEventListener('appinstalled',()=>{instEv=null});
 try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))addEventListener('load',()=>{navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).catch(()=>{})})}catch(e){}
-const APPV='10.9';
+const APPV='10.10';
 const UPD={nw:'',st:'',ck:0};
 function updNewer(a,b){const x=a.split('.').map(Number),y=b.split('.').map(Number);for(let i=0;i<4;i++){const p=x[i]||0,q=y[i]||0;if(p!==q)return p>q}return false}
 async function updCheck(manual){

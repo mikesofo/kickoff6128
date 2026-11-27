@@ -34,6 +34,11 @@ Kickoff 6128 is an original tribute to *Match Day II* on the Amstrad CPC. It use
 
 ## Release notes
 
+### 10.10
+- Physics style option: SENSIBLE SOCCER (sharper turns, ball knocked ahead with each touch, rolls free) alongside CLASSIC (default).
+- Crowd reacts to red and yellow cards; the mascot celebrates opposition red cards.
+- Corner practice already existed (training drill 4).
+
 ### 10.9
 - Copy bug report button (options, pause menu): version, device, options, match state, keys, last errors and events.
 - Club mascot: jogs the touchline at half time and runs on to celebrate home goals (option).
